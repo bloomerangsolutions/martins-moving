@@ -84,3 +84,17 @@ export function speakableSchema(canonicalPath) {
     speakable: { "@type": "SpeakableSpecification", cssSelector: [".quick-answer", ".faq-block"] },
   };
 }
+
+export function articleSchema(g) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: g.title || g.label,
+    description: g.metaDesc || g.summary || "",
+    about: g.keyword || g.label,
+    author: { "@type": "Organization", name: site.brand, url: site.domain },
+    publisher: { "@type": "MovingCompany", name: site.brand, telephone: site.phone, url: site.domain },
+    mainEntityOfPage: `${site.domain}/guides/${g.slug}`,
+    inLanguage: "en-US",
+  };
+}

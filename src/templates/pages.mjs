@@ -1,5 +1,5 @@
 import { page, hero, quoteForm, site } from "./layout.mjs";
-import { movingCompanySchema, serviceSchema, faqSchema, breadcrumbSchema, reviewSchema, speakableSchema } from "./schema.mjs";
+import { movingCompanySchema, serviceSchema, faqSchema, breadcrumbSchema, reviewSchema, speakableSchema, articleSchema } from "./schema.mjs";
 import { services } from "../data/services.mjs";
 import { areas } from "../data/areas.mjs";
 import { guides } from "../data/guides.mjs";
@@ -13,6 +13,30 @@ const realServices = services.filter((s) => s.real);
 // ---------- shared layout helpers ----------
 const wrap = (inner, cls = "") => `<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto ${cls}">${inner}</section>`;
 const prose = (paras) => paras.map((p) => `<p class="font-body-lg text-body-lg text-on-surface-variant mb-4 max-w-3xl">${esc(p)}</p>`).join("");
+
+const slugify = (s = "") => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+// Rich prose sections (resources, about, and the guide article body)
+function contentSections(sections, { anchored = false } = {}) {
+  if (!sections || !sections.length) return "";
+  return sections
+    .map((s) => {
+      const id = anchored ? ` id="${slugify(s.h)}"` : "";
+      return `<section${id} class="mb-9 max-w-3xl scroll-mt-28"><h2 class="font-headline-md text-headline-md text-primary mb-3">${esc(s.h)}</h2><p class="font-body-lg text-body-lg text-on-surface-variant">${esc(s.body)}</p></section>`;
+    })
+    .join("");
+}
+// Sticky table of contents for long articles (desktop only)
+function tocList(sections) {
+  if (!sections || sections.length < 3) return "";
+  return `<nav aria-label="On this page" class="hidden lg:block sticky top-28 self-start"><p class="font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant/70 mb-3">On this page</p><ul class="space-y-2 border-l-2 border-outline-variant/40 pl-4">${sections
+    .map((s) => `<li><a class="block text-body-md text-on-surface-variant hover:text-primary hover:border-primary transition-colors" href="#${slugify(s.h)}">${esc(s.h)}</a></li>`)
+    .join("")}</ul></nav>`;
+}
+// E-E-A-T byline for guides
+function articleMeta(readTime) {
+  const item = (icon, text, tint = "primary") => `<span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-${tint}">${icon}</span>${esc(text)}</span>`;
+  return `<div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-caption text-on-surface-variant mb-8 max-w-3xl pb-6 border-b border-outline-variant/40">${item("schedule", readTime || "Quick read", "action-orange")}${item("verified_user", "By the Martin's Moving crew")}${item("location_on", `Serving ${R} since ${Y}`)}</div>`;
+}
 
 // AEO: concise, citable answer block
 function quickAnswer(text) {
@@ -123,14 +147,16 @@ export function areaPage(area) {
     `Looking for movers in ${area.name}? Martin's Moving serves ${area.name} and the rest of ${area.county} with local and long-distance moves for homes, condos, and offices.`,
     `You get a written flat quote, a crew that protects your floors and furniture, and a company that has worked ${R} since ${Y}. Call ${site.phone} for a free estimate.`,
   ];
-  const faqs = c?.faqs || [
-    { q: `Do you move within ${area.name}?`, a: `Yes. We handle local moves inside ${area.name} and moves between ${area.name} and anywhere in ${R}.` },
-    { q: "How far ahead should I book?", a: "Two to three weeks in the winter season, about a week off season. Earlier is safer for weekend dates." },
-    { q: "Are you licensed and insured?", a: `Yes, Florida Mover Registration #${site.licenses.flIm}, fully insured.` },
-  ];
+  const faqs = c?.faqs
+    ? [...c.faqs, { q: "Is Martin's Moving licensed and insured?", a: `Yes. We are a licensed Florida mover, registration #${site.licenses.flIm}, fully insured, and family owned since ${Y}.` }]
+    : [
+        { q: `Do you move within ${area.name}?`, a: `Yes. We handle local moves inside ${area.name} and moves between ${area.name} and anywhere in ${R}.` },
+        { q: "How far ahead should I book?", a: "Two to three weeks in the winter season, about a week off season. Earlier is safer for weekend dates." },
+        { q: "Are you licensed and insured?", a: `Yes, Florida Mover Registration #${site.licenses.flIm}, fully insured.` },
+      ];
   const qa = `Martin's Moving is a licensed, family-owned mover serving ${area.name} in ${area.county}. We handle residential, commercial, and local moves with free written estimates. Call ${site.phone}.`;
   const bodyHtml = `${hero({ badge: "Areas Served", h1: `${area.name} Movers`, sub: `Local and long-distance moving in ${area.name}, ${area.county}.`, crumbs, pageName: `${area.name} Movers`, primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "All areas", href: "/areas-served" } })}
-${wrap(`${quickAnswer(qa)}${prose(intro)}${area.neighborhoods ? bullets(c?.localTitle || `Parts of ${area.name} we move`, area.neighborhoods) : ""}${relatedCards(`Our moving services in ${area.name}`, realServices.map(svcCard))}${relatedCards("Nearby areas we serve", nearbyAreas(area))}${faqBlock(faqs)}`)}
+${wrap(`${quickAnswer(qa)}${prose(intro)}${area.neighborhoods ? bullets(c?.localTitle || `Parts of ${area.name} we move`, area.neighborhoods) : ""}${c?.localNote ? `<div class="mt-8 max-w-3xl bg-surface-container-low rounded-2xl p-6 border-l-4 border-primary flex gap-4"><span class="material-symbols-outlined text-primary">map</span><p class="text-body-md text-on-surface-variant">${esc(c.localNote)}</p></div>` : ""}${relatedCards(`Our moving services in ${area.name}`, realServices.map(svcCard))}${relatedCards("Nearby areas we serve", nearbyAreas(area))}${faqBlock(faqs)}`)}
 ${recognitionBar()}${ctaBand()}`;
   const desc = (area.metaDesc || `Movers in ${area.name}, ${site.address.regionName}. Martin's Moving handles homes and offices across ${area.county}. Free quote: ${site.phone}.`).slice(0, 158);
   return page({
@@ -150,44 +176,73 @@ export function guidePage(g) {
     { q: "How early should I book a mover?", a: "Two to three weeks in season, about a week off season. Earlier is safer for a weekend date." },
     { q: "Does Martin's Moving serve my town?", a: `We cover ${R}. Call ${site.phone} to confirm your pickup and destination.` },
   ];
-  const qa = c?.intro?.[0] || `${g.summary || g.label}. A practical guide from Martin's Moving for the ${R} area.`;
-  const sectionsHtml = c?.sections ? c.sections.map((s) => `<div class="mt-8 max-w-3xl"><h2 class="font-headline-md text-headline-md text-primary mb-2">${esc(s.h)}</h2><p class="font-body-lg text-body-lg text-on-surface-variant">${esc(s.body)}</p></div>`).join("") : "";
+  const qa = intro[0];
+  const proseParas = intro.slice(1); // first paragraph becomes the In short box; avoid duplicating it
+  const sections = c?.sections || [];
+  const article = `<div class="grid lg:grid-cols-[210px_1fr] gap-12 mt-2">${tocList(sections)}<div>${contentSections(sections, { anchored: true })}${faqBlock(faqs)}</div></div>`;
+  const otherGuides = guides.filter((x) => x.slug !== g.slug).slice(0, 4).map((x) => ({ label: x.label, href: `/guides/${x.slug}` }));
   const bodyHtml = `${hero({ badge: "Moving Guide", h1: g.label, sub: g.summary || "", crumbs, pageName: g.label, primaryCta: { label: "Get a free quote", href: "/contact" }, secondaryCta: { label: "All guides", href: "/guides" } })}
-${wrap(`${quickAnswer(qa)}${prose(intro)}${sectionsHtml}${relatedCards("Services that help", realServices.slice(0, 4).map(svcCard))}${relatedCards("Other guides", guides.filter((x) => x.slug !== g.slug).slice(0, 4).map((x) => ({ label: x.label, href: `/guides/${x.slug}` })))}${faqBlock(faqs)}`)}
+${wrap(`${articleMeta(g.readTime)}${quickAnswer(qa)}${prose(proseParas)}${article}${relatedCards("Services that help", realServices.slice(0, 4).map(svcCard))}${relatedCards("More guides", otherGuides)}`)}
 ${ctaBand()}`;
   const desc = (g.metaDesc || `${g.label} from Martin's Moving, serving ${R}.`).slice(0, 158);
-  return page({ title: g.title || `${g.label} | Martin's Moving`, description: desc, canonicalPath: `/guides/${g.slug}`, jsonLd: [breadcrumbSchema(crumbs), faqSchema(faqs), speakableSchema(`/guides/${g.slug}`)], bodyHtml });
+  return page({ title: g.title || `${g.label} | Martin's Moving`, description: desc, canonicalPath: `/guides/${g.slug}`, jsonLd: [breadcrumbSchema(crumbs), faqSchema(faqs), articleSchema(g), speakableSchema(`/guides/${g.slug}`)], bodyHtml });
 }
 
-export function genericPage({ slug, label, title, metaDesc, section = "", crumbName, bodyIntro, robots, related = "guides", qa }) {
+export function genericPage({ slug, label, title, metaDesc, section = "", crumbName, content, bodyIntro, robots, related = "guides", relatedItems, relatedTitle, qa }) {
   const base = section ? `/${section}` : "";
   const canonicalPath = (`${base}/${slug}`).replace(/\/+$/, "") || "/";
   const crumbs = [{ name: "Home", href: "/" }];
   if (section) crumbs.push({ name: crumbName || section, href: base });
   crumbs.push({ name: label, href: canonicalPath });
-  const intro = bodyIntro || [`${label} for ${site.brand}, serving ${R}.`, `Call ${site.phone} for a free quote.`];
-  const faqs = [
+  const introAll = content?.intro || bodyIntro || [`${label} for ${site.brand}, serving ${R}.`, `Call ${site.phone} for a free quote.`];
+  const qaText = qa || introAll[0];
+  const proseParas = qa ? introAll : introAll.slice(1); // first paragraph becomes the In short box unless an explicit qa is given
+  const sections = content?.sections || [];
+  const faqs = content?.faqs || [
     { q: "What areas does Martin's Moving serve?", a: `We serve ${R}, including Bradenton, Sarasota, and the surrounding towns.` },
     { q: "Is Martin's Moving licensed and insured?", a: `Yes. Family owned since ${Y}, licensed, bonded, and insured (FL Mover Reg #${site.licenses.flIm}).` },
   ];
-  const relatedItems = related === "services" ? realServices.map(svcCard) : guides.slice(0, 4).map((g) => ({ label: g.label, href: `/guides/${g.slug}` }));
+  const relItems = relatedItems || (related === "services" ? realServices.map(svcCard) : guides.slice(0, 4).map((g) => ({ label: g.label, href: `/guides/${g.slug}` })));
+  const relTitle = relatedTitle || (related === "services" ? "Our moving services" : "Helpful guides");
   const bodyHtml = `${hero({ badge: crumbName || "", h1: label, sub: "", crumbs, pageName: label, primaryCta: { label: "Get a free quote", href: "/contact" }, secondaryCta: { label: "Our services", href: "/services" } })}
-${wrap(`${qa ? quickAnswer(qa) : ""}${prose(intro)}${relatedCards(related === "services" ? "Our moving services" : "Helpful guides", relatedItems)}${faqBlock(faqs)}`)}
+${wrap(`${qaText ? quickAnswer(qaText) : ""}${prose(proseParas)}${contentSections(sections)}${relatedCards(relTitle, relItems)}${faqBlock(faqs)}`)}
 ${ctaBand()}`;
   return page({ title: title || `${label} | Martin's Moving`, description: (metaDesc || `${label} from Martin's Moving in ${R}.`).slice(0, 158), canonicalPath, jsonLd: [movingCompanySchema(), breadcrumbSchema(crumbs), faqSchema(faqs), speakableSchema(canonicalPath)], robots, bodyHtml });
 }
 
+function richIndexCards(items, icon) {
+  return `<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-gutter mt-4">${items
+    .map((i) => `<a href="${i.href}" class="group bg-white rounded-2xl p-6 border-2 border-transparent hover:border-primary hover:shadow-xl transition-all flex flex-col">
+      <div class="flex items-start justify-between gap-3 mb-2"><h3 class="font-headline-md text-body-lg text-primary">${esc(i.label)}</h3><span class="material-symbols-outlined text-action-orange shrink-0 group-hover:translate-x-1 transition-transform">${icon}</span></div>
+      ${i.sub ? `<p class="text-body-md text-on-surface-variant flex-1">${esc(i.sub)}</p>` : ""}
+      ${i.meta ? `<p class="mt-3 text-caption text-on-surface-variant inline-flex items-center gap-1"><span class="material-symbols-outlined text-base text-primary">schedule</span>${esc(i.meta)}</p>` : ""}
+    </a>`)
+    .join("")}</div>`;
+}
+
 export function indexPage({ kind }) {
+  const shortDesc = (r) => {
+    const t = r.content?.intro?.[0] || "";
+    return t.length > 120 ? t.slice(0, 117).trimEnd() + "..." : t;
+  };
   const map = {
-    services: { label: "Moving Services", items: services.map(svcCard), h1: "Our moving services", sub: `Everything from a studio apartment to a full office relocation across ${R}.`, path: "/services", icon: "arrow_forward" },
-    areas: { label: "Areas Served", items: areas.map(areaCard), h1: `Moving services across ${R}`, sub: "Find your town below for local moving help.", path: "/areas-served", icon: "location_on" },
-    guides: { label: "Moving Guides", items: guides.map((g) => ({ label: g.label, href: `/guides/${g.slug}` })), h1: "Moving guides", sub: "Free, practical guides for planning your move.", path: "/guides", icon: "menu_book" },
-    resources: { label: "Resources", items: resources.map((r) => ({ label: r.label, href: `/resources/${r.slug}` })), h1: "Moving resources", sub: "Tips, forms, and tools to make your move easier.", path: "/resources", icon: "description" },
+    services: { label: "Moving Services", h1: "Our moving services", sub: `Everything from a studio apartment to a full office relocation across ${R}.`, path: "/services", icon: "local_shipping",
+      intro: [`Martin's Moving handles the full range of home and business moves across ${R}. Whatever you are moving, the same careful crews and honest written quotes apply.`],
+      items: services.map((s) => ({ label: s.label, href: `/services/${s.slug}`, sub: s.summary || s.content?.intro?.[0]?.slice(0, 110) })) },
+    areas: { label: "Areas Served", h1: `Moving services across ${R}`, sub: "Find your town below for local moving help.", path: "/areas-served", icon: "location_on",
+      intro: [`We move homes and businesses throughout ${R} and the surrounding communities. Find your town for local details, or call ${site.phone} to confirm your move.`],
+      items: areas.map((a) => ({ label: `${a.name}`, href: `/areas-served/${a.slug}`, sub: a.county })) },
+    guides: { label: "Moving Guides", h1: "Moving guides", sub: "Free, practical guides written by a crew that moves homes here every day.", path: "/guides", icon: "menu_book",
+      intro: [`Real, practical moving guides for the ${R} area, written from thousands of actual moves. Start planning, then call ${site.phone} when you want to hand it off.`],
+      items: guides.map((g) => ({ label: g.label, href: `/guides/${g.slug}`, sub: g.summary, meta: g.readTime })) },
+    resources: { label: "Resources", h1: "Moving resources", sub: "Tips, forms, and tools to make your move easier.", path: "/resources", icon: "description",
+      intro: [`Quick tools and references for your move: packing tips, timelines, forms, and answers to the questions we hear most.`],
+      items: resources.map((r) => ({ label: r.label, href: `/resources/${r.slug}`, sub: shortDesc(r) })) },
   }[kind];
   const crumbs = [{ name: "Home", href: "/" }, { name: map.label, href: map.path }];
   const qa = `Martin's Moving offers ${map.items.length} ${kind === "areas" ? "service areas" : kind} across ${R}, family owned since ${Y}. Call ${site.phone} for a free quote.`;
   const bodyHtml = `${hero({ badge: map.label, h1: map.h1, sub: map.sub, crumbs, pageName: map.label })}
-${wrap(`${quickAnswer(qa)}${relatedCards(`All ${map.label.toLowerCase()}`, map.items, map.icon)}`)}
+${wrap(`${quickAnswer(qa)}${prose(map.intro)}${richIndexCards(map.items, map.icon)}`)}
 ${recognitionBar()}${ctaBand()}`;
   return page({ title: `${map.label} | Martin's Moving`, description: `${map.sub} Martin's Moving, ${R}. Call ${site.phone}.`.slice(0, 158), canonicalPath: map.path, jsonLd: [movingCompanySchema(), breadcrumbSchema(crumbs), speakableSchema(map.path)], bodyHtml });
 }
