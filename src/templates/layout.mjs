@@ -153,7 +153,7 @@ function footer() {
       ${col("Resources", n.resources)}
     </div>
     <div class="border-t border-white/15 pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-      <p class="text-caption text-white/60">© ${new Date().getFullYear()} Martin's Moving. ${esc(site.descriptor)}.${site.licenses.usdot.startsWith("{{") ? " Licensed, bonded & insured." : ` USDOT ${esc(site.licenses.usdot)} · FL IM ${esc(site.licenses.flIm)}.`}</p>
+      <p class="text-caption text-white/60">© ${new Date().getFullYear()} Martin's Moving. ${esc(site.descriptor)}${site.licenses.usdot.startsWith("{{") ? " Licensed, bonded &amp; insured." : ` USDOT ${esc(site.licenses.usdot)} · FL IM ${esc(site.licenses.flIm)}.`}</p>
       <div class="flex gap-4 text-caption text-white/60">
         <a class="hover:text-action-orange" href="/privacy-policy">Privacy Policy</a>
         <a class="hover:text-action-orange" href="/accessibility">Accessibility</a>
