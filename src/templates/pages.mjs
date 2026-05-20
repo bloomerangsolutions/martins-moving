@@ -426,10 +426,10 @@ export function homePage() {
   const qa = `Martin's Moving is a family-owned moving company serving ${R} since ${Y}. We offer residential, commercial, local, interstate, packing, piano, and specialty moving. Licensed and insured (FL Mover Reg #${site.licenses.flIm}). Free quotes at ${site.phone}.`;
   const bodyHtml = `${hero({ badge: `Established ${Y}`, h1: `Florida's trusted moving company since ${Y}`, sub: `Expert residential and commercial relocations in ${R}. We turn the chaos of moving into a smooth transition.`, big: true, pageName: "Homepage", primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "Our services", href: "/services" } })}
 ${recognitionBar()}
-<div class="px-margin-mobile md:px-margin-desktop pt-section-gap">
-  <div class="relative max-w-max-width mx-auto overflow-hidden lg:min-h-[260px]">
-    <div class="lg:pr-72 xl:pr-80">${quickAnswer(qa)}</div>
-    <div class="snail-fly hidden lg:block absolute right-2 bottom-2 w-56 xl:w-64 z-20 pointer-events-none"><img src="${SNAIL}" alt="Martin's Moving snail mascot carrying a brick house on its shell" class="w-full h-auto drop-shadow-xl" width="256" height="237"/></div>
+<div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto pt-section-gap">
+  <div class="lg:flex lg:items-center lg:gap-10 overflow-hidden">
+    <div class="lg:[&>.quick-answer]:mb-0">${quickAnswer(qa)}</div>
+    <div class="snail-fly hidden lg:block shrink-0 w-56 xl:w-64 pointer-events-none"><img src="${SNAIL}" alt="Martin's Moving snail mascot carrying a brick house on its shell" class="w-full h-auto drop-shadow-xl" width="256" height="237"/></div>
   </div>
 </div>
 ${whyUs()}
