@@ -151,10 +151,12 @@ function footer() {
   </div>
   <div class="mt-section-gap pt-8 border-t border-white/10 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto flex flex-col md:flex-row md:justify-between gap-3 text-center md:text-left">
     <p class="font-body-md text-body-md opacity-60">© ${new Date().getFullYear()} Martin's Moving. ${esc(site.positioning)}. ${licenseLine}.</p>
-    <div class="flex gap-4 justify-center text-body-md opacity-60">
+    <div class="flex flex-wrap gap-4 justify-center text-body-md opacity-60">
+      <a class="hover:text-tertiary-fixed" href="/about">About</a>
+      <a class="hover:text-tertiary-fixed" href="/blog">Blog</a>
+      <a class="hover:text-tertiary-fixed" href="/reviews">Reviews</a>
       <a class="hover:text-tertiary-fixed" href="/privacy-policy">Privacy</a>
       <a class="hover:text-tertiary-fixed" href="/accessibility">Accessibility</a>
-      <a class="hover:text-tertiary-fixed" href="/reviews">Reviews</a>
     </div>
   </div>
 </footer>`;
