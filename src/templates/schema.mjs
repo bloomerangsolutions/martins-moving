@@ -1,16 +1,20 @@
 import { site } from "../data/site.mjs";
 
-export function movingCompanySchema() {
-  const s = {
+export function movingCompanySchema(areaName) {
+  return {
     "@context": "https://schema.org",
     "@type": "MovingCompany",
+    "@id": `${site.domain}/#business`,
     name: site.brand,
-    description: `${site.descriptor}. Family owned moving company serving ${site.serviceRegion} since ${site.foundedYear}.`,
+    alternateName: site.descriptor,
+    description: `${site.positioning}. Family owned moving company serving ${site.serviceRegion} since ${site.foundedYear}.`,
     url: site.domain,
     telephone: site.phone,
     email: site.email,
     foundingDate: site.foundedYear,
-    areaServed: site.serviceRegion,
+    priceRange: "$$",
+    areaServed: areaName || site.serviceRegion,
+    award: site.awards,
     address: {
       "@type": "PostalAddress",
       streetAddress: site.address.street || undefined,
@@ -20,9 +24,13 @@ export function movingCompanySchema() {
       addressCountry: site.address.country,
     },
     geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
-    openingHours: site.hours,
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:30",
+      closes: "17:30",
+    },
   };
-  return s;
 }
 
 export function serviceSchema({ name, description, areaName }) {
@@ -41,11 +49,7 @@ export function faqSchema(faqs) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
+    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
   };
 }
 
@@ -53,11 +57,30 @@ export function breadcrumbSchema(crumbs) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: crumbs.map((c, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: c.name,
-      item: `${site.domain}${c.href}`,
-    })),
+    itemListElement: crumbs.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.name, item: `${site.domain}${c.href}` })),
+  };
+}
+
+// Real customer reviews recovered from the original site. No fabricated aggregate count.
+export function reviewSchema() {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      itemReviewed: { "@type": "MovingCompany", name: site.brand },
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: "Mike M." },
+      reviewBody: "Best mover we have ever had. The crew arrived on time, were efficient and very careful.",
+    },
+  ];
+}
+
+// AEO: tells answer engines which blocks are the concise, citable answer.
+export function speakableSchema(canonicalPath) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    url: `${site.domain}${canonicalPath}`,
+    speakable: { "@type": "SpeakableSpecification", cssSelector: [".quick-answer", ".faq-block"] },
   };
 }
