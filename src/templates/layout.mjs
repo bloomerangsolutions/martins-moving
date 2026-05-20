@@ -55,16 +55,16 @@ function header() {
   const navLink = (label, href) => `<a class="font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant hover:text-action-orange transition-colors duration-300" href="${href}">${esc(label)}</a>`;
   // dropdown trigger + panel
   const trigger = (label) => `<button type="button" class="flex items-center gap-1 font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant hover:text-action-orange transition-colors">${esc(label)}<span class="material-symbols-outlined text-base dd-chev transition-transform">expand_more</span></button>`;
-  const panelLink = (i, icon) => `<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" href="${i.href}"><span class="material-symbols-outlined text-primary text-xl">${icon}</span><span>${esc(i.label)}</span></a>`;
+  const panelLink = (i) => `<a class="block px-3 py-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" href="${i.href}">${esc(i.label)}</a>`;
   const viewAll = (label, href) => `<a class="mt-2 inline-flex items-center gap-1 px-3 font-label-bold text-label-bold text-action-orange hover:gap-2 transition-all" href="${href}">${esc(label)}<span class="material-symbols-outlined text-base">arrow_forward</span></a>`;
   const dropdown = (label, width, inner) => `<div class="dd-wrap relative">${trigger(label)}<div class="dd-panel absolute left-0 top-full pt-3 z-50"><div class="bg-surface-container-lowest rounded-2xl shadow-2xl ring-1 ring-on-surface/5 p-4 ${width}">${inner}</div></div></div>`;
   const heading = (t) => `<p class="px-3 pb-2 font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant/70">${esc(t)}</p>`;
 
   const svcItems = n.services.filter((s) => !s.note); // the confirmed-real services
-  const servicesPanel = dropdown("Services", "w-[540px]", `${heading("Moving services")}<div class="grid grid-cols-2 gap-1">${svcItems.map((i) => panelLink(i, "local_shipping")).join("")}</div>${viewAll("View all services", "/services")}`);
-  const areasPanel = dropdown("Areas Served", "w-[540px]", `${heading("Areas served")}<div class="grid grid-cols-3 gap-1">${n.areas.slice(0, 12).map((i) => panelLink(i, "location_on")).join("")}</div>${viewAll("View all areas", "/areas-served")}`);
-  const guidesPanel = dropdown("Guides", "w-80", `${heading("Moving guides")}<div class="grid grid-cols-1 gap-1">${n.guides.map((i) => panelLink(i, "menu_book")).join("")}</div>`);
-  const resourcesPanel = dropdown("Resources", "w-80", `${heading("Resources")}<div class="grid grid-cols-1 gap-1">${n.resources.map((i) => panelLink(i, "description")).join("")}</div>`);
+  const servicesPanel = dropdown("Services", "w-[540px]", `${heading("Moving services")}<div class="grid grid-cols-2 gap-1">${svcItems.map((i) => panelLink(i)).join("")}</div>${viewAll("View all services", "/services")}`);
+  const areasPanel = dropdown("Areas Served", "w-[540px]", `${heading("Areas served")}<div class="grid grid-cols-3 gap-1">${n.areas.slice(0, 12).map((i) => panelLink(i)).join("")}</div>${viewAll("View all areas", "/areas-served")}`);
+  const guidesPanel = dropdown("Guides", "w-80", `${heading("Moving guides")}<div class="grid grid-cols-1 gap-1">${n.guides.map((i) => panelLink(i)).join("")}</div>`);
+  const resourcesPanel = dropdown("Resources", "w-80", `${heading("Resources")}<div class="grid grid-cols-1 gap-1">${n.resources.map((i) => panelLink(i)).join("")}</div>`);
 
   return `
 <nav class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
