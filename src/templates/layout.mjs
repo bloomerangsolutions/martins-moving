@@ -193,7 +193,7 @@ export function breadcrumbsHtml(crumbs) {
     .join("")}</ol></nav>`;
 }
 
-export function page({ title, description, canonicalPath, jsonLd = [], bodyHtml, robots }) {
+export function page({ title, description, canonicalPath, jsonLd = [], bodyHtml, robots, bodyClass = "" }) {
   const canonical = `${site.domain}${canonicalPath}`;
   const ld = jsonLd.filter(Boolean).map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join("\n");
   return `<!DOCTYPE html>
@@ -209,7 +209,7 @@ ${robots ? `<meta name="robots" content="${esc(robots)}"/>` : ""}
 ${HEAD_STYLES}
 ${ld}
 </head>
-<body class="bg-background text-on-background font-body-md selection:bg-primary/20">
+<body class="bg-background text-on-background font-body-md selection:bg-primary/20${bodyClass ? " " + bodyClass : ""}">
 ${header()}
 <main>${bodyHtml}</main>
 ${footer()}

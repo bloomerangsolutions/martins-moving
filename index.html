@@ -129,22 +129,10 @@
 .dd-wrap:hover .dd-chev,.dd-wrap:focus-within .dd-chev{transform:rotate(180deg);}
 details>summary{list-style:none;} details>summary::-webkit-details-marker{display:none;}
 details[open] .dd-chev{transform:rotate(180deg);}
-/* snail mascot: zooms across the area, then lands and idles with a gentle bob */
-.snail-fly{will-change:transform,opacity;opacity:1;}
-.snail-fly img{display:block;}
-@media (prefers-reduced-motion: no-preference){
-  @keyframes snail-fly{
-    0%{transform:translate(44rem,-13rem) scale(.4) rotate(-32deg);opacity:0;}
-    10%{opacity:1;}
-    34%{transform:translate(-48rem,5rem) scale(.66) rotate(20deg);opacity:1;}
-    58%{transform:translate(12rem,-10rem) scale(.9) rotate(-12deg);}
-    80%{transform:translate(-1.8rem,1.4rem) scale(1.07) rotate(5deg);}
-    100%{transform:translate(0,0) scale(1) rotate(0);opacity:1;}
-  }
-  @keyframes snail-bob{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-6px) rotate(-1.5deg);}}
-  .snail-fly{animation:snail-fly 2s cubic-bezier(.22,1,.36,1) .2s both;}
-  .snail-fly img{animation:snail-bob 3.4s ease-in-out 2.4s infinite;}
-}
+/* snail mascot: travels the homepage on scroll (GSAP ScrollTrigger + MotionPath) */
+#snail-trail{position:fixed;left:0;top:0;opacity:0;z-index:8;pointer-events:none;}
+#snail-trail img{display:block;width:100%;height:auto;}
+body.home main > section,body.home main > div{position:relative;z-index:10;}
 </style>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"MovingCompany","@id":"https://martinsmovers.com/#business","name":"Martin's Moving","alternateName":"Bradenton & Sarasota Moving Co.","description":"Precision Relocation Experts. Family owned moving company serving Bradenton, Sarasota, and Manatee County since 2004.","url":"https://martinsmovers.com","telephone":"(941) 809-5777","email":"martinsmoving2002@aol.com","foundingDate":"2004","priceRange":"$$","areaServed":"Bradenton, Sarasota, and Manatee County","award":["Bradenton's Best 2021","Bradenton's Best 2022","Best of SRQ 2025"],"address":{"@type":"PostalAddress","addressLocality":"Bradenton","addressRegion":"FL","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":"27.4989","longitude":"-82.5748"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:30","closes":"17:30"}}</script>
@@ -152,7 +140,7 @@ details[open] .dd-chev{transform:rotate(180deg);}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Review","itemReviewed":{"@type":"MovingCompany","name":"Martin's Moving"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"author":{"@type":"Person","name":"Mike M."},"reviewBody":"Best mover we have ever had. The crew arrived on time, were efficient and very careful."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://martinsmovers.com/","speakable":{"@type":"SpeakableSpecification","cssSelector":[".quick-answer",".faq-block"]}}</script>
 </head>
-<body class="bg-background text-on-background font-body-md selection:bg-primary/20">
+<body class="bg-background text-on-background font-body-md selection:bg-primary/20 home">
 
 <nav class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
   <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
@@ -225,15 +213,10 @@ details[open] .dd-chev{transform:rotate(180deg);}
       <div class="flex flex-wrap justify-center items-center gap-10 grayscale hover:grayscale-0 transition-all duration-700">
         <div class="flex flex-col items-center gap-1"><span class="material-symbols-outlined text-4xl text-tertiary">verified</span><span class="font-headline-md text-caption text-on-surface text-center">Bradenton's Best 2021</span></div><div class="flex flex-col items-center gap-1"><span class="material-symbols-outlined text-4xl text-tertiary">verified</span><span class="font-headline-md text-caption text-on-surface text-center">Bradenton's Best 2022</span></div><div class="flex flex-col items-center gap-1"><span class="material-symbols-outlined text-4xl text-tertiary">award_star</span><span class="font-headline-md text-caption text-on-surface text-center">Best of SRQ 2025</span></div><div class="flex flex-col items-center gap-1"><span class="material-symbols-outlined text-4xl text-primary">security</span><span class="font-headline-md text-caption text-on-surface text-center">Licensed &amp; Insured · FL #IM595</span></div>
       </div></div></div></section>
-<div class="px-margin-mobile md:px-margin-desktop pt-section-gap">
-  <div class="relative max-w-max-width mx-auto overflow-hidden lg:min-h-[260px]">
-    <div class="lg:pr-72 xl:pr-80"><div class="quick-answer glass-card rounded-2xl border-l-4 border-action-orange p-6 md:p-8 mb-10 max-w-3xl">
+<div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto pt-section-gap" id="home-intro"><div class="quick-answer glass-card rounded-2xl border-l-4 border-action-orange p-6 md:p-8 mb-10 max-w-3xl">
     <p class="font-label-bold text-label-bold uppercase tracking-wider text-primary mb-2">In short</p>
     <p class="font-body-lg text-body-lg text-on-surface mb-5">Martin's Moving is a family-owned moving company serving Bradenton, Sarasota, and Manatee County since 2004. We offer residential, commercial, local, interstate, packing, piano, and specialty moving. Licensed and insured (FL Mover Reg #IM595). Free quotes at <a href="tel:9418095777" class="font-bold text-primary underline decoration-action-orange/70 underline-offset-2 hover:text-action-orange">(941) 809-5777</a>.</p>
     <a href="tel:9418095777" class="inline-flex items-center gap-2 bg-action-orange text-white px-6 py-3 rounded-xl font-headline-md text-body-md shadow-md hover:brightness-110 hover:-translate-y-0.5 transition-all whitespace-nowrap"><span class="material-symbols-outlined">call</span>Call (941) 809-5777</a></div></div>
-    <div class="snail-fly hidden lg:block absolute right-2 bottom-2 w-56 xl:w-64 z-20 pointer-events-none"><img src="/images/snail.png" alt="Martin's Moving snail mascot carrying a brick house on its shell" class="w-full h-auto drop-shadow-xl" width="256" height="237"/></div>
-  </div>
-</div>
 <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto"><div class="grid md:grid-cols-2 gap-16 items-center">
     <div>
       <h2 class="font-headline-lg text-headline-lg text-primary mb-6">Why Bradenton trusts Martin's Moving</h2>
@@ -274,7 +257,58 @@ details[open] .dd-chev{transform:rotate(180deg);}
         <div class="flex flex-wrap gap-4 justify-center">
           <a class="bg-action-orange text-white px-8 py-4 rounded-xl font-headline-md text-body-lg hover:brightness-110 hover:-translate-y-1 transition-all shadow-lg" href="/contact">Get a free estimate</a>
           <a class="border-2 border-white text-white px-8 py-4 rounded-xl font-headline-md text-body-lg hover:bg-white hover:text-primary transition-all" href="tel:9418095777">Call (941) 809-5777</a>
-        </div></div></div></section></main>
+        </div></div></div></section>
+<div id="snail-trail" class="hidden lg:block w-[150px] xl:w-[168px]"><img src="/images/snail.png" alt="" aria-hidden="true" width="168" height="155"/></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+<script>
+(function(){
+  function start(){
+    if(!window.gsap||!window.ScrollTrigger||!window.MotionPathPlugin){return;}
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+    var snail=document.getElementById('snail-trail');
+    if(!snail){return;}
+    var tl=null;
+    var mqLg=window.matchMedia('(min-width:1024px)');
+    var mqRm=window.matchMedia('(prefers-reduced-motion: reduce)');
+    function points(){
+      var W=window.innerWidth,H=window.innerHeight,sw=snail.offsetWidth||160;
+      var rx=W-sw-W*0.05, lx=W*0.05;
+      return [
+        {x:rx, y:H*0.15},        // start: right side, near the In short box
+        {x:lx, y:H*0.64},        // Why Bradenton trusts Martin's Moving: bottom-left
+        {x:rx, y:H*0.10},        // Precision relocation services: top-right
+        {x:lx+W*0.01, y:H*0.18}, // Voices of trust: top-left of the box
+        {x:rx, y:H*0.52}         // Ready for a smooth move: right-hand side
+      ];
+    }
+    function destroy(){ if(tl){ if(tl.scrollTrigger){tl.scrollTrigger.kill();} tl.kill(); tl=null; } }
+    function build(){
+      destroy();
+      var p=points();
+      gsap.set(snail,{opacity:1, x:p[0].x, y:p[0].y, scale:0.9, rotation:0, zIndex:30});
+      tl=gsap.timeline({scrollTrigger:{trigger:'#home-intro', start:'top 65%', endTrigger:'main', end:'bottom bottom', scrub:1, invalidateOnRefresh:true}});
+      tl.to(snail,{motionPath:{path:p, curviness:1.3, autoRotate:false}, ease:'none', duration:10}, 0);
+      tl.to(snail,{keyframes:[{scale:0.9},{scale:1.2},{scale:0.72},{scale:1.08},{scale:0.85}], ease:'none', duration:10}, 0);
+      tl.to(snail,{keyframes:[{rotation:0},{rotation:-7},{rotation:5},{rotation:-3},{rotation:2}], ease:'none', duration:10}, 0);
+      tl.to(snail,{keyframes:[{zIndex:30},{zIndex:5},{zIndex:30},{zIndex:5},{zIndex:30}], ease:'none', duration:10}, 0);
+    }
+    function setup(){
+      destroy();
+      if(!mqLg.matches){ gsap.set(snail,{opacity:0}); return; }
+      if(mqRm.matches){ var p=points(); gsap.set(snail,{opacity:1, x:p[0].x, y:p[0].y, scale:1, rotation:0, zIndex:30}); return; }
+      build();
+      ScrollTrigger.refresh();
+    }
+    setup();
+    var t; window.addEventListener('resize', function(){ clearTimeout(t); t=setTimeout(setup,200); });
+    if(mqLg.addEventListener){ mqLg.addEventListener('change', setup); mqRm.addEventListener('change', setup); }
+    else if(mqLg.addListener){ mqLg.addListener(setup); mqRm.addListener(setup); }
+  }
+  if(document.readyState!=='loading'){ start(); } else { document.addEventListener('DOMContentLoaded', start); }
+})();
+</script></main>
 
 <footer class="bg-primary text-on-primary w-full pt-section-gap pb-8">
   <div class="grid grid-cols-2 md:grid-cols-5 gap-gutter px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">

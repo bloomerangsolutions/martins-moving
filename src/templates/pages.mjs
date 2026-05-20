@@ -422,21 +422,68 @@ export function homePage() {
   const qa = `Martin's Moving is a family-owned moving company serving ${R} since ${Y}. We offer residential, commercial, local, interstate, packing, piano, and specialty moving. Licensed and insured (FL Mover Reg #${site.licenses.flIm}). Free quotes at ${site.phone}.`;
   const bodyHtml = `${hero({ badge: `Established ${Y}`, h1: `Florida's trusted moving company since ${Y}`, sub: `Expert residential and commercial relocations in ${R}. We turn the chaos of moving into a smooth transition.`, big: true, pageName: "Homepage", primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "Our services", href: "/services" } })}
 ${recognitionBar()}
-<div class="px-margin-mobile md:px-margin-desktop pt-section-gap">
-  <div class="relative max-w-max-width mx-auto overflow-hidden lg:min-h-[260px]">
-    <div class="lg:pr-72 xl:pr-80">${quickAnswer(qa)}</div>
-    <div class="snail-fly hidden lg:block absolute right-2 bottom-2 w-56 xl:w-64 z-20 pointer-events-none"><img src="${SNAIL}" alt="Martin's Moving snail mascot carrying a brick house on its shell" class="w-full h-auto drop-shadow-xl" width="256" height="237"/></div>
-  </div>
-</div>
+<div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto pt-section-gap" id="home-intro">${quickAnswer(qa)}</div>
 ${whyUs()}
 ${homeServiceCards()}
 ${testimonials()}
-${ctaBand()}`;
+${ctaBand()}
+<div id="snail-trail" class="hidden lg:block w-[150px] xl:w-[168px]"><img src="${SNAIL}" alt="" aria-hidden="true" width="168" height="155"/></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+<script>
+(function(){
+  function start(){
+    if(!window.gsap||!window.ScrollTrigger||!window.MotionPathPlugin){return;}
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+    var snail=document.getElementById('snail-trail');
+    if(!snail){return;}
+    var tl=null;
+    var mqLg=window.matchMedia('(min-width:1024px)');
+    var mqRm=window.matchMedia('(prefers-reduced-motion: reduce)');
+    function points(){
+      var W=window.innerWidth,H=window.innerHeight,sw=snail.offsetWidth||160;
+      var rx=W-sw-W*0.05, lx=W*0.05;
+      return [
+        {x:rx, y:H*0.15},        // start: right side, near the In short box
+        {x:lx, y:H*0.64},        // Why Bradenton trusts Martin's Moving: bottom-left
+        {x:rx, y:H*0.10},        // Precision relocation services: top-right
+        {x:lx+W*0.01, y:H*0.18}, // Voices of trust: top-left of the box
+        {x:rx, y:H*0.52}         // Ready for a smooth move: right-hand side
+      ];
+    }
+    function destroy(){ if(tl){ if(tl.scrollTrigger){tl.scrollTrigger.kill();} tl.kill(); tl=null; } }
+    function build(){
+      destroy();
+      var p=points();
+      gsap.set(snail,{opacity:1, x:p[0].x, y:p[0].y, scale:0.9, rotation:0, zIndex:30});
+      tl=gsap.timeline({scrollTrigger:{trigger:'#home-intro', start:'top 65%', endTrigger:'main', end:'bottom bottom', scrub:1, invalidateOnRefresh:true}});
+      tl.to(snail,{motionPath:{path:p, curviness:1.3, autoRotate:false}, ease:'none', duration:10}, 0);
+      tl.to(snail,{keyframes:[{scale:0.9},{scale:1.2},{scale:0.72},{scale:1.08},{scale:0.85}], ease:'none', duration:10}, 0);
+      tl.to(snail,{keyframes:[{rotation:0},{rotation:-7},{rotation:5},{rotation:-3},{rotation:2}], ease:'none', duration:10}, 0);
+      tl.to(snail,{keyframes:[{zIndex:30},{zIndex:5},{zIndex:30},{zIndex:5},{zIndex:30}], ease:'none', duration:10}, 0);
+    }
+    function setup(){
+      destroy();
+      if(!mqLg.matches){ gsap.set(snail,{opacity:0}); return; }
+      if(mqRm.matches){ var p=points(); gsap.set(snail,{opacity:1, x:p[0].x, y:p[0].y, scale:1, rotation:0, zIndex:30}); return; }
+      build();
+      ScrollTrigger.refresh();
+    }
+    setup();
+    var t; window.addEventListener('resize', function(){ clearTimeout(t); t=setTimeout(setup,200); });
+    if(mqLg.addEventListener){ mqLg.addEventListener('change', setup); mqRm.addEventListener('change', setup); }
+    else if(mqLg.addListener){ mqLg.addListener(setup); mqRm.addListener(setup); }
+  }
+  if(document.readyState!=='loading'){ start(); } else { document.addEventListener('DOMContentLoaded', start); }
+})();
+</script>`;
   return page({
     title: `Martin's Moving | Bradenton & Sarasota Movers Since ${Y}`,
     description: `Family owned movers serving ${R} since ${Y}. Residential, commercial, local & long-distance moving. Free quote: ${site.phone}.`.slice(0, 158),
     canonicalPath: "/",
     jsonLd: [movingCompanySchema(), breadcrumbSchema(crumbs), ...reviewSchema(), speakableSchema("/")],
     bodyHtml,
+    bodyClass: "home",
   });
 }
