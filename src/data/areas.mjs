@@ -1,0 +1,56 @@
+// Areas served. URL pattern: /areas-served/<slug> to mirror the competitor structure.
+// All are within Martin's stated service region (Bradenton, Sarasota, Manatee County),
+// so these are low-risk to publish. Sample page (sarasota) carries full content.
+
+export const areas = [
+  {
+    slug: "sarasota",
+    name: "Sarasota",
+    county: "Sarasota County",
+    keyword: "movers in Sarasota FL",
+    title: "Sarasota Movers | Local & Long Distance | Martin's Moving",
+    metaDesc:
+      "Trusted Sarasota movers for homes, condos, and offices. Family owned since 2002, licensed and insured. Free flat quote: call (941) 809-5777.",
+    neighborhoods: ["Downtown Sarasota", "Gulf Gate", "Southside Village", "Arlington Park", "Laurel Park"],
+    content: {
+      intro: [
+        "Sarasota moves come with their own quirks. Downtown high-rises with one service elevator and a tight reservation window. Older bungalows in Laurel Park with narrow doorways. Gulf-front condos with strict HOA move-in rules. We have moved across all of it since 2002, so we plan for the building, not just the boxes.",
+        "Whether you are moving into a condo off Main Street or a house in Arlington Park, you get the same Martin's crew start to finish and a written quote that holds on moving day.",
+      ],
+      localTitle: "Sarasota neighborhoods we move",
+      faqs: [
+        { q: "Do you handle condo elevator reservations and HOA paperwork?", a: "We work around your building's move-in window and protect elevators and common areas. You handle the reservation with the HOA; we handle showing up on time and moving clean." },
+        { q: "How far in advance should I book a Sarasota move?", a: "In season (winter through spring), two to three weeks is safe. Off season, a week is usually fine. Call (941) 809-5777 to check your date." },
+      ],
+    },
+  },
+  { slug: "bradenton", name: "Bradenton", county: "Manatee County", keyword: "movers in Bradenton FL", title: "Bradenton Movers | Local & Long Distance | Martin's Moving", metaDesc: "Bradenton's local movers since 2002. Homes, condos, and offices handled by careful, insured crews. Free quote: (941) 809-5777." },
+  { slug: "lakewood-ranch", name: "Lakewood Ranch", county: "Manatee County", keyword: "movers Lakewood Ranch" },
+  { slug: "bee-ridge", name: "Bee Ridge", county: "Sarasota County", keyword: "movers Bee Ridge" },
+  { slug: "englewood", name: "Englewood", county: "Sarasota County", keyword: "movers Englewood FL" },
+  { slug: "osprey", name: "Osprey", county: "Sarasota County", keyword: "movers Osprey FL" },
+  { slug: "siesta-key", name: "Siesta Key", county: "Sarasota County", keyword: "movers Siesta Key" },
+  { slug: "longboat-key", name: "Longboat Key", county: "Manatee County", keyword: "movers Longboat Key" },
+  { slug: "parrish", name: "Parrish", county: "Manatee County", keyword: "movers Parrish FL" },
+  { slug: "venice", name: "Venice", county: "Sarasota County", keyword: "movers Venice FL" },
+  { slug: "fruitville", name: "Fruitville", county: "Sarasota County", keyword: "movers Fruitville" },
+  { slug: "sarasota-springs", name: "Sarasota Springs", county: "Sarasota County", keyword: "movers Sarasota Springs" },
+  { slug: "gulf-gate-estates", name: "Gulf Gate Estates", county: "Sarasota County", keyword: "movers Gulf Gate" },
+  { slug: "palmer-ranch", name: "Palmer Ranch", county: "Sarasota County", keyword: "movers Palmer Ranch" },
+  { slug: "university-park", name: "University Park", county: "Manatee County", keyword: "movers University Park" },
+  { slug: "mallory-park", name: "Mallory Park", county: "Manatee County", keyword: "movers Mallory Park" },
+  { slug: "lido-key", name: "Lido Key", county: "Sarasota County", keyword: "movers Lido Key" },
+  { slug: "myakka", name: "Myakka", county: "Sarasota County", keyword: "movers Myakka City" },
+  { slug: "north-sarasota", name: "North Sarasota", county: "Sarasota County", keyword: "movers North Sarasota" },
+  { slug: "south-sarasota", name: "South Sarasota", county: "Sarasota County", keyword: "movers South Sarasota" },
+  { slug: "nokomis", name: "Nokomis", county: "Sarasota County", keyword: "movers Nokomis FL" },
+  { slug: "rosemary-district", name: "Rosemary District", county: "Sarasota County", keyword: "movers Rosemary District" },
+  { slug: "st-armands", name: "St. Armands", county: "Sarasota County", keyword: "movers St Armands" },
+  { slug: "port-charlotte", name: "Port Charlotte", county: "Charlotte County", keyword: "movers Port Charlotte" },
+  { slug: "vamo", name: "Vamo", county: "Sarasota County", keyword: "movers Vamo FL" },
+  { slug: "panther-ridge", name: "Panther Ridge", county: "Manatee County", keyword: "movers Panther Ridge" },
+  { slug: "mill-creek", name: "Mill Creek", county: "Manatee County", keyword: "movers Mill Creek" },
+  { slug: "bird-key", name: "Bird Key", county: "Sarasota County", keyword: "movers Bird Key" },
+  { slug: "esplanade", name: "Esplanade", county: "Manatee County", keyword: "movers Esplanade" },
+  { slug: "palmetto", name: "Palmetto", county: "Manatee County", keyword: "movers Palmetto FL" },
+];
