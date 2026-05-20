@@ -409,12 +409,16 @@ function testimonials() {
     { stars: 5, text: "5 star, this was the best mover we have ever had. Eric, Tim, and Andrew arrived on time, were efficient and very careful.", name: "Mike M.", tag: "Verified Client" },
     { stars: 5, text: "Tim and his crew moved our piano and multiple larger pieces of furniture. They were fabulous and so efficient.", name: "Sarah K.", tag: "Piano Relocation" },
   ];
-  return `<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto"><div class="bg-primary-container rounded-3xl p-12 relative overflow-hidden border-4 border-primary">
-    <div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none"><span class="material-symbols-outlined text-[300px] text-white">format_quote</span></div>
-    <div class="relative z-10 grid lg:grid-cols-3 gap-12 items-center">
-      <div class="lg:col-span-1"><div class="w-20 h-20 bg-action-orange rounded-2xl flex items-center justify-center mb-8 shadow-lg"><span class="material-symbols-outlined text-white text-4xl">reviews</span></div><h2 class="font-headline-lg text-headline-lg text-white mb-6">Voices of trust</h2><p class="font-body-lg text-white/80 mb-8">We take pride in serving our Bradenton and Sarasota community.</p><a class="inline-block border-2 border-white text-white px-8 py-3 rounded-lg font-label-bold hover:bg-white hover:text-primary transition-all" href="/reviews">READ ALL REVIEWS</a></div>
-      <div class="lg:col-span-2 grid md:grid-cols-2 gap-6">${revs.map((r) => `<div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-tertiary"><div class="flex text-tertiary mb-4">${Array(r.stars).fill('<span class="material-symbols-outlined" style="font-variation-settings:\'FILL\' 1">star</span>').join("")}</div><p class="italic text-on-surface-variant mb-6">"${esc(r.text)}"</p><div class="flex items-center gap-4"><div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center font-bold text-primary">${esc(r.name.split(" ").map((x) => x[0]).join(""))}</div><div><h4 class="font-bold text-on-surface">${esc(r.name)}</h4><p class="text-caption text-on-surface-variant">${esc(r.tag)}</p></div></div></div>`).join("")}</div>
-    </div></div></section>`;
+  return `<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
+    <div class="grid lg:grid-cols-3 gap-12 items-center">
+      <div class="lg:col-span-1">
+        <div class="w-16 h-16 bg-action-orange rounded-2xl flex items-center justify-center mb-6 shadow-lg"><span class="material-symbols-outlined text-white text-3xl">reviews</span></div>
+        <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Voices of trust</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant mb-8">We take pride in serving our Bradenton and Sarasota community, one careful move at a time.</p>
+        <a class="inline-block bg-primary text-white px-8 py-3 rounded-lg font-label-bold hover:brightness-110 transition-all shadow-md" href="/reviews">READ ALL REVIEWS</a>
+      </div>
+      <div class="lg:col-span-2 grid md:grid-cols-2 gap-6">${revs.map((r) => `<div class="bg-white p-8 rounded-2xl shadow-lg border border-outline-variant/40 border-t-4 border-t-tertiary"><div class="flex text-tertiary mb-4">${Array(r.stars).fill('<span class="material-symbols-outlined" style="font-variation-settings:\'FILL\' 1">star</span>').join("")}</div><p class="italic text-on-surface-variant mb-6">"${esc(r.text)}"</p><div class="flex items-center gap-4"><div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center font-bold text-primary">${esc(r.name.split(" ").map((x) => x[0]).join(""))}</div><div><h3 class="font-bold text-on-surface">${esc(r.name)}</h3><p class="text-caption text-on-surface-variant">${esc(r.tag)}</p></div></div></div>`).join("")}</div>
+    </div></section>`;
 }
 
 export function homePage() {
@@ -430,43 +434,51 @@ ${ctaBand()}
 <div id="snail-trail" class="hidden lg:block w-[150px] xl:w-[168px]"><img src="${SNAIL}" alt="" aria-hidden="true" width="168" height="155"/></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
 <script>
 (function(){
   function start(){
-    if(!window.gsap||!window.ScrollTrigger||!window.MotionPathPlugin){return;}
-    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+    if(!window.gsap||!window.ScrollTrigger){return;}
+    gsap.registerPlugin(ScrollTrigger);
     var snail=document.getElementById('snail-trail');
     if(!snail){return;}
     var tl=null;
     var mqLg=window.matchMedia('(min-width:1024px)');
     var mqRm=window.matchMedia('(prefers-reduced-motion: reduce)');
-    function points(){
-      var W=window.innerWidth,H=window.innerHeight,sw=snail.offsetWidth||160;
+    function pts(){
+      var W=window.innerWidth, H=window.innerHeight, sw=snail.offsetWidth||160;
       var rx=W-sw-W*0.05, lx=W*0.05;
-      return [
-        {x:rx, y:H*0.15},        // start: right side, near the In short box
-        {x:lx, y:H*0.64},        // Why Bradenton trusts Martin's Moving: bottom-left
-        {x:rx, y:H*0.10},        // Precision relocation services: top-right
-        {x:lx+W*0.01, y:H*0.18}, // Voices of trust: top-left of the box
-        {x:rx, y:H*0.52}         // Ready for a smooth move: right-hand side
-      ];
+      return {
+        off:   {x:W+80,        y:H*0.34},  // hidden off the right edge before run-in
+        start: {x:W*0.58,      y:H*0.40},  // runs in beside the In short box (front, full size)
+        why:   {x:lx,          y:H*0.66},  // Why Bradenton: drops to bottom-left, behind + small
+        prec:  {x:rx,          y:H*0.12},  // Precision services: top-right, behind + small
+        revs:  {x:lx+W*0.01,   y:H*0.16},  // Voices of trust: top-left, behind + small
+        cta:   {x:rx,          y:H*0.20}   // Ready for a smooth move: top-right, front + full size
+      };
     }
     function destroy(){ if(tl){ if(tl.scrollTrigger){tl.scrollTrigger.kill();} tl.kill(); tl=null; } }
     function build(){
       destroy();
-      var p=points();
-      gsap.set(snail,{opacity:1, x:p[0].x, y:p[0].y, scale:0.9, rotation:0, zIndex:30});
-      tl=gsap.timeline({scrollTrigger:{trigger:'#home-intro', start:'top 65%', endTrigger:'main', end:'bottom bottom', scrub:1, invalidateOnRefresh:true}});
-      tl.to(snail,{motionPath:{path:p, curviness:1.3, autoRotate:false}, ease:'none', duration:10}, 0);
-      tl.to(snail,{keyframes:[{scale:0.9},{scale:1.2},{scale:0.72},{scale:1.08},{scale:0.85}], ease:'none', duration:10}, 0);
-      tl.to(snail,{keyframes:[{rotation:0},{rotation:-7},{rotation:5},{rotation:-3},{rotation:2}], ease:'none', duration:10}, 0);
-      tl.to(snail,{keyframes:[{zIndex:30},{zIndex:5},{zIndex:30},{zIndex:5},{zIndex:30}], ease:'none', duration:10}, 0);
+      var p=pts();
+      // start hidden off-screen; reveal only once the In short area is reached
+      gsap.set(snail,{x:p.off.x, y:p.off.y, scale:0.55, rotation:10, opacity:0, zIndex:30});
+      tl=gsap.timeline({scrollTrigger:{trigger:'#home-intro', start:'top 70%', endTrigger:'main', end:'bottom bottom', scrub:1, invalidateOnRefresh:true}});
+      // 1. run in beside the box, in front, full size
+      tl.to(snail,{x:p.start.x, y:p.start.y, scale:1, rotation:0, opacity:1, duration:1.6, ease:'back.out(1.5)'});
+      tl.to(snail,{duration:0.7}); // linger beside the box
+      // 2. shrink hard and drop BEHIND the page layers, then trail through the sections
+      tl.set(snail,{zIndex:5});
+      tl.to(snail,{x:p.why.x,  y:p.why.y,  scale:0.42, rotation:-7, duration:2,  ease:'power1.inOut'});
+      tl.to(snail,{x:p.prec.x, y:p.prec.y, scale:0.5,  rotation:6,  duration:2,  ease:'power1.inOut'});
+      tl.to(snail,{x:p.revs.x, y:p.revs.y, scale:0.44, rotation:-5, duration:2,  ease:'power1.inOut'});
+      // 3. grow back up, come to the FRONT, and land on the green CTA
+      tl.set(snail,{zIndex:30});
+      tl.to(snail,{x:p.cta.x,  y:p.cta.y,  scale:1,    rotation:0,  duration:2,  ease:'back.out(1.2)'});
     }
     function setup(){
       destroy();
       if(!mqLg.matches){ gsap.set(snail,{opacity:0}); return; }
-      if(mqRm.matches){ var p=points(); gsap.set(snail,{opacity:1, x:p[0].x, y:p[0].y, scale:1, rotation:0, zIndex:30}); return; }
+      if(mqRm.matches){ var p=pts(); gsap.set(snail,{opacity:1, x:p.start.x, y:p.start.y, scale:1, rotation:0, zIndex:30}); return; }
       build();
       ScrollTrigger.refresh();
     }
