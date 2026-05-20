@@ -120,5 +120,14 @@ export const HEAD_STYLES = String.raw`
 .dd-wrap:hover .dd-chev,.dd-wrap:focus-within .dd-chev{transform:rotate(180deg);}
 details>summary{list-style:none;} details>summary::-webkit-details-marker{display:none;}
 details[open] .dd-chev{transform:rotate(180deg);}
+/* snail mascot: runs in from the right, then a gentle idle bob */
+.qa-snail{will-change:transform,opacity;}
+.qa-snail img{display:block;}
+@media (prefers-reduced-motion: no-preference){
+  @keyframes snail-run-in{0%{transform:translateX(150%) rotate(6deg);opacity:0;}60%{opacity:1;}80%{transform:translateX(-4%) rotate(-1deg);}100%{transform:translateX(0) rotate(0);opacity:1;}}
+  @keyframes snail-bob{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-5px) rotate(-1.2deg);}}
+  .qa-snail{animation:snail-run-in 1.2s cubic-bezier(.22,1,.36,1) .25s both;}
+  .qa-snail img{animation:snail-bob 3.2s ease-in-out 1.6s infinite;}
+}
 </style>
 `;

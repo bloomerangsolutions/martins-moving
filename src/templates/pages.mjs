@@ -38,11 +38,28 @@ function articleMeta(readTime) {
   return `<div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-caption text-on-surface-variant mb-8 max-w-3xl pb-6 border-b border-outline-variant/40">${item("schedule", readTime || "Quick read", "action-orange")}${item("verified_user", "By the Martin's Moving crew")}${item("location_on", `Serving ${R} since ${Y}`)}</div>`;
 }
 
-// AEO: concise, citable answer block
-function quickAnswer(text) {
-  return `<div class="quick-answer glass-card rounded-2xl border-l-4 border-action-orange p-6 mb-10 max-w-3xl">
-    <p class="font-label-bold text-label-bold uppercase tracking-wider text-primary mb-2">In short</p>
-    <p class="font-body-lg text-body-lg text-on-surface">${esc(text)}</p></div>`;
+// AEO: concise, citable answer block. Phone renders as a button + stays clickable in the text.
+// mascot:true shows the Martin's snail running in on the right (homepage).
+const SNAIL = "/images/snail.png";
+function linkifyPhone(escapedText) {
+  const p = esc(site.phone);
+  return escapedText.split(p).join(`<a href="${site.phoneHref}" class="font-bold text-primary underline decoration-action-orange/70 underline-offset-2 hover:text-action-orange">${p}</a>`);
+}
+function callButton() {
+  return `<a href="${site.phoneHref}" class="inline-flex items-center gap-2 bg-action-orange text-white px-6 py-3 rounded-xl font-headline-md text-body-md shadow-md hover:brightness-110 hover:-translate-y-0.5 transition-all whitespace-nowrap"><span class="material-symbols-outlined">call</span>Call ${esc(site.phone)}</a>`;
+}
+function quickAnswer(text, { mascot = false } = {}) {
+  const body = `<p class="font-label-bold text-label-bold uppercase tracking-wider text-primary mb-2">In short</p>
+    <p class="font-body-lg text-body-lg text-on-surface mb-5">${linkifyPhone(esc(text))}</p>
+    ${callButton()}`;
+  if (!mascot) {
+    return `<div class="quick-answer glass-card rounded-2xl border-l-4 border-action-orange p-6 md:p-8 mb-10 max-w-3xl">${body}</div>`;
+  }
+  return `<div class="quick-answer glass-card rounded-2xl border-l-4 border-action-orange p-6 md:p-8 mb-10 overflow-hidden">
+    <div class="flex items-end gap-4 md:gap-8">
+      <div class="flex-1 min-w-0">${body}</div>
+      <div class="qa-snail hidden md:block shrink-0 self-end -mb-2"><img src="${SNAIL}" alt="Martin's Moving snail mascot carrying a brick house on its shell" class="w-40 lg:w-56 h-auto" width="224" height="207"/></div>
+    </div></div>`;
 }
 
 function bullets(title, items) {
@@ -412,7 +429,7 @@ export function homePage() {
   const qa = `Martin's Moving is a family-owned moving company serving ${R} since ${Y}. We offer residential, commercial, local, interstate, packing, piano, and specialty moving. Licensed and insured (FL Mover Reg #${site.licenses.flIm}). Free quotes at ${site.phone}.`;
   const bodyHtml = `${hero({ badge: `Established ${Y}`, h1: `Florida's trusted moving company since ${Y}`, sub: `Expert residential and commercial relocations in ${R}. We turn the chaos of moving into a smooth transition.`, big: true, pageName: "Homepage", primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "Our services", href: "/services" } })}
 ${recognitionBar()}
-<div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto pt-section-gap">${quickAnswer(qa)}</div>
+<div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto pt-section-gap">${quickAnswer(qa, { mascot: true })}</div>
 ${whyUs()}
 ${homeServiceCards()}
 ${testimonials()}
