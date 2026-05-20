@@ -110,8 +110,9 @@ export const HEAD_STYLES = String.raw`
             border: 1px solid rgba(0, 132, 61, 0.1);
         }
         .hero-gradient {
-            background: linear-gradient(rgba(0, 104, 47, 0.6), rgba(0, 40, 18, 0.8));
+            background: linear-gradient(to right, rgba(0,42,20,0.90) 0%, rgba(0,48,22,0.62) 36%, rgba(0,60,28,0.18) 66%, rgba(0,72,34,0) 100%);
         }
+        @media (max-width: 767px){ .hero-gradient{ background: linear-gradient(rgba(0,60,28,0.55), rgba(0,40,18,0.82)); } }
     </style>
 <style>
 .form-status{min-height:1.25rem;}

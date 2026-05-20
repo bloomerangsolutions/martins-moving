@@ -9,7 +9,8 @@ const esc = (s = "") =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 const LOGO = "/images/logo.png";
-export const HERO_IMG = "/images/hero.jpg";
+export const HERO_IMG = "/images/hero.svg";
+export const HERO_OG = "/images/hero-og.png";
 
 // ---------- functional glass-card quote form (Web3Forms) ----------
 let formSeq = 0;
@@ -106,7 +107,7 @@ export function hero({ badge, h1, sub, primaryCta, secondaryCta, crumbs, big = f
   const pCta = primaryCta || { label: "Get a free estimate", href: "/contact" };
   const sCta = secondaryCta || { label: "Our services", href: "/services" };
   return `<header class="relative pt-20 ${big ? "min-h-[90vh]" : "min-h-[60vh]"} flex items-center overflow-hidden">
-  <div class="absolute inset-0 z-0"><img alt="Martin's Moving crew in Bradenton, FL" class="w-full h-full object-cover" src="${HERO_IMG}"/><div class="absolute inset-0 hero-gradient"></div></div>
+  <div class="absolute inset-0 z-0"><img alt="Martin's Moving box truck traveling a long distance moving route" class="w-full h-full object-cover" src="${HERO_IMG}"/><div class="absolute inset-0 hero-gradient"></div></div>
   <div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto grid md:grid-cols-[2fr_1fr] gap-12 items-center py-16 md:py-20 w-full">
     <div class="text-white space-y-6">
       ${crumbHtml}
@@ -204,7 +205,7 @@ export function page({ title, description, canonicalPath, jsonLd = [], bodyHtml,
 <meta name="description" content="${esc(description)}"/>
 ${robots ? `<meta name="robots" content="${esc(robots)}"/>` : ""}
 <link rel="canonical" href="${canonical}"/>
-<meta property="og:type" content="website"/><meta property="og:title" content="${esc(title)}"/><meta property="og:description" content="${esc(description)}"/><meta property="og:url" content="${canonical}"/><meta property="og:image" content="${HERO_IMG}"/>
+<meta property="og:type" content="website"/><meta property="og:title" content="${esc(title)}"/><meta property="og:description" content="${esc(description)}"/><meta property="og:url" content="${canonical}"/><meta property="og:image" content="${site.domain}${HERO_OG}"/>
 <meta name="twitter:card" content="summary_large_image"/>
 ${HEAD_STYLES}
 ${ld}
