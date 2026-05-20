@@ -1,4 +1,4 @@
-import { page, hero, quoteForm, site, HERO_IMG } from "./layout.mjs";
+import { page, hero, quoteForm, site } from "./layout.mjs";
 import { movingCompanySchema, serviceSchema, faqSchema, breadcrumbSchema, reviewSchema, speakableSchema } from "./schema.mjs";
 import { services } from "../data/services.mjs";
 import { areas } from "../data/areas.mjs";
@@ -209,17 +209,23 @@ function whyUs() {
       </div></div>
     <div class="relative group">
       <div class="absolute -inset-4 bg-primary/5 rounded-[2rem] -rotate-2 group-hover:rotate-0 transition-transform duration-500"></div>
-      <img alt="Martin's Moving team loading a truck in Bradenton" class="relative rounded-2xl shadow-xl w-full h-[500px] object-cover border-4 border-white" src="${HERO_IMG}"/>
+      <img alt="Martin's Moving team loading a truck in Bradenton" class="relative rounded-2xl shadow-xl w-full h-[500px] object-cover border-4 border-white" src="/images/team.jpg"/>
       <div class="absolute bottom-8 -left-8 glass-card p-6 rounded-xl shadow-lg border-2 border-primary/20 max-w-[200px]"><p class="font-display-lg text-headline-md text-primary leading-none">${esc(site.yearsInBusiness)}</p><p class="font-label-bold text-caption text-on-surface-variant uppercase tracking-tighter">Years of Excellence</p></div>
     </div></div></section>`;
 }
 function homeServiceCards() {
   const feat = realServices.slice(0, 4);
+  const IMG = {
+    "residential-moving": "/images/residential.jpg",
+    "commercial-moving": "/images/commercial.jpg",
+    "local-moving": "/images/local.jpg",
+    "interstate-movers": "/images/interstate.jpg",
+  };
   return `<section class="py-section-gap bg-surface-container-highest/30"><div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
     <div class="text-center mb-16 max-w-2xl mx-auto"><h2 class="font-headline-lg text-headline-lg text-primary mb-4">Precision relocation services</h2><p class="font-body-lg text-body-lg text-on-surface-variant">Tailored moving solutions designed to minimize downtime and maximize peace of mind.</p></div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
       ${feat.map((s) => `<a href="/services/${s.slug}" class="group bg-white rounded-2xl overflow-hidden border-2 border-transparent hover:border-primary hover:shadow-xl transition-all duration-300 block">
-        <div class="h-44 overflow-hidden relative"><img alt="${esc(s.label)}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="${HERO_IMG}"/><div class="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors"></div></div>
+        <div class="h-44 overflow-hidden relative"><img alt="${esc(s.label)}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="${IMG[s.slug] || "/images/hero.jpg"}"/><div class="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors"></div></div>
         <div class="p-6"><h3 class="font-headline-md text-body-lg text-primary mb-2">${esc(s.label)}</h3><p class="text-body-md text-on-surface-variant mb-4">${esc(s.summary || "Handled with precision and care.")}</p><span class="inline-flex items-center text-primary font-label-bold group-hover:gap-3 transition-all">LEARN MORE <span class="material-symbols-outlined ml-1">arrow_forward</span></span></div></a>`).join("")}
     </div></div></section>`;
 }

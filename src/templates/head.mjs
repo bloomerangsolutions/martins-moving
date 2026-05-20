@@ -115,6 +115,9 @@ export const HEAD_STYLES = String.raw`
     </style>
 <style>
 .form-status{min-height:1.25rem;}
+.dd-panel{opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .18s ease,transform .18s ease,visibility .18s;}
+.dd-wrap:hover>.dd-panel,.dd-wrap:focus-within>.dd-panel{opacity:1;visibility:visible;transform:translateY(0);}
+.dd-wrap:hover .dd-chev,.dd-wrap:focus-within .dd-chev{transform:rotate(180deg);}
 details>summary{list-style:none;} details>summary::-webkit-details-marker{display:none;}
 details[open] .dd-chev{transform:rotate(180deg);}
 </style>

@@ -8,10 +8,8 @@ import { resources, aboutPages } from "../data/content.mjs";
 const esc = (s = "") =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-const LOGO =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBk0Brz-IBMxgnwgRA2qJkQT-woplFgGr_ZyhZGirpn8YkFKcxjDTgRNw4Mo3mw4kOWW4NF44XRQM00uwt-f0IhXVt6OBykO7Lt-fEZzaO91TDAcqEOjpAWL-ekwE-4Rwuugs5cH-3W9x1F8NzmhsSHcN85Lu1IhG37E89o6kUBpj2YbaNZcZQ_kE28oBmbkcHemzg98xPttqSQAhUdueHW531qGVgOENCXdCR_w9zLHo7iFtu9BAgxzx9sV_FZ-pUwyUggLu0xSq0";
-export const HERO_IMG =
-  "https://lh3.googleusercontent.com/aida/ADBb0uhhgbkR9CkoqAdPtw87ieGK19LQ3Kq9BfmP6EOdVVRJ7rUf4QDD_3sU7C4XZy9Td9BRSTIGI8tyAgohNBve6Jd6idvNDIPZaVURDaBrW6RhVQ4fOqGSkD49z6W4wfBD2k716Dkby4HwqqzfBWGJQ9xbeRkQVuC6BlLjbHqMwx0EOPyMTW17GCKOvODYwQoFzk7x5kM-qozxZnoa8pnckdZOtdEByVNFXHcMHxAzpAOaxVYEHWz0T4Z9TQc";
+const LOGO = "/images/logo.png";
+export const HERO_IMG = "/images/hero.jpg";
 
 // ---------- functional glass-card quote form (Web3Forms) ----------
 let formSeq = 0;
@@ -51,36 +49,51 @@ export function navData() {
   };
 }
 
-const NAV_ITEMS = [
-  ["Home", "/"],
-  ["Services", "/services"],
-  ["Areas Served", "/areas-served"],
-  ["Guides", "/guides"],
-  ["About", "/about"],
-  ["Blog", "/blog"],
-];
-
 function header() {
-  const link = ([label, href]) => `<a class="font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant hover:text-action-orange transition-colors duration-300" href="${href}">${esc(label)}</a>`;
-  const mlink = ([label, href]) => `<a class="block py-3 font-label-bold text-label-bold uppercase tracking-wider text-on-surface hover:text-action-orange border-b border-outline-variant/20" href="${href}">${esc(label)}</a>`;
+  const n = navData();
+  // simple top-level link
+  const navLink = (label, href) => `<a class="font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant hover:text-action-orange transition-colors duration-300" href="${href}">${esc(label)}</a>`;
+  // dropdown trigger + panel
+  const trigger = (label) => `<button type="button" class="flex items-center gap-1 font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant hover:text-action-orange transition-colors">${esc(label)}<span class="material-symbols-outlined text-base dd-chev transition-transform">expand_more</span></button>`;
+  const panelLink = (i, icon) => `<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" href="${i.href}"><span class="material-symbols-outlined text-primary text-xl">${icon}</span><span>${esc(i.label)}</span></a>`;
+  const viewAll = (label, href) => `<a class="mt-2 inline-flex items-center gap-1 px-3 font-label-bold text-label-bold text-action-orange hover:gap-2 transition-all" href="${href}">${esc(label)}<span class="material-symbols-outlined text-base">arrow_forward</span></a>`;
+  const dropdown = (label, width, inner) => `<div class="dd-wrap relative">${trigger(label)}<div class="dd-panel absolute left-0 top-full pt-3 z-50"><div class="bg-surface-container-lowest rounded-2xl shadow-2xl ring-1 ring-on-surface/5 p-4 ${width}">${inner}</div></div></div>`;
+  const heading = (t) => `<p class="px-3 pb-2 font-label-bold text-label-bold uppercase tracking-widest text-on-surface-variant/70">${esc(t)}</p>`;
+
+  const svcItems = n.services.filter((s) => !s.note); // the confirmed-real services
+  const servicesPanel = dropdown("Services", "w-[540px]", `${heading("Moving services")}<div class="grid grid-cols-2 gap-1">${svcItems.map((i) => panelLink(i, "local_shipping")).join("")}</div>${viewAll("View all services", "/services")}`);
+  const areasPanel = dropdown("Areas Served", "w-[540px]", `${heading("Areas served")}<div class="grid grid-cols-3 gap-1">${n.areas.slice(0, 12).map((i) => panelLink(i, "location_on")).join("")}</div>${viewAll("View all areas", "/areas-served")}`);
+  const guidesPanel = dropdown("Guides", "w-80", `${heading("Moving guides")}<div class="grid grid-cols-1 gap-1">${n.guides.map((i) => panelLink(i, "menu_book")).join("")}</div>`);
+  const resourcesPanel = dropdown("Resources", "w-80", `${heading("Resources")}<div class="grid grid-cols-1 gap-1">${n.resources.map((i) => panelLink(i, "description")).join("")}</div>`);
+
   return `
 <nav class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
   <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
     <a class="flex items-center gap-2 shrink-0" href="/"><img alt="Martin's Moving logo" class="h-12 w-auto object-contain" src="${LOGO}"/></a>
-    <div class="hidden lg:flex items-center gap-8">
-      <div class="flex gap-6 items-center">${NAV_ITEMS.map(link).join("")}</div>
+    <div class="hidden lg:flex items-center gap-6">
+      ${servicesPanel}${areasPanel}${guidesPanel}${resourcesPanel}
+      ${navLink("About", "/about")}${navLink("Blog", "/blog")}
       <a class="bg-action-orange text-white px-6 py-3 rounded-lg font-label-bold uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all whitespace-nowrap" href="/contact">Request Call Back</a>
     </div>
     <button id="menu-btn" type="button" aria-label="Open menu" class="lg:hidden text-primary"><span class="material-symbols-outlined text-3xl">menu</span></button>
   </div>
-  <div id="mobile-menu" class="hidden lg:hidden bg-surface-container-lowest border-t border-outline-variant/30">
+  <div id="mobile-menu" class="hidden lg:hidden bg-surface-container-lowest border-t border-outline-variant/30 max-h-[80vh] overflow-y-auto">
     <div class="px-margin-mobile py-3">
-      ${NAV_ITEMS.map(mlink).join("")}
+      ${mobileAccordion("Services", [...svcItems, { label: "View all services", href: "/services" }])}
+      ${mobileAccordion("Areas Served", n.areas)}
+      ${mobileAccordion("Guides", n.guides)}
+      ${mobileAccordion("Resources", n.resources)}
+      <a class="block py-3 font-label-bold text-label-bold uppercase tracking-wider text-on-surface hover:text-action-orange border-b border-outline-variant/20" href="/about">About</a>
+      <a class="block py-3 font-label-bold text-label-bold uppercase tracking-wider text-on-surface hover:text-action-orange border-b border-outline-variant/20" href="/blog">Blog</a>
       <a class="block mt-3 bg-action-orange text-white text-center px-5 py-3 rounded-lg font-label-bold uppercase tracking-wider" href="/contact">Request Call Back</a>
       <a class="block mt-2 text-center py-2 text-primary font-label-bold" href="${site.phoneHref}">Call ${esc(site.phone)}</a>
     </div>
   </div>
 </nav>`;
+}
+function mobileAccordion(label, items) {
+  const links = items.map((i) => `<a class="block py-2 pl-3 text-body-md text-on-surface-variant hover:text-primary" href="${i.href}">${esc(i.label)}</a>`).join("");
+  return `<details class="border-b border-outline-variant/20"><summary class="flex items-center justify-between py-3 font-label-bold text-label-bold uppercase tracking-wider text-on-surface cursor-pointer">${esc(label)}<span class="material-symbols-outlined dd-chev transition-transform">expand_more</span></summary><div class="pb-2">${links}</div></details>`;
 }
 
 // ---------- hero with original design + functional form ----------
