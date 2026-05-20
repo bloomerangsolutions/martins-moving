@@ -111,8 +111,6 @@ export const HEAD_STYLES = String.raw`
         }
     </style>
 <style>
-.dd-panel{opacity:0;visibility:hidden;transform:translateY(6px);transition:all .18s ease;}
-.dd-wrap:hover .dd-panel,.dd-wrap:focus-within .dd-panel{opacity:1;visibility:visible;transform:translateY(0);}
 .form-status{min-height:1.25rem;}
 details>summary{list-style:none;} details>summary::-webkit-details-marker{display:none;}
 details[open] .dd-chev{transform:rotate(180deg);}

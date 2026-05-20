@@ -39,18 +39,8 @@ export function quoteForm({ title = "Fast Quote Request", compact = true, pageNa
   </div>`;
 }
 
-// ---------- mega-dropdown nav ----------
-function ddTrigger(label) {
-  return `<button type="button" class="flex items-center gap-1 font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant hover:text-action-orange transition-colors py-2">${esc(label)}<span class="material-symbols-outlined text-base">expand_more</span></button>`;
-}
-function simpleDropdown(label, items) {
-  const links = items.map((i) => `<a class="block px-4 py-2 text-body-md text-on-surface hover:bg-surface-container-low hover:text-primary rounded-md transition-colors" href="${i.href}">${esc(i.label)}</a>`).join("");
-  return `<div class="dd-wrap relative">${ddTrigger(label)}<div class="dd-panel absolute left-0 top-full pt-2 z-50"><div class="bg-surface-container-lowest rounded-xl shadow-xl border border-outline-variant/30 p-2 w-64">${links}</div></div></div>`;
-}
-function megaDropdown(label, items, cols = 3, width = "w-[680px]") {
-  const links = items.map((i) => `<a class="block px-3 py-2 text-body-md text-on-surface hover:bg-surface-container-low hover:text-primary rounded-md transition-colors" href="${i.href}">${esc(i.label)}${i.note ? `<span class="text-action-orange"> *</span>` : ""}</a>`).join("");
-  return `<div class="dd-wrap relative">${ddTrigger(label)}<div class="dd-panel absolute left-1/2 -translate-x-1/2 top-full pt-2 z-50"><div class="bg-surface-container-lowest rounded-xl shadow-xl border border-outline-variant/30 p-3 ${width}"><div class="grid grid-cols-${cols} gap-1">${links}</div></div></div></div>`;
-}
+// ---------- top nav (original flat design) ----------
+// navData powers the footer link columns (full IA lives in the footer + index pages).
 export function navData() {
   return {
     about: aboutPages.map((p) => ({ label: p.label, href: `/${p.slug}` })),
@@ -61,38 +51,36 @@ export function navData() {
   };
 }
 
+const NAV_ITEMS = [
+  ["Home", "/"],
+  ["Services", "/services"],
+  ["Areas Served", "/areas-served"],
+  ["Guides", "/guides"],
+  ["About", "/about"],
+  ["Blog", "/blog"],
+];
+
 function header() {
-  const n = navData();
+  const link = ([label, href]) => `<a class="font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant hover:text-action-orange transition-colors duration-300" href="${href}">${esc(label)}</a>`;
+  const mlink = ([label, href]) => `<a class="block py-3 font-label-bold text-label-bold uppercase tracking-wider text-on-surface hover:text-action-orange border-b border-outline-variant/20" href="${href}">${esc(label)}</a>`;
   return `
 <nav class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
   <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
     <a class="flex items-center gap-2 shrink-0" href="/"><img alt="Martin's Moving logo" class="h-12 w-auto object-contain" src="${LOGO}"/></a>
-    <div class="hidden lg:flex items-center gap-5">
-      <a class="font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant hover:text-action-orange transition-colors" href="/">Home</a>
-      ${simpleDropdown("About", n.about)}
-      ${megaDropdown("Moving Services", n.services)}
-      ${megaDropdown("Areas Served", n.areas)}
-      ${simpleDropdown("Moving Guides", n.guides)}
-      ${simpleDropdown("Resources", n.resources)}
-      <a class="font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant hover:text-action-orange transition-colors" href="/blog">Blog</a>
-      <a class="bg-action-orange text-white px-5 py-3 rounded-lg font-label-bold uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all whitespace-nowrap" href="/contact">Get Quote</a>
+    <div class="hidden lg:flex items-center gap-8">
+      <div class="flex gap-6 items-center">${NAV_ITEMS.map(link).join("")}</div>
+      <a class="bg-action-orange text-white px-6 py-3 rounded-lg font-label-bold uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all whitespace-nowrap" href="/contact">Request Call Back</a>
     </div>
     <button id="menu-btn" type="button" aria-label="Open menu" class="lg:hidden text-primary"><span class="material-symbols-outlined text-3xl">menu</span></button>
   </div>
-  <div id="mobile-menu" class="hidden lg:hidden bg-surface-container-lowest border-t border-outline-variant/30 max-h-[80vh] overflow-y-auto">
-    <div class="px-margin-mobile py-4 space-y-1">
-      <a class="block py-2 font-label-bold uppercase tracking-wide text-on-surface" href="/">Home</a>
-      ${mobileAccordion("About", n.about)}${mobileAccordion("Moving Services", n.services)}${mobileAccordion("Areas Served", n.areas)}${mobileAccordion("Moving Guides", n.guides)}${mobileAccordion("Resources", n.resources)}
-      <a class="block py-2 font-label-bold uppercase tracking-wide text-on-surface" href="/blog">Blog</a>
-      <a class="block mt-2 bg-action-orange text-white text-center px-5 py-3 rounded-lg font-label-bold uppercase tracking-wider" href="/contact">Get Quote</a>
+  <div id="mobile-menu" class="hidden lg:hidden bg-surface-container-lowest border-t border-outline-variant/30">
+    <div class="px-margin-mobile py-3">
+      ${NAV_ITEMS.map(mlink).join("")}
+      <a class="block mt-3 bg-action-orange text-white text-center px-5 py-3 rounded-lg font-label-bold uppercase tracking-wider" href="/contact">Request Call Back</a>
       <a class="block mt-2 text-center py-2 text-primary font-label-bold" href="${site.phoneHref}">Call ${esc(site.phone)}</a>
     </div>
   </div>
 </nav>`;
-}
-function mobileAccordion(label, items) {
-  const links = items.map((i) => `<a class="block py-2 pl-3 text-body-md text-on-surface-variant" href="${i.href}">${esc(i.label)}</a>`).join("");
-  return `<details class="border-b border-outline-variant/20"><summary class="flex items-center justify-between py-2 font-label-bold uppercase tracking-wide text-on-surface cursor-pointer">${esc(label)}<span class="material-symbols-outlined dd-chev transition-transform">expand_more</span></summary><div class="pb-2">${links}</div></details>`;
 }
 
 // ---------- hero with original design + functional form ----------
