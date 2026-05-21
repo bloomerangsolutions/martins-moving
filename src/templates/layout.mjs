@@ -98,7 +98,7 @@ function mobileAccordion(label, items) {
 }
 
 // ---------- hero with original design + functional form ----------
-export function hero({ badge, h1, sub, primaryCta, secondaryCta, crumbs, big = false, pageName = "", showForm = true }) {
+export function hero({ badge, h1, sub, primaryCta, secondaryCta, crumbs, big = false, pageName = "", showForm = true, bgImage = "/images/hero", bgAlt = "Moving crew loading cardboard boxes into a moving van" }) {
   const crumbHtml = crumbs
     ? `<nav aria-label="Breadcrumb" class="text-caption text-white/70 mb-4"><ol class="flex flex-wrap items-center gap-1">${crumbs
         .map((c, i) => (i < crumbs.length - 1 ? `<li><a class="hover:text-tertiary-fixed" href="${c.href}">${esc(c.name)}</a></li><li class="mx-1 text-white/40">/</li>` : `<li class="text-white">${esc(c.name)}</li>`))
@@ -107,7 +107,7 @@ export function hero({ badge, h1, sub, primaryCta, secondaryCta, crumbs, big = f
   const pCta = primaryCta || { label: "Get a free estimate", href: "/contact" };
   const sCta = secondaryCta || { label: "Our services", href: "/services" };
   return `<header class="relative pt-20 ${big ? "min-h-[90vh]" : "min-h-[60vh]"} flex items-center overflow-hidden">
-  <div class="absolute inset-0 z-0"><picture><source srcset="/images/hero.webp" type="image/webp"/><img alt="Moving crew loading cardboard boxes into a moving van" class="w-full h-full object-cover" src="/images/hero.jpg" width="1920" height="1256" fetchpriority="high" decoding="async"/></picture><div class="absolute inset-0 hero-gradient"></div></div>
+  <div class="absolute inset-0 z-0"><picture><source srcset="${bgImage}.webp" type="image/webp"/><img alt="${esc(bgAlt)}" class="w-full h-full object-cover" src="${bgImage}.jpg" width="1920" height="1256" fetchpriority="high" decoding="async"/></picture><div class="absolute inset-0 hero-gradient"></div></div>
   <div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto grid md:grid-cols-[2fr_1fr] gap-12 items-center py-16 md:py-20 w-full">
     <div class="text-white space-y-6">
       ${crumbHtml}
@@ -194,7 +194,7 @@ export function breadcrumbsHtml(crumbs) {
     .join("")}</ol></nav>`;
 }
 
-export function page({ title, description, canonicalPath, jsonLd = [], bodyHtml, robots, bodyClass = "" }) {
+export function page({ title, description, canonicalPath, jsonLd = [], bodyHtml, robots, bodyClass = "", preloadImage = "/images/hero.webp" }) {
   const canonical = `${site.domain}${canonicalPath}`;
   const ld = jsonLd.filter(Boolean).map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join("\n");
   return `<!DOCTYPE html>
@@ -207,6 +207,7 @@ ${robots ? `<meta name="robots" content="${esc(robots)}"/>` : ""}
 <link rel="canonical" href="${canonical}"/>
 <meta property="og:type" content="website"/><meta property="og:title" content="${esc(title)}"/><meta property="og:description" content="${esc(description)}"/><meta property="og:url" content="${canonical}"/><meta property="og:image" content="${site.domain}${HERO_OG}"/>
 <meta name="twitter:card" content="summary_large_image"/>
+<link rel="preload" as="image" href="${preloadImage}" type="image/webp" fetchpriority="high"/>
 ${HEAD_STYLES}
 ${ld}
 </head>

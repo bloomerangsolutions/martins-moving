@@ -283,7 +283,7 @@ ${reciprocalGrid("Related moving services", relatedServices(svc.slug, 10))}
 <p class="mt-10 text-body-md text-on-surface-variant max-w-3xl">Planning ahead? Read our <a class="text-primary underline hover:text-action-orange" href="/guides/${guideLink.slug}">${esc(guideLink.label.toLowerCase())}</a>.</p>
 ${faqBlock(faqs)}`;
   const rail = `${quoteForm({ title: "Get a free quote", pageName: svc.label })}${railGuides()}${railTrust()}${railLinks("Popular services", realServices.slice(0, 7).map(svcCard), "local_shipping")}`;
-  const bodyHtml = `${proposedNote}${hero({ badge: "Moving Services", h1: `${svc.label} in ${site.address.city} & Sarasota`, sub: svc.summary || `Professional ${svc.label.toLowerCase()} across ${R}.`, crumbs, pageName: svc.label, primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "All services", href: "/services" } })}
+  const bodyHtml = `${proposedNote}${hero({ badge: "Moving Services", h1: `${svc.label} in ${site.address.city} & Sarasota`, sub: svc.summary || `Professional ${svc.label.toLowerCase()} across ${R}.`, crumbs, pageName: svc.label, primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "All services", href: "/services" }, bgImage: svc.heroImage, bgAlt: svc.heroAlt })}
 ${statBar()}
 ${twoCol(main, rail)}
 ${ctaBand()}`;
@@ -293,6 +293,7 @@ ${ctaBand()}`;
     description: desc,
     canonicalPath: `/services/${svc.slug}`,
     jsonLd: [movingCompanySchema(), serviceSchema({ name: svc.label, description: desc }), faqSchema(faqs), breadcrumbSchema(crumbs), speakableSchema(`/services/${svc.slug}`)],
+    preloadImage: svc.heroImage ? svc.heroImage + ".webp" : undefined,
     bodyHtml,
   });
 }
@@ -505,7 +506,7 @@ function steinwayHome() {
         </ul>
         <a href="/services/steinway-piano-movers" class="inline-flex items-center gap-2 bg-action-orange text-on-primary font-label-bold text-label-bold uppercase rounded-full px-7 py-4 hover:brightness-110 transition">Steinway piano moving<span class="material-symbols-outlined">arrow_forward</span></a>
       </div>
-      <div class="hidden lg:flex justify-center items-center"><span class="material-symbols-outlined text-tertiary-fixed/25" style="font-size:240px;line-height:1">piano</span></div>
+      <div class="hidden lg:block"><picture><source srcset="/images/steinway.webp" type="image/webp"/><img alt="Black grand piano in an elegant room" class="w-full h-80 object-cover rounded-2xl ring-1 ring-tertiary-fixed/40 shadow-2xl" src="/images/steinway.jpg" loading="lazy" decoding="async"/></picture></div>
     </div>
   </div>
 </section>`;

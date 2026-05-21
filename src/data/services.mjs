@@ -181,6 +181,8 @@ export const services = [
     metaDesc: "We specialize in moving Steinway and fine grand pianos across Bradenton and Sarasota. Trained crews, careful handling, fully insured. Call (941) 809-5777.",
     keyword: "Steinway piano movers",
     summary: "Specialist handling for Steinway and other fine grand pianos, with trained crews and the right equipment.",
+    heroImage: "/images/steinway",
+    heroAlt: "Black grand piano in an elegant room",
     content: {
       intro: [
         "A Steinway is an investment and an heirloom, and it does not move like ordinary furniture. The soundboard, the action, and the hand-rubbed finish are all vulnerable to a careless lift or a bad bump on a threshold. We specialize in moving Steinways and other fine grand pianos, and we treat each one as what it is: an instrument that has to play the same in the new room as it did in the old one.",
