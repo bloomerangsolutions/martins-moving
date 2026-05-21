@@ -4,6 +4,8 @@ import { services } from "../data/services.mjs";
 import { areas } from "../data/areas.mjs";
 import { guides } from "../data/guides.mjs";
 import { resources } from "../data/content.mjs";
+import { cities, otherCity } from "../data/cities.mjs";
+import { serviceCities } from "../data/service-cities.mjs";
 
 const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const R = site.serviceRegion;
@@ -108,6 +110,14 @@ function relatedServices(slug, n = 4) {
   const pool = realServices.filter((s) => s.slug !== slug);
   return pool.slice(0, n).map(svcCard);
 }
+// Related services that link to the same city's version when one exists, otherwise the base page
+function relatedServicesCity(slug, cityKey, n = 10) {
+  const pool = realServices.filter((s) => s.slug !== slug);
+  return pool.slice(0, n).map((s) => {
+    const hasCity = serviceCities[s.slug] && serviceCities[s.slug][cityKey];
+    return { label: s.label, href: `/services/${s.slug}${hasCity ? cities[cityKey].suffix : ""}` };
+  });
+}
 function nearbyAreas(area, n = 4) {
   const same = areas.filter((a) => a.county === area.county && a.slug !== area.slug);
   const other = areas.filter((a) => a.county !== area.county && a.slug !== area.slug);
@@ -193,7 +203,55 @@ function twoCol(main, rail) {
 }
 
 // ---------- builders ----------
-export function servicePage(svc) {
+function crossCityCard(svc, cityKey) {
+  const o = otherCity(cityKey);
+  return `<div class="my-8 rounded-2xl border border-outline-variant/50 bg-surface-container-low p-6 flex items-start gap-4 max-w-3xl">
+    <span class="material-symbols-outlined text-primary text-3xl shrink-0">near_me</span>
+    <div><p class="font-headline-md text-body-lg text-on-surface mb-1">Moving in ${esc(o.name)} instead?</p>
+    <p class="text-body-md text-on-surface-variant">We also handle ${esc(svc.label.toLowerCase())} across ${esc(o.name)} and ${esc(o.county)}. <a class="text-primary underline hover:text-action-orange" href="/services/${svc.slug}${o.suffix}">See our ${esc(svc.label.toLowerCase())} in ${esc(o.name)} page</a>.</p></div></div>`;
+}
+
+function serviceCityPage(svc, cityKey, cc) {
+  const city = cities[cityKey];
+  const path = `/services/${svc.slug}${city.suffix}`;
+  const crumbs = [{ name: "Home", href: "/" }, { name: "Moving Services", href: "/services" }, { name: `${svc.label} in ${city.name}`, href: path }];
+  const c = svc.content;
+  const qa = `Martin's Moving provides ${svc.label.toLowerCase()} in ${city.name} and ${city.county}. Family owned since ${Y}, licensed and insured (FL Mover Reg #${site.licenses.flIm}), with free written estimates. Call ${site.phone}.`;
+  let body = c?.bullets ? bullets(c.bulletsTitle, c.bullets) : "";
+  body += c?.process ? steps(c.processTitle, c.process) : "";
+  const localHtml = `<h2 class="font-headline-md text-headline-md text-primary mt-12 mb-4">${esc(cc.localTitle)}</h2>${prose([cc.local])}`;
+  const cityAreas = city.neighborhoods.map((s) => areas.find((a) => a.slug === s)).filter(Boolean).map(areaCard);
+  const faqs = [cc.faq, ...((c && c.faqs) || []), { q: "Are you licensed and insured?", a: `Yes. Martin's Moving is licensed, bonded, and insured (Florida Mover Registration #${site.licenses.flIm}), serving ${city.name} and ${city.county} since ${Y}.` }];
+  const guideLink = guides[0];
+  const main = `${quickAnswer(qa)}${prose(cc.intro)}${body}
+${localHtml}
+${statRow([{ num: site.yearsInBusiness, label: "Years moving homes" }, { num: "IM595", label: "FL licensed mover" }, { num: "24/7", label: "Emergency service" }])}
+${highlightBox(`Every ${svc.label.toLowerCase()} in ${city.name} with Martin's Moving includes a written quote that holds on moving day, the same crew from the first box to the last, and licensed, insured handling. No day labor, no surprise surcharges.`)}
+${crossCityCard(svc, cityKey)}
+${midCta(`Need ${svc.label.toLowerCase()} in ${city.name}?`)}
+${reciprocalGrid(`Areas we serve near ${city.name}`, cityAreas)}
+${reciprocalGrid("Related moving services", relatedServicesCity(svc.slug, cityKey, 10))}
+<p class="mt-10 text-body-md text-on-surface-variant max-w-3xl">Planning ahead? Read our <a class="text-primary underline hover:text-action-orange" href="/guides/${guideLink.slug}">${esc(guideLink.label.toLowerCase())}</a>.</p>
+${faqBlock(faqs)}`;
+  const rail = `${quoteForm({ title: "Get a free quote", pageName: `${svc.label} ${city.name}` })}${railGuides()}${railTrust()}${railLinks("Popular services", realServices.slice(0, 7).map(svcCard), "local_shipping")}`;
+  const sub = `Professional ${svc.label.toLowerCase()} across ${city.name} and ${city.county}. Family owned, licensed, and insured since ${Y}.`;
+  const bodyHtml = `${hero({ badge: "Moving Services", h1: `${svc.label} in ${city.name}`, sub, crumbs, pageName: `${svc.label} ${city.name}`, primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "All services", href: "/services" } })}
+${statBar()}
+${twoCol(main, rail)}
+${ctaBand()}`;
+  const desc = `${svc.label} in ${city.name}, ${city.county}, from Martin's Moving. Licensed, insured, honest written quotes. Call ${site.phone} for a free estimate.`.slice(0, 158);
+  return page({
+    title: `${svc.label} in ${city.name} | Martin's Moving`,
+    description: desc,
+    canonicalPath: path,
+    jsonLd: [movingCompanySchema(city.name), serviceSchema({ name: `${svc.label} in ${city.name}`, description: desc }), faqSchema(faqs), breadcrumbSchema(crumbs), speakableSchema(path)],
+    bodyHtml,
+  });
+}
+
+export function servicePage(svc, cityKey = null) {
+  const cc = cityKey && serviceCities[svc.slug] ? serviceCities[svc.slug][cityKey] : null;
+  if (cc) return serviceCityPage(svc, cityKey, cc);
   const crumbs = [{ name: "Home", href: "/" }, { name: "Moving Services", href: "/services" }, { name: svc.label, href: `/services/${svc.slug}` }];
   const c = svc.content;
   const intro = c?.intro || [

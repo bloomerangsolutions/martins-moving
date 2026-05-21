@@ -2,6 +2,7 @@ import { mkdir, writeFile, rm } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { site } from "./data/site.mjs";
 import { services } from "./data/services.mjs";
+import { serviceCities } from "./data/service-cities.mjs";
 import { areas } from "./data/areas.mjs";
 import { guides } from "./data/guides.mjs";
 import { resources, aboutPages, corePages } from "./data/content.mjs";
@@ -28,7 +29,14 @@ await emit("guides.html", indexPage({ kind: "guides" }));
 await emit("resources.html", indexPage({ kind: "resources" }));
 
 // Services / Areas / Guides
-for (const s of services) await emit(`services/${s.slug}.html`, servicePage(s));
+for (const s of services) {
+  if (serviceCities[s.slug]) {
+    await emit(`services/${s.slug}.html`, servicePage(s, "bradenton"));
+    await emit(`services/${s.slug}-sarasota.html`, servicePage(s, "sarasota"));
+  } else {
+    await emit(`services/${s.slug}.html`, servicePage(s));
+  }
+}
 for (const a of areas) await emit(`areas-served/${a.slug}.html`, areaPage(a));
 for (const g of guides) await emit(`guides/${g.slug}.html`, guidePage(g));
 
