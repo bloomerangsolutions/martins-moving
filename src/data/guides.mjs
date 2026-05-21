@@ -3,7 +3,7 @@ export const guides = [
   {
     slug: "ultimate-moving-guide",
     label: "Ultimate Moving Guide",
-    title: "The Ultimate Moving Guide for Bradenton & Sarasota | Martin's Moving",
+    title: "Ultimate Moving Guide for Bradenton & Sarasota, FL",
     metaDesc:
       "A step-by-step moving guide for Bradenton and Sarasota: timeline, packing order, what to do moving week, and how to avoid the common mistakes. Free read.",
     keyword: "moving guide Bradenton Sarasota",
@@ -34,7 +34,7 @@ export const guides = [
   {
     slug: "house-moving-guide",
     label: "House Moving Guide",
-    title: "House Moving Guide for Bradenton & Sarasota | Martin's Moving",
+    title: "House Moving Guide for Bradenton & Sarasota, FL",
     metaDesc: "How to plan a whole-house move in Bradenton or Sarasota without the last-minute scramble: room-by-room order, timeline, costs, and Florida-specific tips.",
     keyword: "house moving guide",
     summary: "A room-by-room plan for moving an entire house in the Bradenton and Sarasota area.",

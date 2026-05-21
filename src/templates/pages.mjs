@@ -42,7 +42,7 @@ function articleMeta(readTime) {
 
 // AEO: concise, citable answer block. Phone renders as a button + stays clickable in the text.
 // mascot:true shows the Martin's snail running in on the right (homepage).
-const SNAIL = "/images/snail.png";
+const SNAIL = "/images/snail.webp";
 function linkifyPhone(escapedText) {
   const p = esc(site.phone);
   return escapedText.split(p).join(`<a href="${site.phoneHref}" class="font-bold text-primary underline decoration-action-orange/70 underline-offset-2 hover:text-action-orange">${p}</a>`);
@@ -360,7 +360,7 @@ ${statBar()}
 ${twoCol(main, rail)}
 ${ctaBand()}`;
   const desc = (g.metaDesc || `${g.label} from Martin's Moving, serving ${R}.`).slice(0, 158);
-  return page({ title: g.title || `${g.label} | Martin's Moving`, description: desc, canonicalPath: `/guides/${g.slug}`, jsonLd: [breadcrumbSchema(crumbs), faqSchema(faqs), articleSchema(g), speakableSchema(`/guides/${g.slug}`)], bodyHtml });
+  return page({ title: g.title || `${g.label} | Martin's Moving`, description: desc, canonicalPath: `/guides/${g.slug}`, jsonLd: [movingCompanySchema(), breadcrumbSchema(crumbs), faqSchema(faqs), articleSchema(g), speakableSchema(`/guides/${g.slug}`)], bodyHtml });
 }
 
 export function genericPage({ slug, label, title, metaDesc, section = "", crumbName, content, bodyIntro, robots, related = "guides", relatedItems, relatedTitle, qa }) {
@@ -405,25 +405,49 @@ export function indexPage({ kind }) {
   };
   const map = {
     services: { label: "Moving Services", h1: "Our moving services", sub: `Everything from a studio apartment to a full office relocation across ${R}.`, path: "/services", icon: "local_shipping",
+      seoTitle: "Moving Services in Bradenton & Sarasota | Martin's Moving",
       intro: [`Martin's Moving handles the full range of home and business moves across ${R}. Whatever you are moving, the same careful crews and honest written quotes apply.`],
+      faqs: [
+        { q: "What moving services does Martin's Moving offer?", a: `Residential, commercial, local, long-distance, and interstate moving, plus packing, piano and specialty-item handling, and storage, across ${R}.` },
+        { q: "Do you serve both Bradenton and Sarasota?", a: `Yes. Every service is available across ${R}. Call ${site.phone} for a free written quote.` },
+        { q: "Are you licensed and insured?", a: `Yes. Florida Mover Registration #${site.licenses.flIm}, fully insured, family owned since ${Y}.` },
+      ],
       items: services.map((s) => ({ label: s.label, href: `/services/${s.slug}`, sub: s.summary || s.content?.intro?.[0]?.slice(0, 110) })) },
     areas: { label: "Areas Served", h1: `Moving services across ${R}`, sub: "Find your town below for local moving help.", path: "/areas-served", icon: "location_on",
+      seoTitle: "Areas We Serve in Bradenton & Sarasota | Martin's Moving",
       intro: [`We move homes and businesses throughout ${R} and the surrounding communities. Find your town for local details, or call ${site.phone} to confirm your move.`],
+      faqs: [
+        { q: "What areas does Martin's Moving serve?", a: `Bradenton, Sarasota, and the surrounding Manatee and Sarasota County communities, including the barrier islands. Find your town on this page.` },
+        { q: "Is there a surcharge for island or condo moves?", a: `No surcharge for the location. We size the crew to the access and coordinate elevators and loading windows. Call ${site.phone}.` },
+        { q: "Are you licensed and insured?", a: `Yes. Florida Mover Registration #${site.licenses.flIm}, fully insured, family owned since ${Y}.` },
+      ],
       items: areas.map((a) => ({ label: `${a.name}`, href: `/areas-served/${a.slug}`, sub: a.county })) },
     guides: { label: "Moving Guides", h1: "Moving guides", sub: "Free, practical guides written by a crew that moves homes here every day.", path: "/guides", icon: "menu_book",
+      seoTitle: "Moving Guides for Bradenton & Sarasota | Martin's Moving",
       intro: [`Real, practical moving guides for the ${R} area, written from thousands of actual moves. Start planning, then call ${site.phone} when you want to hand it off.`],
+      faqs: [
+        { q: "Are these moving guides free?", a: `Yes. Every guide is free and written from real moves we have done across ${R} since ${Y}.` },
+        { q: "Can Martin's Moving handle my move for me?", a: `Yes. Call ${site.phone} for a free written quote on a full-service move.` },
+        { q: "Are you licensed and insured?", a: `Yes. Florida Mover Registration #${site.licenses.flIm}, fully insured.` },
+      ],
       items: guides.map((g) => ({ label: g.label, href: `/guides/${g.slug}`, sub: g.summary, meta: g.readTime })) },
     resources: { label: "Resources", h1: "Moving resources", sub: "Tips, forms, and tools to make your move easier.", path: "/resources", icon: "description",
+      seoTitle: "Moving Resources for Bradenton & Sarasota | Martin's Moving",
       intro: [`Quick tools and references for your move: packing tips, timelines, forms, and answers to the questions we hear most.`],
+      faqs: [
+        { q: "What moving resources do you offer?", a: `Packing tips, timelines, checklists, and answers to common questions for moves across ${R}.` },
+        { q: "How do I get a moving quote?", a: `Call ${site.phone} or use the quote form. Free written estimates, family owned since ${Y}.` },
+        { q: "Are you licensed and insured?", a: `Yes. Florida Mover Registration #${site.licenses.flIm}, fully insured.` },
+      ],
       items: resources.map((r) => ({ label: r.label, href: `/resources/${r.slug}`, sub: shortDesc(r) })) },
   }[kind];
   const crumbs = [{ name: "Home", href: "/" }, { name: map.label, href: map.path }];
   const qa = `Martin's Moving offers ${map.items.length} ${kind === "areas" ? "service areas" : kind} across ${R}, family owned since ${Y}. Call ${site.phone} for a free quote.`;
   const bodyHtml = `${hero({ badge: map.label, h1: map.h1, sub: map.sub, crumbs, pageName: map.label })}
 ${statBar()}
-${wrap(`${quickAnswer(qa)}${prose(map.intro)}${richIndexCards(map.items, map.icon)}`)}
+${wrap(`${quickAnswer(qa)}${prose(map.intro)}${richIndexCards(map.items, map.icon)}${faqBlock(map.faqs)}`)}
 ${ctaBand()}`;
-  return page({ title: `${map.label} | Martin's Moving`, description: `${map.sub} Martin's Moving, ${R}. Call ${site.phone}.`.slice(0, 158), canonicalPath: map.path, jsonLd: [movingCompanySchema(), breadcrumbSchema(crumbs), speakableSchema(map.path)], bodyHtml });
+  return page({ title: map.seoTitle || `${map.label} | Martin's Moving`, description: `${map.sub} Martin's Moving, ${R}. Call ${site.phone}.`.slice(0, 158), canonicalPath: map.path, jsonLd: [movingCompanySchema(), breadcrumbSchema(crumbs), faqSchema(map.faqs), speakableSchema(map.path)], bodyHtml });
 }
 
 // ---------- home: faithful original sections ----------
@@ -443,23 +467,23 @@ function whyUs() {
       </div></div>
     <div class="relative group">
       <div class="absolute -inset-4 bg-primary/5 rounded-[2rem] -rotate-2 group-hover:rotate-0 transition-transform duration-500"></div>
-      <img alt="Martin's Moving team loading a truck in Bradenton" class="relative rounded-2xl shadow-xl w-full h-[500px] object-cover border-4 border-white" src="/images/team.jpg"/>
+      <picture><source srcset="/images/team.webp" type="image/webp"/><img alt="Martin's Moving team loading a truck in Bradenton" class="relative rounded-2xl shadow-xl w-full h-[500px] object-cover border-4 border-white" src="/images/team.jpg" loading="lazy" decoding="async"/></picture>
       <div class="absolute bottom-8 -left-8 glass-card p-6 rounded-xl shadow-lg border-2 border-primary/20 max-w-[200px]"><p class="font-display-lg text-headline-md text-primary leading-none">${esc(site.yearsInBusiness)}</p><p class="font-label-bold text-caption text-on-surface-variant uppercase tracking-tighter">Years of Excellence</p></div>
     </div></div></section>`;
 }
 function homeServiceCards() {
   const feat = realServices.slice(0, 4);
   const IMG = {
-    "residential-moving": "/images/residential.jpg",
-    "commercial-moving": "/images/commercial.jpg",
-    "local-moving": "/images/local.jpg",
-    "interstate-movers": "/images/interstate.jpg",
+    "residential-moving": "/images/residential.webp",
+    "commercial-moving": "/images/commercial.webp",
+    "local-moving": "/images/local.webp",
+    "interstate-movers": "/images/interstate.webp",
   };
   return `<section class="py-section-gap bg-surface-container-highest/30"><div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
     <div class="text-center mb-16 max-w-2xl mx-auto"><h2 class="font-headline-lg text-headline-lg text-primary mb-4">Precision relocation services</h2><p class="font-body-lg text-body-lg text-on-surface-variant">Tailored moving solutions designed to minimize downtime and maximize peace of mind.</p></div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
       ${feat.map((s) => `<a href="/services/${s.slug}" class="group bg-white rounded-2xl overflow-hidden border-2 border-transparent hover:border-primary hover:shadow-xl transition-all duration-300 block">
-        <div class="h-44 overflow-hidden relative"><img alt="${esc(s.label)}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="${IMG[s.slug] || "/images/hero.jpg"}"/><div class="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors"></div></div>
+        <div class="h-44 overflow-hidden relative"><img alt="${esc(s.label)}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="${IMG[s.slug] || "/images/hero.webp"}" loading="lazy" decoding="async"/><div class="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors"></div></div>
         <div class="p-6"><h3 class="font-headline-md text-body-lg text-primary mb-2">${esc(s.label)}</h3><p class="text-body-md text-on-surface-variant mb-4">${esc(s.summary || "Handled with precision and care.")}</p><span class="inline-flex items-center text-primary font-label-bold group-hover:gap-3 transition-all">LEARN MORE <span class="material-symbols-outlined ml-1">arrow_forward</span></span></div></a>`).join("")}
     </div></div></section>`;
 }
@@ -483,6 +507,12 @@ function testimonials() {
 export function homePage() {
   const crumbs = [{ name: "Home", href: "/" }];
   const qa = `Martin's Moving is a family-owned moving company serving ${R} since ${Y}. We offer residential, commercial, local, interstate, packing, piano, and specialty moving. Licensed and insured (FL Mover Reg #${site.licenses.flIm}). Free quotes at ${site.phone}.`;
+  const faqs = [
+    { q: "Where does Martin's Moving serve?", a: `Martin's Moving serves Bradenton, Sarasota, and Manatee County, Florida, including the barrier islands. Family owned since ${Y}.` },
+    { q: "Is Martin's Moving licensed and insured?", a: `Yes. Florida Mover Registration #${site.licenses.flIm}, fully insured.` },
+    { q: "What does Martin's Moving move?", a: `Homes, apartments, condos, and offices, plus pianos, safes, and specialty items, both locally and long-distance.` },
+    { q: "How do I get a free quote?", a: `Call ${site.phone} or use the quote form for a free written estimate. No pressure, no hidden fees.` },
+  ];
   const bodyHtml = `${hero({ badge: `Established ${Y}`, h1: `Bradenton and Sarasota's trusted moving company since ${Y}`, sub: `Expert residential and commercial relocations in ${R}. We turn the chaos of moving into a smooth transition.`, big: true, pageName: "Homepage", primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "Our services", href: "/services" } })}
 ${recognitionBar()}
 <div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto pt-section-gap">
@@ -494,12 +524,13 @@ ${recognitionBar()}
 ${whyUs()}
 ${homeServiceCards()}
 ${testimonials()}
+<div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">${faqBlock(faqs)}</div>
 ${ctaBand()}`;
   return page({
     title: `Martin's Moving | Bradenton & Sarasota Movers Since ${Y}`,
     description: `Family owned movers serving ${R} since ${Y}. Residential, commercial, local & long-distance moving. Free quote: ${site.phone}.`.slice(0, 158),
     canonicalPath: "/",
-    jsonLd: [movingCompanySchema(), breadcrumbSchema(crumbs), ...reviewSchema(), speakableSchema("/")],
+    jsonLd: [movingCompanySchema(), breadcrumbSchema(crumbs), faqSchema(faqs), ...reviewSchema(), speakableSchema("/")],
     bodyHtml,
   });
 }

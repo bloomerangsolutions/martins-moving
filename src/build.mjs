@@ -81,7 +81,10 @@ Service area: ${site.serviceRegion}
 Awards: ${site.awards.join(", ")}
 
 ## Moving services
-${services.filter((s) => s.real).map((s) => `- [${s.label}](${site.domain}/services/${s.slug})`).join("\n")}
+Each service has a Bradenton page and a Sarasota page.
+${services.map((s) => serviceCities[s.slug]
+  ? `- [${s.label} in Bradenton](${site.domain}/services/${s.slug})\n- [${s.label} in Sarasota](${site.domain}/services/${s.slug}-sarasota)`
+  : `- [${s.label}](${site.domain}/services/${s.slug})`).join("\n")}
 
 ## Areas served
 ${areas.map((a) => `- [${a.name} Movers](${site.domain}/areas-served/${a.slug})`).join("\n")}

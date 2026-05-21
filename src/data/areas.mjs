@@ -1,12 +1,12 @@
 // Areas served. URL pattern: /areas-served/<slug>. All within Martin's service region
 // (Bradenton, Sarasota, Manatee County and nearby). Each carries full local content.
 
-const TITLE = (name) => `${name} Movers | Local & Long Distance | Martin's Moving`;
+const TITLE = (name) => `${name} Movers | Martin's Moving`;
 
 export const areas = [
   {
     slug: "sarasota", name: "Sarasota", county: "Sarasota County", keyword: "movers in Sarasota FL",
-    title: "Sarasota Movers | Local & Long Distance | Martin's Moving",
+    title: TITLE("Sarasota"),
     metaDesc: "Trusted Sarasota movers for homes, condos, and offices. Family owned since 2004, licensed and insured. Free flat quote: call (941) 809-5777.",
     neighborhoods: ["Downtown Sarasota", "Gulf Gate", "Southside Village", "Arlington Park", "Laurel Park"],
     content: {
@@ -23,7 +23,7 @@ export const areas = [
   },
   {
     slug: "bradenton", name: "Bradenton", county: "Manatee County", keyword: "movers in Bradenton FL",
-    title: "Bradenton Movers | Local & Long Distance | Martin's Moving",
+    title: TITLE("Bradenton"),
     metaDesc: "Bradenton's local movers since 2004. Homes, condos, and offices handled by careful, insured crews. Free quote: (941) 809-5777.",
     neighborhoods: ["Downtown Bradenton", "Village of the Arts", "West Bradenton", "Riverwalk", "Bayshore Gardens"],
     content: {
@@ -360,7 +360,7 @@ export const areas = [
   },
   {
     slug: "st-armands", name: "St. Armands", county: "Sarasota County", keyword: "movers St Armands",
-    title: "St. Armands Movers | Local & Long Distance | Martin's Moving",
+    title: TITLE("St. Armands"),
     metaDesc: "St. Armands movers for the Circle's residential keys and upscale homes. Discreet, careful island moves. Call (941) 809-5777.",
     content: {
       intro: [
@@ -392,7 +392,7 @@ export const areas = [
   },
   {
     slug: "vamo", name: "Vamo", county: "Sarasota County", keyword: "movers Vamo FL",
-    title: TITLE("Vamo"),
+    title: "Vamo Movers | Sarasota County FL | Martin's Moving",
     metaDesc: "Vamo movers for the quiet bayside community in south Sarasota near Little Sarasota Bay. Careful crews. Call (941) 809-5777.",
     content: {
       intro: [

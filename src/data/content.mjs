@@ -134,7 +134,7 @@ export const resources = [
     },
   },
   {
-    slug: "faqs", label: "FAQs", title: "Moving FAQs | Martin's Moving",
+    slug: "faqs", label: "FAQs", title: "Moving FAQs | Bradenton & Sarasota | Martin's Moving",
     metaDesc: "Answers to common questions about pricing, scheduling, insurance, deposits, and what to expect from your Bradenton or Sarasota move. Call (941) 809-5777.",
     keyword: "moving faqs",
     content: {
@@ -159,7 +159,7 @@ export const resources = [
 
 export const aboutPages = [
   {
-    slug: "about", label: "About Martin's Moving", title: "About Martin's Moving | Bradenton & Sarasota Movers Since 2004",
+    slug: "about", label: "About Martin's Moving", title: "About Martin's Moving | Bradenton & Sarasota Movers",
     metaDesc: "Family owned and operated since 2004, Martin's Moving has handled homes and offices across Bradenton and Sarasota with care and honest pricing.",
     keyword: "about Martin's Moving",
     content: {

@@ -107,7 +107,7 @@ export function hero({ badge, h1, sub, primaryCta, secondaryCta, crumbs, big = f
   const pCta = primaryCta || { label: "Get a free estimate", href: "/contact" };
   const sCta = secondaryCta || { label: "Our services", href: "/services" };
   return `<header class="relative pt-20 ${big ? "min-h-[90vh]" : "min-h-[60vh]"} flex items-center overflow-hidden">
-  <div class="absolute inset-0 z-0"><img alt="Moving crew loading cardboard boxes into a moving van" class="w-full h-full object-cover" src="${HERO_IMG}"/><div class="absolute inset-0 hero-gradient"></div></div>
+  <div class="absolute inset-0 z-0"><picture><source srcset="/images/hero.webp" type="image/webp"/><img alt="Moving crew loading cardboard boxes into a moving van" class="w-full h-full object-cover" src="/images/hero.jpg" width="1920" height="1256" fetchpriority="high" decoding="async"/></picture><div class="absolute inset-0 hero-gradient"></div></div>
   <div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto grid md:grid-cols-[2fr_1fr] gap-12 items-center py-16 md:py-20 w-full">
     <div class="text-white space-y-6">
       ${crumbHtml}
