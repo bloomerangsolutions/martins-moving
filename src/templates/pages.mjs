@@ -235,7 +235,8 @@ ${reciprocalGrid("Related moving services", relatedServicesCity(svc.slug, cityKe
 ${faqBlock(faqs)}`;
   const rail = `${quoteForm({ title: "Get a free quote", pageName: `${svc.label} ${city.name}` })}${railGuides()}${railTrust()}${railLinks("Popular services", realServices.slice(0, 7).map(svcCard), "local_shipping")}`;
   const sub = `Professional ${svc.label.toLowerCase()} across ${city.name} and ${city.county}. Family owned, licensed, and insured since ${Y}.`;
-  const bodyHtml = `${hero({ badge: "Moving Services", h1: `${svc.label} in ${city.name}`, sub, crumbs, pageName: `${svc.label} ${city.name}`, primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "All services", href: "/services" } })}
+  const proposedNote = svc.real ? "" : "<!-- PROPOSED SERVICE: confirm Martin's Moving fulfills this before publishing -->";
+  const bodyHtml = `${proposedNote}${hero({ badge: "Moving Services", h1: `${svc.label} in ${city.name}`, sub, crumbs, pageName: `${svc.label} ${city.name}`, primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "All services", href: "/services" } })}
 ${statBar()}
 ${twoCol(main, rail)}
 ${ctaBand()}`;
