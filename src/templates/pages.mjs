@@ -487,6 +487,29 @@ function homeServiceCards() {
         <div class="p-6"><h3 class="font-headline-md text-body-lg text-primary mb-2">${esc(s.label)}</h3><p class="text-body-md text-on-surface-variant mb-4">${esc(s.summary || "Handled with precision and care.")}</p><span class="inline-flex items-center text-primary font-label-bold group-hover:gap-3 transition-all">LEARN MORE <span class="material-symbols-outlined ml-1">arrow_forward</span></span></div></a>`).join("")}
     </div></div></section>`;
 }
+function steinwayHome() {
+  const points = [
+    { icon: "construction", t: "Proper grand handling", d: "Lyre and legs removed, body on a padded board, fully wrapped." },
+    { icon: "ac_unit", t: "Climate-aware transit", d: "Prompt scheduling and clean padded trucks for Florida heat." },
+    { icon: "verified_user", t: "Fully insured", d: "Licensed, bonded, insured high-value handling. FL Reg #IM595." },
+  ];
+  return `<section class="py-section-gap px-margin-mobile md:px-margin-desktop">
+  <div class="max-w-max-width mx-auto rounded-3xl bg-primary text-on-primary overflow-hidden relative">
+    <div class="grid lg:grid-cols-[1.4fr_1fr] gap-10 p-10 md:p-16 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 text-tertiary-fixed font-label-bold text-label-bold uppercase mb-4"><span class="material-symbols-outlined">piano</span>Specialty service</span>
+        <h2 class="font-display-lg text-headline-lg mb-4">We specialize in Steinway pianos</h2>
+        <p class="font-body-lg text-body-lg text-on-primary/85 mb-8 max-w-xl">A Steinway is an investment and an heirloom, and it does not move like ordinary furniture. Our specialist crew moves grands and uprights across Bradenton and Sarasota with the training, equipment, and care a fine piano demands.</p>
+        <ul class="grid sm:grid-cols-3 gap-6 mb-9">
+          ${points.map((p) => `<li class="flex flex-col gap-2"><span class="material-symbols-outlined text-tertiary-fixed">${p.icon}</span><span class="font-headline-md text-body-lg">${p.t}</span><span class="text-body-md text-on-primary/75">${p.d}</span></li>`).join("")}
+        </ul>
+        <a href="/services/steinway-piano-movers" class="inline-flex items-center gap-2 bg-action-orange text-on-primary font-label-bold text-label-bold uppercase rounded-full px-7 py-4 hover:brightness-110 transition">Steinway piano moving<span class="material-symbols-outlined">arrow_forward</span></a>
+      </div>
+      <div class="hidden lg:flex justify-center items-center"><span class="material-symbols-outlined text-tertiary-fixed/25" style="font-size:240px;line-height:1">piano</span></div>
+    </div>
+  </div>
+</section>`;
+}
 function testimonials() {
   const revs = [
     { stars: 5, text: "5 star, this was the best mover we have ever had. Eric, Tim, and Andrew arrived on time, were efficient and very careful.", name: "Mike M.", tag: "Verified Client" },
@@ -523,6 +546,7 @@ ${recognitionBar()}
 </div>
 ${whyUs()}
 ${homeServiceCards()}
+${steinwayHome()}
 ${testimonials()}
 <div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">${faqBlock(faqs)}</div>
 ${ctaBand()}`;

@@ -176,6 +176,41 @@ export const services = [
     },
   },
   {
+    slug: "steinway-piano-movers", label: "Steinway Piano Movers", real: true,
+    title: "Steinway Piano Movers | Bradenton & Sarasota | Martin's Moving",
+    metaDesc: "We specialize in moving Steinway and fine grand pianos across Bradenton and Sarasota. Trained crews, careful handling, fully insured. Call (941) 809-5777.",
+    keyword: "Steinway piano movers",
+    summary: "Specialist handling for Steinway and other fine grand pianos, with trained crews and the right equipment.",
+    content: {
+      intro: [
+        "A Steinway is an investment and an heirloom, and it does not move like ordinary furniture. The soundboard, the action, and the hand-rubbed finish are all vulnerable to a careless lift or a bad bump on a threshold. We specialize in moving Steinways and other fine grand pianos, and we treat each one as what it is: an instrument that has to play the same in the new room as it did in the old one.",
+        "Our specialist crew has the training and the equipment for high-value pianos. We plan the move before we touch the piano, protect the finish at every step, and keep Florida heat and humidity in mind from the moment it leaves the room until it is set in place. For standard uprights and digital pianos, our general piano moving service covers the same care at a lower complexity.",
+      ],
+      bulletsTitle: "How we handle a Steinway",
+      bullets: [
+        "Grands moved correctly: lid secured, lyre and legs removed, body laid on a padded piano board and strapped, then blanket-wrapped or crated as the move requires.",
+        "Uprights kept upright, fully padded, and moved on equipment built for the weight, not a household dolly.",
+        "The finish and soundboard protected at every contact point, with a route through doorways, stairs, and turns measured before anything is lifted.",
+        "Climate-aware transit in a clean, padded truck, with prompt scheduling so the instrument is not sitting in the heat, and climate-controlled storage available between homes.",
+        "Licensed, bonded, and insured high-value handling (Florida Mover Registration #IM595).",
+      ],
+      processTitle: "Our Steinway moving process",
+      process: [
+        "Assessment and measurement. We confirm the model, the path at both ends, and any stairs or tight turns, so the quote and the crew match the real job.",
+        "Disassembly and padding. Grands are partially disassembled and laid on a padded board; every surface that will be touched is wrapped before the lift.",
+        "Secured transport. The piano is strapped and braced in the truck so it cannot shift, and we move on a schedule that keeps it out of prolonged heat.",
+        "Placement and settling. We reassemble and set the piano exactly where you want it, then recommend letting it acclimate before a technician tunes it.",
+      ],
+      faqs: [
+        { q: "Do you move grand and concert Steinways?", a: "Yes. We move baby grands, parlor and living-room grands, and concert grands, along with Steinway uprights. We confirm the model and the path before the move so we bring the right crew and equipment." },
+        { q: "How do you protect the finish and soundboard?", a: "Every surface that will be handled is padded and wrapped before we lift, the body rides on a padded board, and the lid and lyre are secured separately so nothing presses on the soundboard or the finish in transit." },
+        { q: "Will the move affect the tuning?", a: "Any move can shift a piano's tuning as it adjusts to a new room and humidity. We move it safely; we recommend letting it settle for a couple of weeks, then having a technician tune it." },
+        { q: "Is a high-value piano insured during the move?", a: "Yes. We are licensed, bonded, and insured (Florida Mover Registration #IM595). Tell us the value at the estimate so coverage and handling match the instrument." },
+        { q: "Can you store a Steinway between homes?", a: "Yes. We offer climate-controlled storage so the instrument is not exposed to Florida heat and humidity while you are between homes." },
+      ],
+    },
+  },
+  {
     slug: "specialty-items", label: "Specialty & Difficult Items", real: true,
     title: "Specialty Item Movers | Safes, Antiques & Art | Martin's Moving",
     metaDesc: "Specialty moving for safes, antiques, art, and oversized items in Bradenton and Sarasota. Trained crews and the right gear. Call (941) 809-5777.",
