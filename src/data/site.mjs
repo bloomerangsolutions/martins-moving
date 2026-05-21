@@ -5,7 +5,7 @@ export const site = {
   legalName: "Martin's Moving",
   descriptor: "Bradenton & Sarasota Moving Co.",
   positioning: "Precision Relocation Experts",
-  tagline: "Florida's trusted moving company",
+  tagline: "Bradenton and Sarasota's trusted moving company",
   foundedYear: "2004",
   yearsInBusiness: "20+",
   phone: "(941) 809-5777",

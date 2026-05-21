@@ -436,7 +436,7 @@ function whyUs() {
   ];
   return `<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto"><div class="grid md:grid-cols-2 gap-16 items-center">
     <div>
-      <h2 class="font-headline-lg text-headline-lg text-primary mb-6">Why Bradenton trusts Martin's Moving</h2>
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-6">Why Bradenton and Sarasota trust Martin's Moving</h2>
       <p class="font-body-lg text-body-lg text-on-surface-variant mb-12">Martin's Moving is the premier choice for reliable, efficient moving across ${esc(R)}. With over two decades of experience, our family-owned company treats your home like our own.</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
         ${cards.map((c) => `<div class="flex items-start gap-4"><div class="bg-${c.tint}/10 p-3 rounded-xl border border-${c.tint}/20"><span class="material-symbols-outlined text-${c.tint} text-3xl">${c.icon}</span></div><div><h3 class="font-headline-md text-body-md text-on-surface mb-1">${c.title}</h3><p class="text-caption text-on-surface-variant">${c.text}</p></div></div>`).join("")}
@@ -483,7 +483,7 @@ function testimonials() {
 export function homePage() {
   const crumbs = [{ name: "Home", href: "/" }];
   const qa = `Martin's Moving is a family-owned moving company serving ${R} since ${Y}. We offer residential, commercial, local, interstate, packing, piano, and specialty moving. Licensed and insured (FL Mover Reg #${site.licenses.flIm}). Free quotes at ${site.phone}.`;
-  const bodyHtml = `${hero({ badge: `Established ${Y}`, h1: `Florida's trusted moving company since ${Y}`, sub: `Expert residential and commercial relocations in ${R}. We turn the chaos of moving into a smooth transition.`, big: true, pageName: "Homepage", primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "Our services", href: "/services" } })}
+  const bodyHtml = `${hero({ badge: `Established ${Y}`, h1: `Bradenton and Sarasota's trusted moving company since ${Y}`, sub: `Expert residential and commercial relocations in ${R}. We turn the chaos of moving into a smooth transition.`, big: true, pageName: "Homepage", primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "Our services", href: "/services" } })}
 ${recognitionBar()}
 <div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto pt-section-gap">
   <div class="lg:flex lg:items-center lg:gap-10 overflow-hidden">
