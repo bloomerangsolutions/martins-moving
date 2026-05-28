@@ -11,7 +11,7 @@ export const site = {
   phone: "(941) 809-5777",
   phoneHref: "tel:9418095777",
   email: "martinsmoving2002@aol.com",
-  domain: "https://martinsmovers.com",
+  domain: "https://www.martinsmover.com",
   address: {
     street: "", // TODO confirm street address for full LocalBusiness schema
     city: "Bradenton",
