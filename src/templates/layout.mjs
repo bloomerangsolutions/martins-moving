@@ -133,7 +133,7 @@ function footer() {
 <footer class="bg-primary text-on-primary w-full pt-section-gap pb-8">
   <div class="grid grid-cols-2 md:grid-cols-5 gap-gutter px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
     <div class="col-span-2 md:col-span-1 space-y-6">
-      <img alt="Martin's Moving logo" class="h-12 w-auto object-contain brightness-0 invert" src="${LOGO}"/>
+      <div class="inline-block bg-white rounded-lg p-2"><img alt="Martin's Moving logo" class="h-12 w-auto object-contain" src="${LOGO}"/></div>
       <p class="font-body-md text-body-md opacity-80">Serving ${esc(site.serviceRegion)} with precision relocation services since ${esc(site.foundedYear)}.</p>
       <a class="block text-white/90 hover:text-tertiary-fixed font-label-bold" href="${site.phoneHref}">${esc(site.phone)}</a>
     </div>
