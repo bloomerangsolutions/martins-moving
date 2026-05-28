@@ -1,6 +1,7 @@
 // Static-compiled Tailwind (styles.css) replaces the render-blocking CDN compiler.
 // Theme lives in /tailwind.config.js. Custom CSS (mascot, hero gradient, dropdowns) stays inline below.
 export const HEAD_STYLES = String.raw`
+<meta name="google-site-verification" content="Ucqn6gg7B7vT58yUeMx2_h4wJG8vHKw7MyIYcoAGvlU"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Sora:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
