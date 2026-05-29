@@ -53,7 +53,7 @@ function header() {
   // simple top-level link
   const navLink = (label, href) => `<a class="font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant hover:text-action-orange transition-colors duration-300" href="${href}">${esc(label)}</a>`;
   // dropdown trigger + panel
-  const trigger = (label) => `<button type="button" class="flex items-center gap-1 font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant hover:text-action-orange transition-colors">${esc(label)}<span class="material-symbols-outlined text-base dd-chev transition-transform">expand_more</span></button>`;
+  const trigger = (label) => `<button type="button" aria-haspopup="true" aria-expanded="false" class="flex items-center gap-1 font-label-bold text-label-bold uppercase tracking-wider text-on-surface-variant hover:text-action-orange transition-colors">${esc(label)}<span class="material-symbols-outlined text-base dd-chev transition-transform">expand_more</span></button>`;
   const panelLink = (i) => `<a class="block px-3 py-2 rounded-lg text-body-md text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" href="${i.href}">${esc(i.label)}</a>`;
   const viewAll = (label, href) => `<a class="mt-2 inline-flex items-center gap-1 px-3 font-label-bold text-label-bold text-action-orange hover:gap-2 transition-all" href="${href}">${esc(label)}<span class="material-symbols-outlined text-base">arrow_forward</span></a>`;
   const dropdown = (label, width, inner) => `<div class="dd-wrap relative">${trigger(label)}<div class="dd-panel absolute left-0 top-full pt-3 z-50"><div class="bg-surface-container-lowest rounded-2xl shadow-2xl ring-1 ring-on-surface/5 p-4 ${width}">${inner}</div></div></div>`;
@@ -166,6 +166,26 @@ const SCRIPTS = `
 (function(){
   var btn=document.getElementById('menu-btn'),menu=document.getElementById('mobile-menu');
   if(btn&&menu)btn.addEventListener('click',function(){menu.classList.toggle('hidden');});
+  function closeAllDropdowns(except){
+    document.querySelectorAll('.dd-wrap.is-open').forEach(function(w){
+      if(w===except)return;
+      w.classList.remove('is-open');
+      var b=w.querySelector(':scope > button');
+      if(b)b.setAttribute('aria-expanded','false');
+    });
+  }
+  document.querySelectorAll('.dd-wrap > button').forEach(function(b){
+    b.addEventListener('click',function(e){
+      e.stopPropagation();
+      var w=b.parentElement;
+      var open=!w.classList.contains('is-open');
+      closeAllDropdowns(w);
+      w.classList.toggle('is-open',open);
+      b.setAttribute('aria-expanded',open?'true':'false');
+    });
+  });
+  document.addEventListener('click',function(e){if(!e.target.closest('.dd-wrap'))closeAllDropdowns();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAllDropdowns();});
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var h=a.getAttribute('href');if(h==='#'||h.length<2)return;var t=document.querySelector(h);if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
   document.querySelectorAll('form.quote-form').forEach(function(f){
     f.addEventListener('submit',function(e){
