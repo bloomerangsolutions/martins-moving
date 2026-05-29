@@ -31,9 +31,6 @@ export const site = {
     usdot: "{{USDOT_NUMBER}}", // TODO: needed for interstate moves
     mc: "{{MC_NUMBER}}",       // TODO: if applicable
   },
-  // Lead form delivery. Paste a free Web3Forms access key (web3forms.com) to activate
-  // delivery on every form. Until set, forms validate and show an "almost ready" state.
-  web3formsKey: "{{WEB3FORMS_ACCESS_KEY}}",
   serviceRegion: "Bradenton, Sarasota, and Manatee County",
   primaryCity: "Bradenton",
 };

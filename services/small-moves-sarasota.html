@@ -106,8 +106,6 @@ details[open] .dd-chev{transform:rotate(180deg);}
     <div class=" md:block"><div class="glass-card p-8 rounded-2xl shadow-2xl border-2 border-primary/20">
     <h3 class="font-headline-md text-headline-md text-primary mb-6 text-center">Fast Quote Request</h3>
     <form class="quote-form space-y-4" data-page="Small Move Solutions Sarasota" novalidate>
-      <input type="hidden" name="access_key" value="{{WEB3FORMS_ACCESS_KEY}}"/>
-      <input type="hidden" name="subject" value="New quote request - Martin's Moving (Small Move Solutions Sarasota)"/>
       <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off"/>
       <div class="space-y-1">
       <label class="font-label-bold text-label-bold text-on-surface-variant uppercase" for="qf115-name">Full name</label>
@@ -159,8 +157,6 @@ details[open] .dd-chev{transform:rotate(180deg);}
     <div class="space-y-3"><details class="bg-white rounded-xl border border-outline-variant/40 p-5"><summary class="font-headline-md text-body-lg text-on-surface cursor-pointer flex justify-between gap-4 items-center">Can you handle a small move in Sarasota?<span class="material-symbols-outlined dd-chev text-primary transition-transform">expand_more</span></summary><p class="text-body-md text-on-surface-variant mt-3">Yes. Studios, single items, and few-room jobs get a right-sized crew, with elevator coordination if needed. Call (941) 809-5777.</p></details><details class="bg-white rounded-xl border border-outline-variant/40 p-5"><summary class="font-headline-md text-body-lg text-on-surface cursor-pointer flex justify-between gap-4 items-center">Is there a minimum size?<span class="material-symbols-outlined dd-chev text-primary transition-transform">expand_more</span></summary><p class="text-body-md text-on-surface-variant mt-3">Call (941) 809-5777 with what you have and we will tell you the smallest sensible option.</p></details><details class="bg-white rounded-xl border border-outline-variant/40 p-5"><summary class="font-headline-md text-body-lg text-on-surface cursor-pointer flex justify-between gap-4 items-center">Will a small move still be careful?<span class="material-symbols-outlined dd-chev text-primary transition-transform">expand_more</span></summary><p class="text-body-md text-on-surface-variant mt-3">Yes. Small does not mean rushed; your things get the same protection.</p></details><details class="bg-white rounded-xl border border-outline-variant/40 p-5"><summary class="font-headline-md text-body-lg text-on-surface cursor-pointer flex justify-between gap-4 items-center">Can you move a single large item?<span class="material-symbols-outlined dd-chev text-primary transition-transform">expand_more</span></summary><p class="text-body-md text-on-surface-variant mt-3">Yes, see our furniture movers service for single-piece jobs.</p></details><details class="bg-white rounded-xl border border-outline-variant/40 p-5"><summary class="font-headline-md text-body-lg text-on-surface cursor-pointer flex justify-between gap-4 items-center">Are you licensed and insured?<span class="material-symbols-outlined dd-chev text-primary transition-transform">expand_more</span></summary><p class="text-body-md text-on-surface-variant mt-3">Yes. Martin's Moving is licensed, bonded, and insured (Florida Mover Registration #IM595), serving Sarasota and Sarasota County since 2004.</p></details></div></div></div><aside class="lg:sticky lg:top-28 space-y-6"><div class="glass-card p-8 rounded-2xl shadow-2xl border-2 border-primary/20">
     <h3 class="font-headline-md text-headline-md text-primary mb-6 text-center">Get a free quote</h3>
     <form class="quote-form space-y-4" data-page="Small Move Solutions Sarasota" novalidate>
-      <input type="hidden" name="access_key" value="{{WEB3FORMS_ACCESS_KEY}}"/>
-      <input type="hidden" name="subject" value="New quote request - Martin's Moving (Small Move Solutions Sarasota)"/>
       <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off"/>
       <div class="space-y-1">
       <label class="font-label-bold text-label-bold text-on-surface-variant uppercase" for="qf114-name">Full name</label>
@@ -237,13 +233,12 @@ details[open] .dd-chev{transform:rotate(180deg);}
       var st=f.querySelector('.form-status');
       if(f.botcheck&&f.botcheck.checked)return;
       if(!f.name.value.trim()||!f.phone.value.trim()){st.textContent='Please add your name and phone.';st.style.color='#ba1a1a';return;}
-      var key=f.access_key.value;
-      if(key.indexOf('{{')===0){st.textContent='Online quotes activate soon. Please call (941) 809-5777.';st.style.color='#a04100';return;}
       st.textContent='Sending...';st.style.color='';
       var data=Object.fromEntries(new FormData(f).entries());
-      fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
-        .then(function(r){return r.json();})
-        .then(function(j){if(j.success){f.reset();st.textContent='Thanks. We will call you back shortly.';st.style.color='#00682f';}else{st.textContent='Something went wrong. Please call (941) 809-5777.';st.style.color='#ba1a1a';}})
+      data.page=f.dataset.page||'';
+      fetch('/api/quote',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
+        .then(function(r){return r.json().then(function(j){return {status:r.status,body:j};});})
+        .then(function(res){if(res.status>=200&&res.status<300&&res.body&&res.body.ok){f.reset();st.textContent='Thanks. We will call you back shortly.';st.style.color='#00682f';}else{st.textContent='Something went wrong. Please call (941) 809-5777.';st.style.color='#ba1a1a';}})
         .catch(function(){st.textContent='Network error. Please call (941) 809-5777.';st.style.color='#ba1a1a';});
     });
   });

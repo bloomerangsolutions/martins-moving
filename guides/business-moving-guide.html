@@ -106,8 +106,6 @@ details[open] .dd-chev{transform:rotate(180deg);}
     <div class=" md:block"><div class="glass-card p-8 rounded-2xl shadow-2xl border-2 border-primary/20">
     <h3 class="font-headline-md text-headline-md text-primary mb-6 text-center">Fast Quote Request</h3>
     <form class="quote-form space-y-4" data-page="Business Moving Guide" novalidate>
-      <input type="hidden" name="access_key" value="{{WEB3FORMS_ACCESS_KEY}}"/>
-      <input type="hidden" name="subject" value="New quote request - Martin's Moving (Business Moving Guide)"/>
       <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off"/>
       <div class="space-y-1">
       <label class="font-label-bold text-label-bold text-on-surface-variant uppercase" for="qf195-name">Full name</label>
@@ -143,8 +141,6 @@ details[open] .dd-chev{transform:rotate(180deg);}
     <div class="space-y-3"><details class="bg-white rounded-xl border border-outline-variant/40 p-5"><summary class="font-headline-md text-body-lg text-on-surface cursor-pointer flex justify-between gap-4 items-center">Can you move us after hours or over a weekend?<span class="material-symbols-outlined dd-chev text-primary transition-transform">expand_more</span></summary><p class="text-body-md text-on-surface-variant mt-3">Yes. Most business moves we do are scheduled evenings or weekends specifically to avoid downtime. Tell us your cutover window and we build the crew around it.</p></details><details class="bg-white rounded-xl border border-outline-variant/40 p-5"><summary class="font-headline-md text-body-lg text-on-surface cursor-pointer flex justify-between gap-4 items-center">Do you handle IT equipment and servers?<span class="material-symbols-outlined dd-chev text-primary transition-transform">expand_more</span></summary><p class="text-body-md text-on-surface-variant mt-3">We move and protect the hardware and coordinate timing with your IT team. We recommend your IT provider handle the actual disconnect and reconnect of servers and network gear.</p></details><details class="bg-white rounded-xl border border-outline-variant/40 p-5"><summary class="font-headline-md text-body-lg text-on-surface cursor-pointer flex justify-between gap-4 items-center">How far ahead should we plan an office move?<span class="material-symbols-outlined dd-chev text-primary transition-transform">expand_more</span></summary><p class="text-body-md text-on-surface-variant mt-3">Start three to six weeks out for a small office, longer for larger spaces, so the floor plan, IT cutover, and vendor scheduling all line up.</p></details></div></div></div><aside class="lg:sticky lg:top-28 space-y-6"><div class="bg-white rounded-2xl border border-outline-variant/30 p-6 shadow-sm"><p class="font-label-bold text-label-bold uppercase tracking-widest text-action-orange mb-3">On this page</p><ul class="space-y-2"><li><a class="block text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#assign-one-move-lead">Assign one move lead</a></li><li><a class="block text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#build-a-floor-plan-first">Build a floor plan first</a></li><li><a class="block text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#schedule-around-your-downtime-not-theirs">Schedule around your downtime, not theirs</a></li><li><a class="block text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#handle-it-deliberately">Handle IT deliberately</a></li><li><a class="block text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#protect-documents-and-assets">Protect documents and assets</a></li><li><a class="block text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#first-morning-in-the-new-space">First morning in the new space</a></li></ul></div><div class="glass-card p-8 rounded-2xl shadow-2xl border-2 border-primary/20">
     <h3 class="font-headline-md text-headline-md text-primary mb-6 text-center">Get a free quote</h3>
     <form class="quote-form space-y-4" data-page="Business Moving Guide" novalidate>
-      <input type="hidden" name="access_key" value="{{WEB3FORMS_ACCESS_KEY}}"/>
-      <input type="hidden" name="subject" value="New quote request - Martin's Moving (Business Moving Guide)"/>
       <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off"/>
       <div class="space-y-1">
       <label class="font-label-bold text-label-bold text-on-surface-variant uppercase" for="qf194-name">Full name</label>
@@ -221,13 +217,12 @@ details[open] .dd-chev{transform:rotate(180deg);}
       var st=f.querySelector('.form-status');
       if(f.botcheck&&f.botcheck.checked)return;
       if(!f.name.value.trim()||!f.phone.value.trim()){st.textContent='Please add your name and phone.';st.style.color='#ba1a1a';return;}
-      var key=f.access_key.value;
-      if(key.indexOf('{{')===0){st.textContent='Online quotes activate soon. Please call (941) 809-5777.';st.style.color='#a04100';return;}
       st.textContent='Sending...';st.style.color='';
       var data=Object.fromEntries(new FormData(f).entries());
-      fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
-        .then(function(r){return r.json();})
-        .then(function(j){if(j.success){f.reset();st.textContent='Thanks. We will call you back shortly.';st.style.color='#00682f';}else{st.textContent='Something went wrong. Please call (941) 809-5777.';st.style.color='#ba1a1a';}})
+      data.page=f.dataset.page||'';
+      fetch('/api/quote',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
+        .then(function(r){return r.json().then(function(j){return {status:r.status,body:j};});})
+        .then(function(res){if(res.status>=200&&res.status<300&&res.body&&res.body.ok){f.reset();st.textContent='Thanks. We will call you back shortly.';st.style.color='#00682f';}else{st.textContent='Something went wrong. Please call (941) 809-5777.';st.style.color='#ba1a1a';}})
         .catch(function(){st.textContent='Network error. Please call (941) 809-5777.';st.style.color='#ba1a1a';});
     });
   });

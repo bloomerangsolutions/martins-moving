@@ -106,8 +106,6 @@ details[open] .dd-chev{transform:rotate(180deg);}
     <div class=" md:block"><div class="glass-card p-8 rounded-2xl shadow-2xl border-2 border-primary/20">
     <h3 class="font-headline-md text-headline-md text-primary mb-6 text-center">Fast Quote Request</h3>
     <form class="quote-form space-y-4" data-page="Bee Ridge Movers" novalidate>
-      <input type="hidden" name="access_key" value="{{WEB3FORMS_ACCESS_KEY}}"/>
-      <input type="hidden" name="subject" value="New quote request - Martin's Moving (Bee Ridge Movers)"/>
       <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off"/>
       <div class="space-y-1">
       <label class="font-label-bold text-label-bold text-on-surface-variant uppercase" for="qf135-name">Full name</label>
@@ -154,8 +152,6 @@ details[open] .dd-chev{transform:rotate(180deg);}
     <div class="space-y-3"><details class="bg-white rounded-xl border border-outline-variant/40 p-5"><summary class="font-headline-md text-body-lg text-on-surface cursor-pointer flex justify-between gap-4 items-center">Do you move single-family homes in Bee Ridge?<span class="material-symbols-outlined dd-chev text-primary transition-transform">expand_more</span></summary><p class="text-body-md text-on-surface-variant mt-3">Yes, that is most of what is here. We size the crew to the home and quote it flat.</p></details><details class="bg-white rounded-xl border border-outline-variant/40 p-5"><summary class="font-headline-md text-body-lg text-on-surface cursor-pointer flex justify-between gap-4 items-center">How is pricing handled?<span class="material-symbols-outlined dd-chev text-primary transition-transform">expand_more</span></summary><p class="text-body-md text-on-surface-variant mt-3">A written estimate up front after a walkthrough or video, so you know the price before we lift anything.</p></details><details class="bg-white rounded-xl border border-outline-variant/40 p-5"><summary class="font-headline-md text-body-lg text-on-surface cursor-pointer flex justify-between gap-4 items-center">Is Martin's Moving licensed and insured?<span class="material-symbols-outlined dd-chev text-primary transition-transform">expand_more</span></summary><p class="text-body-md text-on-surface-variant mt-3">Yes. We are a licensed Florida mover, registration #IM595, fully insured, and family owned since 2004.</p></details></div></div></div><aside class="lg:sticky lg:top-28 space-y-6"><div class="glass-card p-8 rounded-2xl shadow-2xl border-2 border-primary/20">
     <h3 class="font-headline-md text-headline-md text-primary mb-6 text-center">Free Bee Ridge quote</h3>
     <form class="quote-form space-y-4" data-page="Bee Ridge Movers" novalidate>
-      <input type="hidden" name="access_key" value="{{WEB3FORMS_ACCESS_KEY}}"/>
-      <input type="hidden" name="subject" value="New quote request - Martin's Moving (Bee Ridge Movers)"/>
       <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off"/>
       <div class="space-y-1">
       <label class="font-label-bold text-label-bold text-on-surface-variant uppercase" for="qf134-name">Full name</label>
@@ -232,13 +228,12 @@ details[open] .dd-chev{transform:rotate(180deg);}
       var st=f.querySelector('.form-status');
       if(f.botcheck&&f.botcheck.checked)return;
       if(!f.name.value.trim()||!f.phone.value.trim()){st.textContent='Please add your name and phone.';st.style.color='#ba1a1a';return;}
-      var key=f.access_key.value;
-      if(key.indexOf('{{')===0){st.textContent='Online quotes activate soon. Please call (941) 809-5777.';st.style.color='#a04100';return;}
       st.textContent='Sending...';st.style.color='';
       var data=Object.fromEntries(new FormData(f).entries());
-      fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
-        .then(function(r){return r.json();})
-        .then(function(j){if(j.success){f.reset();st.textContent='Thanks. We will call you back shortly.';st.style.color='#00682f';}else{st.textContent='Something went wrong. Please call (941) 809-5777.';st.style.color='#ba1a1a';}})
+      data.page=f.dataset.page||'';
+      fetch('/api/quote',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
+        .then(function(r){return r.json().then(function(j){return {status:r.status,body:j};});})
+        .then(function(res){if(res.status>=200&&res.status<300&&res.body&&res.body.ok){f.reset();st.textContent='Thanks. We will call you back shortly.';st.style.color='#00682f';}else{st.textContent='Something went wrong. Please call (941) 809-5777.';st.style.color='#ba1a1a';}})
         .catch(function(){st.textContent='Network error. Please call (941) 809-5777.';st.style.color='#ba1a1a';});
     });
   });
