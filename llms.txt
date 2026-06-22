@@ -1,117 +1,105 @@
 # Martin's Moving
-> Precision Relocation Experts. Family-owned moving company serving Bradenton, Sarasota, and Manatee County, Florida since 2004. Licensed, bonded, and insured (Florida Mover Registration #IM595).
 
-Phone: (941) 809-5777
-Email: martinsmoving2002@aol.com
-Hours: Mon-Fri: 8:30am - 5:30pm (24/7 emergency service)
-Service area: Bradenton, Sarasota, and Manatee County
-Awards: Bradenton's Best 2021, Bradenton's Best 2022, Best of SRQ 2025
+> Martin's Moving is a family-owned and operated moving company in Bradenton, Florida, serving Bradenton, Sarasota, and Manatee County since 2004. Services range from residential, commercial, local, and long-distance moving to packing, storage, and specialty work such as piano, pool table, and hot tub moving. The company is licensed, bonded, and insured (FL Mover Reg #IM595) and provides free written estimates.
 
-## Moving services
-Each service has a Bradenton page and a Sarasota page.
-- [Residential Moving in Bradenton](https://www.martinsmover.com/services/residential-moving)
-- [Residential Moving in Sarasota](https://www.martinsmover.com/services/residential-moving-sarasota)
-- [Commercial / Office Moving in Bradenton](https://www.martinsmover.com/services/commercial-moving)
-- [Commercial / Office Moving in Sarasota](https://www.martinsmover.com/services/commercial-moving-sarasota)
-- [Local Moving in Bradenton](https://www.martinsmover.com/services/local-moving)
-- [Local Moving in Sarasota](https://www.martinsmover.com/services/local-moving-sarasota)
-- [Interstate Movers in Bradenton](https://www.martinsmover.com/services/interstate-movers)
-- [Interstate Movers in Sarasota](https://www.martinsmover.com/services/interstate-movers-sarasota)
-- [Professional Packing in Bradenton](https://www.martinsmover.com/services/professional-packing)
-- [Professional Packing in Sarasota](https://www.martinsmover.com/services/professional-packing-sarasota)
-- [Piano Movers in Bradenton](https://www.martinsmover.com/services/piano-movers)
-- [Piano Movers in Sarasota](https://www.martinsmover.com/services/piano-movers-sarasota)
-- [Steinway Piano Movers](https://www.martinsmover.com/services/steinway-piano-movers)
-- [Specialty & Difficult Items in Bradenton](https://www.martinsmover.com/services/specialty-items)
-- [Specialty & Difficult Items in Sarasota](https://www.martinsmover.com/services/specialty-items-sarasota)
-- [Apartment Movers in Bradenton](https://www.martinsmover.com/services/apartment-movers)
-- [Apartment Movers in Sarasota](https://www.martinsmover.com/services/apartment-movers-sarasota)
-- [Appliance Movers in Bradenton](https://www.martinsmover.com/services/appliance-movers)
-- [Appliance Movers in Sarasota](https://www.martinsmover.com/services/appliance-movers-sarasota)
-- [Boxes & Supplies in Bradenton](https://www.martinsmover.com/services/boxes-supplies)
-- [Boxes & Supplies in Sarasota](https://www.martinsmover.com/services/boxes-supplies-sarasota)
-- [Car Shipping Services in Bradenton](https://www.martinsmover.com/services/car-shipping)
-- [Car Shipping Services in Sarasota](https://www.martinsmover.com/services/car-shipping-sarasota)
-- [Climate Controlled Storage in Bradenton](https://www.martinsmover.com/services/climate-controlled-storage)
-- [Climate Controlled Storage in Sarasota](https://www.martinsmover.com/services/climate-controlled-storage-sarasota)
-- [Cross Country Movers in Bradenton](https://www.martinsmover.com/services/cross-country-movers)
-- [Cross Country Movers in Sarasota](https://www.martinsmover.com/services/cross-country-movers-sarasota)
-- [Dorm Room Movers in Bradenton](https://www.martinsmover.com/services/dorm-room-movers)
-- [Dorm Room Movers in Sarasota](https://www.martinsmover.com/services/dorm-room-movers-sarasota)
-- [Emergency Movers in Bradenton](https://www.martinsmover.com/services/emergency-movers)
-- [Emergency Movers in Sarasota](https://www.martinsmover.com/services/emergency-movers-sarasota)
-- [Full Service Movers in Bradenton](https://www.martinsmover.com/services/full-service-movers)
-- [Full Service Movers in Sarasota](https://www.martinsmover.com/services/full-service-movers-sarasota)
-- [Furniture Movers in Bradenton](https://www.martinsmover.com/services/furniture-movers)
-- [Furniture Movers in Sarasota](https://www.martinsmover.com/services/furniture-movers-sarasota)
-- [Home Staging in Bradenton](https://www.martinsmover.com/services/home-staging)
-- [Home Staging in Sarasota](https://www.martinsmover.com/services/home-staging-sarasota)
-- [Hot Tub Movers in Bradenton](https://www.martinsmover.com/services/hot-tub-movers)
-- [Hot Tub Movers in Sarasota](https://www.martinsmover.com/services/hot-tub-movers-sarasota)
-- [International Moving in Bradenton](https://www.martinsmover.com/services/international-moving)
-- [International Moving in Sarasota](https://www.martinsmover.com/services/international-moving-sarasota)
-- [Last Minute Movers in Bradenton](https://www.martinsmover.com/services/last-minute-movers)
-- [Last Minute Movers in Sarasota](https://www.martinsmover.com/services/last-minute-movers-sarasota)
-- [Long Distance Moving in Bradenton](https://www.martinsmover.com/services/long-distance-movers)
-- [Long Distance Moving in Sarasota](https://www.martinsmover.com/services/long-distance-movers-sarasota)
-- [Moving & Storage Solutions in Bradenton](https://www.martinsmover.com/services/moving-and-storage)
-- [Moving & Storage Solutions in Sarasota](https://www.martinsmover.com/services/moving-and-storage-sarasota)
-- [Movers & Packers in Bradenton](https://www.martinsmover.com/services/packers-and-movers)
-- [Movers & Packers in Sarasota](https://www.martinsmover.com/services/packers-and-movers-sarasota)
-- [Pool Table Movers in Bradenton](https://www.martinsmover.com/services/pool-table-movers)
-- [Pool Table Movers in Sarasota](https://www.martinsmover.com/services/pool-table-movers-sarasota)
-- [Senior Relocation in Bradenton](https://www.martinsmover.com/services/senior-relocation)
-- [Senior Relocation in Sarasota](https://www.martinsmover.com/services/senior-relocation-sarasota)
-- [Small Move Solutions in Bradenton](https://www.martinsmover.com/services/small-moves)
-- [Small Move Solutions in Sarasota](https://www.martinsmover.com/services/small-moves-sarasota)
-- [VIP Movers in Bradenton](https://www.martinsmover.com/services/vip-movers)
-- [VIP Movers in Sarasota](https://www.martinsmover.com/services/vip-movers-sarasota)
-- [Warehouse Storage Solutions in Bradenton](https://www.martinsmover.com/services/warehouse-storage)
-- [Warehouse Storage Solutions in Sarasota](https://www.martinsmover.com/services/warehouse-storage-sarasota)
-- [White Glove Movers in Bradenton](https://www.martinsmover.com/services/white-glove-movers)
-- [White Glove Movers in Sarasota](https://www.martinsmover.com/services/white-glove-movers-sarasota)
+Phone: (941) 809-5777. Email: martinsmoving2002@aol.com. Hours: Mon-Fri 8:30am to 5:30pm, with 24/7 emergency service. Address: 6721 2nd Avenue Cir W, Bradenton, FL 34209. Quotes are free with no obligation, and the company offers price matching. To get a quote, call or use the contact form. Most services also have a Sarasota-specific page, listed in the sitemap.
+
+## Services
+- [All services](https://www.martinsmover.com/services): Overview of every moving service offered.
+- [Residential moving](https://www.martinsmover.com/services/residential-moving): Home moves, from studio apartments to multi-bedroom houses.
+- [Commercial and office moving](https://www.martinsmover.com/services/commercial-moving): Office, retail, and commercial relocations scheduled to limit downtime.
+- [Local moving](https://www.martinsmover.com/services/local-moving): Short-distance moves within Bradenton, Sarasota, and Manatee County.
+- [Interstate movers](https://www.martinsmover.com/services/interstate-movers): State-to-state moves with written pricing and one point of contact.
+- [Long distance movers](https://www.martinsmover.com/services/long-distance-movers): Long-haul moves beyond the local area.
+- [Cross-country movers](https://www.martinsmover.com/services/cross-country-movers): Coast-to-coast relocations.
+- [International moving](https://www.martinsmover.com/services/international-moving): Moves to destinations abroad.
+- [Professional packing](https://www.martinsmover.com/services/professional-packing): Packing handled by the crew.
+- [Packers and movers](https://www.martinsmover.com/services/packers-and-movers): Packing and moving combined in one booking.
+- [Full-service movers](https://www.martinsmover.com/services/full-service-movers): Packing, loading, transport, and unpacking end to end.
+- [Boxes and supplies](https://www.martinsmover.com/services/boxes-supplies): Moving boxes and packing materials.
+- [Moving and storage](https://www.martinsmover.com/services/moving-and-storage): Moving paired with short or long-term storage.
+- [Climate-controlled storage](https://www.martinsmover.com/services/climate-controlled-storage): Temperature-controlled storage for sensitive items.
+- [Warehouse storage](https://www.martinsmover.com/services/warehouse-storage): Warehouse storage for household or commercial goods.
+- [Apartment movers](https://www.martinsmover.com/services/apartment-movers): Apartment and condo moves, including stairs and elevators.
+- [Furniture movers](https://www.martinsmover.com/services/furniture-movers): Moving single pieces or full sets of furniture.
+- [Appliance movers](https://www.martinsmover.com/services/appliance-movers): Moving large appliances such as refrigerators and washers.
+- [Piano movers](https://www.martinsmover.com/services/piano-movers): Moving grand and upright pianos.
+- [Steinway piano movers](https://www.martinsmover.com/services/steinway-piano-movers): Specialist handling for Steinway and other fine pianos.
+- [Pool table movers](https://www.martinsmover.com/services/pool-table-movers): Disassembly, transport, and setup of pool tables.
+- [Hot tub movers](https://www.martinsmover.com/services/hot-tub-movers): Moving hot tubs and spas.
+- [Specialty and difficult items](https://www.martinsmover.com/services/specialty-items): Safes, antiques, and oversized or awkward items.
+- [White glove movers](https://www.martinsmover.com/services/white-glove-movers): Premium, full-care moving service.
+- [VIP movers](https://www.martinsmover.com/services/vip-movers): Discreet, high-touch moves.
+- [Home staging](https://www.martinsmover.com/services/home-staging): Moving and placing furniture for home staging.
+- [Car shipping](https://www.martinsmover.com/services/car-shipping): Vehicle transport.
+- [Senior relocation](https://www.martinsmover.com/services/senior-relocation): Downsizing and moves for seniors.
+- [Dorm room movers](https://www.martinsmover.com/services/dorm-room-movers): Student and dorm moves.
+- [Small moves](https://www.martinsmover.com/services/small-moves): Single items and small loads.
+- [Emergency movers](https://www.martinsmover.com/services/emergency-movers): Urgent moves, including 24/7 service.
+- [Last-minute movers](https://www.martinsmover.com/services/last-minute-movers): Short-notice moves.
 
 ## Areas served
-- [Sarasota Movers](https://www.martinsmover.com/areas-served/sarasota)
-- [Bradenton Movers](https://www.martinsmover.com/areas-served/bradenton)
-- [Lakewood Ranch Movers](https://www.martinsmover.com/areas-served/lakewood-ranch)
-- [Bee Ridge Movers](https://www.martinsmover.com/areas-served/bee-ridge)
-- [Englewood Movers](https://www.martinsmover.com/areas-served/englewood)
-- [Osprey Movers](https://www.martinsmover.com/areas-served/osprey)
-- [Siesta Key Movers](https://www.martinsmover.com/areas-served/siesta-key)
-- [Longboat Key Movers](https://www.martinsmover.com/areas-served/longboat-key)
-- [Parrish Movers](https://www.martinsmover.com/areas-served/parrish)
-- [Venice Movers](https://www.martinsmover.com/areas-served/venice)
-- [Fruitville Movers](https://www.martinsmover.com/areas-served/fruitville)
-- [Sarasota Springs Movers](https://www.martinsmover.com/areas-served/sarasota-springs)
-- [Gulf Gate Estates Movers](https://www.martinsmover.com/areas-served/gulf-gate-estates)
-- [Palmer Ranch Movers](https://www.martinsmover.com/areas-served/palmer-ranch)
-- [University Park Movers](https://www.martinsmover.com/areas-served/university-park)
-- [Mallory Park Movers](https://www.martinsmover.com/areas-served/mallory-park)
-- [Lido Key Movers](https://www.martinsmover.com/areas-served/lido-key)
-- [Myakka Movers](https://www.martinsmover.com/areas-served/myakka)
-- [North Sarasota Movers](https://www.martinsmover.com/areas-served/north-sarasota)
-- [South Sarasota Movers](https://www.martinsmover.com/areas-served/south-sarasota)
-- [Nokomis Movers](https://www.martinsmover.com/areas-served/nokomis)
-- [Rosemary District Movers](https://www.martinsmover.com/areas-served/rosemary-district)
-- [St. Armands Movers](https://www.martinsmover.com/areas-served/st-armands)
-- [Port Charlotte Movers](https://www.martinsmover.com/areas-served/port-charlotte)
-- [Vamo Movers](https://www.martinsmover.com/areas-served/vamo)
-- [Panther Ridge Movers](https://www.martinsmover.com/areas-served/panther-ridge)
-- [Mill Creek Movers](https://www.martinsmover.com/areas-served/mill-creek)
-- [Bird Key Movers](https://www.martinsmover.com/areas-served/bird-key)
-- [Esplanade Movers](https://www.martinsmover.com/areas-served/esplanade)
-- [Palmetto Movers](https://www.martinsmover.com/areas-served/palmetto)
+- [All areas served](https://www.martinsmover.com/areas-served): Full list of cities and neighborhoods covered.
+- [Sarasota](https://www.martinsmover.com/areas-served/sarasota)
+- [Bradenton](https://www.martinsmover.com/areas-served/bradenton)
+- [Lakewood Ranch](https://www.martinsmover.com/areas-served/lakewood-ranch)
+- [Bee Ridge](https://www.martinsmover.com/areas-served/bee-ridge)
+- [Englewood](https://www.martinsmover.com/areas-served/englewood)
+- [Osprey](https://www.martinsmover.com/areas-served/osprey)
+- [Siesta Key](https://www.martinsmover.com/areas-served/siesta-key)
+- [Longboat Key](https://www.martinsmover.com/areas-served/longboat-key)
+- [Parrish](https://www.martinsmover.com/areas-served/parrish)
+- [Venice](https://www.martinsmover.com/areas-served/venice)
+- [Fruitville](https://www.martinsmover.com/areas-served/fruitville)
+- [Sarasota Springs](https://www.martinsmover.com/areas-served/sarasota-springs)
+- [Gulf Gate Estates](https://www.martinsmover.com/areas-served/gulf-gate-estates)
+- [Palmer Ranch](https://www.martinsmover.com/areas-served/palmer-ranch)
+- [University Park](https://www.martinsmover.com/areas-served/university-park)
+- [Mallory Park](https://www.martinsmover.com/areas-served/mallory-park)
+- [Lido Key](https://www.martinsmover.com/areas-served/lido-key)
+- [Myakka](https://www.martinsmover.com/areas-served/myakka)
+- [North Sarasota](https://www.martinsmover.com/areas-served/north-sarasota)
+- [South Sarasota](https://www.martinsmover.com/areas-served/south-sarasota)
+- [Nokomis](https://www.martinsmover.com/areas-served/nokomis)
+- [Rosemary District](https://www.martinsmover.com/areas-served/rosemary-district)
+- [St. Armands](https://www.martinsmover.com/areas-served/st-armands)
+- [Port Charlotte](https://www.martinsmover.com/areas-served/port-charlotte)
+- [Vamo](https://www.martinsmover.com/areas-served/vamo)
+- [Panther Ridge](https://www.martinsmover.com/areas-served/panther-ridge)
+- [Mill Creek](https://www.martinsmover.com/areas-served/mill-creek)
+- [Bird Key](https://www.martinsmover.com/areas-served/bird-key)
+- [Esplanade](https://www.martinsmover.com/areas-served/esplanade)
+- [Palmetto](https://www.martinsmover.com/areas-served/palmetto)
 
-## Guides
-- [Ultimate Moving Guide](https://www.martinsmover.com/guides/ultimate-moving-guide)
-- [House Moving Guide](https://www.martinsmover.com/guides/house-moving-guide)
-- [Long Distance Moving Guide](https://www.martinsmover.com/guides/long-distance-moving-guide)
-- [Business Moving Guide](https://www.martinsmover.com/guides/business-moving-guide)
-- [Senior Relocation Guide](https://www.martinsmover.com/guides/senior-relocation-guide)
-- [How-to Pack Guide](https://www.martinsmover.com/guides/how-to-pack-guide)
-- [International Moving Guide](https://www.martinsmover.com/guides/international-moving-guide)
-- [Moving Checklist & Planning Guide](https://www.martinsmover.com/guides/moving-checklist)
+## Moving guides
+- [All guides](https://www.martinsmover.com/guides): Index of the moving guides.
+- [Ultimate moving guide](https://www.martinsmover.com/guides/ultimate-moving-guide): Start-to-finish overview of planning a move.
+- [House moving guide](https://www.martinsmover.com/guides/house-moving-guide): Moving a house or larger home.
+- [Long distance moving guide](https://www.martinsmover.com/guides/long-distance-moving-guide): What to expect on state-to-state moves.
+- [Business moving guide](https://www.martinsmover.com/guides/business-moving-guide): Planning an office or commercial relocation.
+- [Senior relocation guide](https://www.martinsmover.com/guides/senior-relocation-guide): Help for downsizing and senior moves.
+- [How-to pack guide](https://www.martinsmover.com/guides/how-to-pack-guide): Packing methods by room and item type.
+- [International moving guide](https://www.martinsmover.com/guides/international-moving-guide): Considerations for moving abroad.
+- [Moving checklist and planning guide](https://www.martinsmover.com/guides/moving-checklist): Timeline and checklist for a move.
 
-## Contact
-- [Get a free quote](https://www.martinsmover.com/contact)
+## Resources and forms
+- [All resources](https://www.martinsmover.com/resources): Index of resources and forms.
+- [Packing tips](https://www.martinsmover.com/resources/packing-tips): Practical packing advice.
+- [How to prepare for a move](https://www.martinsmover.com/resources/how-to-prepare-for-a-move): Steps to take before moving day.
+- [Average moving times](https://www.martinsmover.com/resources/average-moving-times): How long different moves typically take.
+- [Moving forms](https://www.martinsmover.com/resources/moving-forms): Forms used during the moving process.
+- [Materials order form](https://www.martinsmover.com/resources/materials-order-form): Order packing materials and supplies.
+- [Printable moving checklist](https://www.martinsmover.com/resources/moving-checklist-printable): A checklist you can print.
+- [FAQs](https://www.martinsmover.com/resources/faqs): Answers to common moving questions.
+
+## Company
+- [About](https://www.martinsmover.com/about): Company background and team.
+- [What to expect](https://www.martinsmover.com/what-to-expect): How a move with Martin's Moving works, step by step.
+- [Reviews](https://www.martinsmover.com/reviews): Customer reviews and ratings.
+- [Blog](https://www.martinsmover.com/blog): Articles on moving in the Bradenton and Sarasota area.
+- [Contact and free quote](https://www.martinsmover.com/contact): Request a call back or free written estimate.
+- [Privacy policy](https://www.martinsmover.com/privacy-policy): How the site handles personal information.
+- [Accessibility](https://www.martinsmover.com/accessibility): Accessibility statement.
+
+## Optional
+- [Sitemap](https://www.martinsmover.com/sitemap.xml): Complete list of site URLs, including the Sarasota-specific service pages.
