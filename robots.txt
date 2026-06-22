@@ -1,3 +1,16 @@
+# robots.txt for https://www.martinsmover.com
+# Last updated: 2026-06-19
+
+# All crawlers, including AI crawlers (GPTBot, ClaudeBot, PerplexityBot,
+# Google-Extended), may crawl the full site. This is a marketing site with
+# no cart or login, so nothing content-facing is blocked.
+
 User-agent: *
 Allow: /
+
+# If this site runs on WordPress, uncomment the two lines below to keep
+# crawlers out of the admin area while leaving AJAX working:
+# Disallow: /wp-admin/
+# Allow: /wp-admin/admin-ajax.php
+
 Sitemap: https://www.martinsmover.com/sitemap.xml

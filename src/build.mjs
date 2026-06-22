@@ -6,6 +6,7 @@ import { serviceCities } from "./data/service-cities.mjs";
 import { areas } from "./data/areas.mjs";
 import { guides } from "./data/guides.mjs";
 import { resources, aboutPages, corePages } from "./data/content.mjs";
+import { indexNowKey, robotsTxt, llmsTxt } from "./data/static-files.mjs";
 import { servicePage, areaPage, guidePage, genericPage, indexPage, homePage } from "./templates/pages.mjs";
 
 const ROOT = new URL("../", import.meta.url).pathname;
@@ -68,33 +69,10 @@ const urls = written.filter((w) => w.index).map((w) => {
   return `${site.domain}${loc === "" ? "/" : loc}`;
 });
 await emit("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}\n</urlset>\n`, { index: false });
-await emit("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${site.domain}/sitemap.xml\n`, { index: false });
+await emit("robots.txt", robotsTxt, { index: false });
 
-// llms.txt (machine-readable summary for answer engines / AEO)
-const llms = `# Martin's Moving
-> ${site.positioning}. Family-owned moving company serving ${site.serviceRegion}, ${site.address.regionName} since ${site.foundedYear}. Licensed, bonded, and insured (Florida Mover Registration #${site.licenses.flIm}).
-
-Phone: ${site.phone}
-Email: ${site.email}
-Hours: ${site.hoursDisplay} (24/7 emergency service)
-Service area: ${site.serviceRegion}
-Awards: ${site.awards.join(", ")}
-
-## Moving services
-Each service has a Bradenton page and a Sarasota page.
-${services.map((s) => serviceCities[s.slug]
-  ? `- [${s.label} in Bradenton](${site.domain}/services/${s.slug})\n- [${s.label} in Sarasota](${site.domain}/services/${s.slug}-sarasota)`
-  : `- [${s.label}](${site.domain}/services/${s.slug})`).join("\n")}
-
-## Areas served
-${areas.map((a) => `- [${a.name} Movers](${site.domain}/areas-served/${a.slug})`).join("\n")}
-
-## Guides
-${guides.map((g) => `- [${g.label}](${site.domain}/guides/${g.slug})`).join("\n")}
-
-## Contact
-- [Get a free quote](${site.domain}/contact)
-`;
-await emit("llms.txt", llms, { index: false });
+// llms.txt (curated AEO summary) + IndexNow ownership key, both from src/data/static-files.mjs
+await emit("llms.txt", llmsTxt, { index: false });
+await emit("30f21e0e10294a64b524edfcc9a714e9.txt", indexNowKey, { index: false });
 
 console.log(`Generated ${written.length} files.`);
