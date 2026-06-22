@@ -1,10 +1,12 @@
 // Quote form submission handler.
 // Receives JSON POST from the .quote-form on the site, validates,
-// and sends a notification email via Resend to greg@bloomerang.solutions.
+// and sends a notification email via Resend to greg@bloomerang.solutions
+// and the Martin's Moving inbox (Martinsmoving2002@aol.com).
 // CommonJS to avoid any ESM/package.json type coupling. Uses native fetch
 // (Node 18+, project runs Node 24.x). No npm deps to install.
 
 const TO_EMAIL = "greg@bloomerang.solutions";
+const CLIENT_EMAIL = "Martinsmoving2002@aol.com";
 const FROM_EMAIL = "Martin's Moving Quotes <quotes@bloomerang.solutions>";
 
 function escapeHtml(s) {
@@ -89,7 +91,7 @@ module.exports = async function handler(req, res) {
 
   const payload = {
     from: FROM_EMAIL,
-    to: [TO_EMAIL],
+    to: [TO_EMAIL, CLIENT_EMAIL],
     subject,
     text,
     html,
