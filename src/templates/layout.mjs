@@ -225,6 +225,8 @@ ${robots ? `<meta name="robots" content="${esc(robots)}"/>` : ""}
 <meta property="og:type" content="website"/><meta property="og:title" content="${esc(title)}"/><meta property="og:description" content="${esc(description)}"/><meta property="og:url" content="${canonical}"/><meta property="og:image" content="${site.domain}${HERO_OG}"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="preload" as="image" href="${preloadImage}" type="image/webp" fetchpriority="high"/>
+<!-- Microsoft Clarity -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "xbk8mvpvfg");</script>
 ${HEAD_STYLES}
 ${ld}
 </head>
