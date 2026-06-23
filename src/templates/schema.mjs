@@ -10,7 +10,6 @@ export function movingCompanySchema(areaName) {
     description: `${site.positioning}. Family owned moving company serving ${site.serviceRegion} since ${site.foundedYear}.`,
     url: site.domain,
     telephone: site.phone,
-    email: site.email,
     foundingDate: site.foundedYear,
     priceRange: "$$",
     areaServed: areaName || site.serviceRegion,
