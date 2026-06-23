@@ -142,7 +142,7 @@ function footer() {
       <h4 class="font-label-bold text-label-bold uppercase tracking-widest mb-6 text-tertiary-fixed">Contact Us</h4>
       <ul class="space-y-4 font-body-md text-body-md">
         <li class="flex items-center gap-3"><span class="material-symbols-outlined text-tertiary-fixed">call</span><a class="hover:text-tertiary-fixed" href="${site.phoneHref}">${esc(site.phone)}</a></li>
-        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-tertiary-fixed">mail</span><a class="hover:text-tertiary-fixed break-all" href="mailto:${esc(site.email)}">${esc(site.email)}</a></li>
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-tertiary-fixed">mail</span><a class="hover:text-tertiary-fixed" href="/contact">Send a message</a></li>
         <li class="flex items-center gap-3"><span class="material-symbols-outlined text-tertiary-fixed">schedule</span><span>${esc(site.hoursDisplay)}</span></li>
         <li class="flex items-center gap-3"><span class="material-symbols-outlined text-action-orange">emergency</span><span class="text-action-orange font-bold">${esc(site.emergency)}</span></li>
       </ul>
