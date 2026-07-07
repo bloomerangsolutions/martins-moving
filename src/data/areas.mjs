@@ -7,11 +7,11 @@ export const areas = [
   {
     slug: "sarasota", name: "Sarasota", county: "Sarasota County", keyword: "movers in Sarasota FL",
     title: TITLE("Sarasota"),
-    metaDesc: "Trusted Sarasota movers for homes, condos, and offices. Family owned since 2004, licensed and insured. Free flat quote: call (941) 809-5777.",
+    metaDesc: "Trusted Sarasota movers for homes, condos, and offices. Family owned since 2002, licensed and insured. Free flat quote: call (941) 809-5777.",
     neighborhoods: ["Downtown Sarasota", "Gulf Gate", "Southside Village", "Arlington Park", "Laurel Park"],
     content: {
       intro: [
-        "Sarasota moves come with their own quirks. Downtown high-rises with one service elevator and a tight reservation window. Older bungalows in Laurel Park with narrow doorways. Gulf-front condos with strict HOA move-in rules. We have moved across all of it since 2004, so we plan for the building, not just the boxes.",
+        "Sarasota moves come with their own quirks. Downtown high-rises with one service elevator and a tight reservation window. Older bungalows in Laurel Park with narrow doorways. Gulf-front condos with strict HOA move-in rules. We have moved across all of it since 2002, so we plan for the building, not just the boxes.",
         "Whether you are moving into a condo off Main Street or a house in Arlington Park, you get the same Martin's crew start to finish and a written quote that holds on moving day.",
       ],
       localTitle: "Sarasota neighborhoods we move",
@@ -24,7 +24,7 @@ export const areas = [
   {
     slug: "bradenton", name: "Bradenton", county: "Manatee County", keyword: "movers in Bradenton FL",
     title: TITLE("Bradenton"),
-    metaDesc: "Bradenton's local movers since 2004. Homes, condos, and offices handled by careful, insured crews. Free quote: (941) 809-5777.",
+    metaDesc: "Bradenton's local movers since 2002. Homes, condos, and offices handled by careful, insured crews. Free quote: (941) 809-5777.",
     neighborhoods: ["Downtown Bradenton", "Village of the Arts", "West Bradenton", "Riverwalk", "Bayshore Gardens"],
     content: {
       intro: [
@@ -33,7 +33,7 @@ export const areas = [
       ],
       localTitle: "Bradenton areas we move",
       faqs: [
-        { q: "Are you actually based in the Bradenton area?", a: "Yes. Martin's Moving has served Bradenton and Manatee County since 2004. This is our backyard, not a far-off dispatch." },
+        { q: "Are you actually based in the Bradenton area?", a: "Yes. Martin's Moving has served Bradenton and Manatee County since 2002. This is our backyard, not a far-off dispatch." },
         { q: "Do you move both homes and offices in Bradenton?", a: "Yes, residential and commercial both. Call (941) 809-5777 with your move and we will size the crew." },
       ],
     },

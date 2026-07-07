@@ -160,11 +160,11 @@ export const resources = [
 export const aboutPages = [
   {
     slug: "about", label: "About Martin's Moving", title: "About Martin's Moving | Bradenton & Sarasota Movers",
-    metaDesc: "Family owned and operated since 2004, Martin's Moving has handled homes and offices across Bradenton and Sarasota with care and honest pricing.",
+    metaDesc: "Family owned and operated since 2002, Martin's Moving has handled homes and offices across Bradenton and Sarasota with care and honest pricing.",
     keyword: "about Martin's Moving",
     content: {
       intro: [
-        "Martin's Moving has been moving families and businesses across Bradenton, Sarasota, and Manatee County since 2004. We are family owned and operated, licensed in Florida, and built on a simple idea: treat every home like the people living in it will remember how we left it.",
+        "Martin's Moving has been moving families and businesses across Bradenton, Sarasota, and Manatee County since 2002. We are family owned and operated, licensed in Florida, and built on a simple idea: treat every home like the people living in it will remember how we left it.",
         "Over the years that approach earned us local recognition, including Bradenton's Best in 2021 and 2022 and Best of SRQ in 2025, and a lot of repeat customers and referrals, which is the recognition that actually pays the bills.",
       ],
       sections: [
@@ -174,7 +174,7 @@ export const aboutPages = [
         { h: "Licensed and insured", body: "Martin's Moving is a licensed Florida mover, registration IM595, and fully insured. We offer 24/7 emergency service for the moves that cannot wait." },
       ],
       faqs: [
-        { q: "How long has Martin's Moving been in business?", a: "Since 2004, family owned and operated across Bradenton and Sarasota." },
+        { q: "How long has Martin's Moving been in business?", a: "Since 2002, family owned and operated across Bradenton and Sarasota." },
         { q: "What areas do you serve?", a: "Bradenton, Sarasota, Manatee County, and the surrounding communities. See our areas served." },
       ],
     },
@@ -226,7 +226,7 @@ export const corePages = [
   { slug: "", label: "Home" },
   {
     slug: "reviews", label: "Reviews", title: "Customer Reviews | Martin's Moving Bradenton & Sarasota",
-    metaDesc: "Read what Bradenton and Sarasota customers say about moving with Martin's Moving, family owned and locally recognized since 2004.", keyword: "Martin's Moving reviews", footer: true,
+    metaDesc: "Read what Bradenton and Sarasota customers say about moving with Martin's Moving, family owned and locally recognized since 2002.", keyword: "Martin's Moving reviews", footer: true,
     content: {
       intro: [
         "The recognition we are proudest of is not on a plaque, it is in the customers who call us back and send their neighbors. Here is what people across Bradenton and Sarasota say about moving with us.",

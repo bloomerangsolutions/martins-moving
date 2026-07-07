@@ -11,7 +11,7 @@ export const services = [
     summary: "Full-service home moves across Bradenton, Sarasota, and Manatee County, from studio apartments to multi-bedroom houses.",
     content: {
       intro: [
-        "Moving a home is not just lifting boxes. It is your kids' beds, the dresser your grandmother left you, and the coffee maker you need working the first morning in the new place. Martin's Moving has handled home moves across Bradenton and Sarasota since 2004, and we treat every house like the people living in it will remember how we left it.",
+        "Moving a home is not just lifting boxes. It is your kids' beds, the dresser your grandmother left you, and the coffee maker you need working the first morning in the new place. Martin's Moving has handled home moves across Bradenton and Sarasota since 2002, and we treat every house like the people living in it will remember how we left it.",
         "We move studios, condos, single-family homes, and everything in between. You get the same crew from the truck to the last box, a clear walkthrough before we start, and a quote that does not change on moving day unless you add to the job.",
       ],
       bulletsTitle: "What a residential move with us includes",
@@ -76,7 +76,7 @@ export const services = [
     summary: "Short-distance moves within the Bradenton, Sarasota, and Manatee County region.",
     content: {
       intro: [
-        "A local move should be the easy kind, and it is when the crew knows the area. We have run these streets since 2004, so we know the condo towers with one service elevator, the gated communities with check-in rules, and the neighborhoods where parking a truck takes a plan.",
+        "A local move should be the easy kind, and it is when the crew knows the area. We have run these streets since 2002, so we know the condo towers with one service elevator, the gated communities with check-in rules, and the neighborhoods where parking a truck takes a plan.",
         "You get a written flat quote for the job, the same crew start to finish, and careful handling whether you are going three blocks or across the county.",
       ],
       bulletsTitle: "What a local move includes",

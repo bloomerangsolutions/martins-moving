@@ -5,7 +5,7 @@ export const serviceCities = {
   "residential-moving": {
     bradenton: {
       intro: [
-        "When you move a house in Bradenton, the job is rarely just the boxes. It is the older block homes off Manatee Avenue, the new builds going up in Parrish and Lakewood Ranch, the third-floor condos near Riverwalk with one small elevator. Martin's Moving has packed and carried homes across Bradenton and Manatee County since 2004, and we plan the move around the house you actually have.",
+        "When you move a house in Bradenton, the job is rarely just the boxes. It is the older block homes off Manatee Avenue, the new builds going up in Parrish and Lakewood Ranch, the third-floor condos near Riverwalk with one small elevator. Martin's Moving has packed and carried homes across Bradenton and Manatee County since 2002, and we plan the move around the house you actually have.",
         "We move studios, condos, and single-family homes from Palmetto down to Lakewood Ranch. You get the same crew from the first wrapped dresser to the last box in the new place, a walkthrough before we lift anything, and a written quote that holds on moving day unless you add to the job.",
       ],
       localTitle: "Home moves across Bradenton and Manatee County",
@@ -14,7 +14,7 @@ export const serviceCities = {
     },
     sarasota: {
       intro: [
-        "Moving a home in Sarasota often means an island, a high-rise, or an HOA with rules about elevators and loading times. Martin's Moving has handled Sarasota home moves since 2004, from Siesta Key condos to single-family houses in Palmer Ranch, and we build the day around the access you actually have.",
+        "Moving a home in Sarasota often means an island, a high-rise, or an HOA with rules about elevators and loading times. Martin's Moving has handled Sarasota home moves since 2002, from Siesta Key condos to single-family houses in Palmer Ranch, and we build the day around the access you actually have.",
         "We move studios, downtown condos, barrier-island units, and family homes from Gulf Gate to Bee Ridge. The same crew handles your move start to finish, you get a walkthrough before we start, and the written quote does not change on moving day unless you add to the job.",
       ],
       localTitle: "Home moves across Sarasota and Sarasota County",
@@ -26,7 +26,7 @@ export const serviceCities = {
   "commercial-moving": {
     bradenton: {
       intro: [
-        "A business move in Bradenton lives or dies on downtime. Every hour your office or shop is closed costs money, so Martin's Moving plans commercial moves around your hours, not ours. We have moved offices, medical suites, and retail across Bradenton and Manatee County since 2004.",
+        "A business move in Bradenton lives or dies on downtime. Every hour your office or shop is closed costs money, so Martin's Moving plans commercial moves around your hours, not ours. We have moved offices, medical suites, and retail across Bradenton and Manatee County since 2002.",
         "We handle desks, files, server rooms, and the heavy shared equipment, and we can run the move after hours or over a weekend so you open on schedule. You get one crew, one point of contact, and a written quote before we start.",
       ],
       localTitle: "Office and commercial moves across Bradenton and Manatee County",
@@ -35,7 +35,7 @@ export const serviceCities = {
     },
     sarasota: {
       intro: [
-        "Sarasota businesses move on tight schedules and tighter buildings. Downtown towers, the Rosemary District, and the medical district near Sarasota Memorial all come with freight elevators, dock windows, and security sign-in. Martin's Moving has handled Sarasota commercial moves since 2004 and plans the job around your hours and your building.",
+        "Sarasota businesses move on tight schedules and tighter buildings. Downtown towers, the Rosemary District, and the medical district near Sarasota Memorial all come with freight elevators, dock windows, and security sign-in. Martin's Moving has handled Sarasota commercial moves since 2002 and plans the job around your hours and your building.",
         "We move offices, medical suites, retail, and the shared equipment that has to come out last and go in first. One crew, one contact, a written quote up front, and the option to run the whole thing after hours so you open on time.",
       ],
       localTitle: "Office and commercial moves across Sarasota and Sarasota County",
@@ -47,7 +47,7 @@ export const serviceCities = {
   "local-moving": {
     bradenton: {
       intro: [
-        "Most Bradenton moves are short, across town or one neighborhood over, and a short move is where crews get sloppy because it feels easy. Martin's Moving treats a five-mile move with the same wrapping and care as a long haul. We have done local moves across Bradenton and Manatee County since 2004.",
+        "Most Bradenton moves are short, across town or one neighborhood over, and a short move is where crews get sloppy because it feels easy. Martin's Moving treats a five-mile move with the same wrapping and care as a long haul. We have done local moves across Bradenton and Manatee County since 2002.",
         "Apartment turnover, a downsizing retiree, a growing family moving up the street, we size the crew to the job so you are not paying for idle hands or waiting on a truck that is too small. Written quote first, same crew through to the last box.",
       ],
       localTitle: "Local moves across Bradenton and Manatee County",
@@ -56,7 +56,7 @@ export const serviceCities = {
     },
     sarasota: {
       intro: [
-        "A local move in Sarasota is rarely a straight shot. It is island to mainland, a condo downsize, or a hop from Gulf Gate to Palmer Ranch, and each one has its own parking and elevator puzzle. Martin's Moving has run local Sarasota moves since 2004 and plans the short ones as carefully as the long ones.",
+        "A local move in Sarasota is rarely a straight shot. It is island to mainland, a condo downsize, or a hop from Gulf Gate to Palmer Ranch, and each one has its own parking and elevator puzzle. Martin's Moving has run local Sarasota moves since 2002 and plans the short ones as carefully as the long ones.",
         "Apartment turnover, a retiree moving into a smaller place, a family changing neighborhoods, we match the crew and truck to the job. You get a written quote before we start and the same crew from the first piece to the last.",
       ],
       localTitle: "Local moves across Sarasota and Sarasota County",
@@ -68,7 +68,7 @@ export const serviceCities = {
   "interstate-movers": {
     bradenton: {
       intro: [
-        "An interstate move out of Bradenton is mostly about what happens after the truck leaves your street. Martin's Moving runs state-to-state moves with one point of contact and a written price, so you are not handed off to a broker or a stranger in another state. We have moved Manatee County families and retirees out of state since 2004.",
+        "An interstate move out of Bradenton is mostly about what happens after the truck leaves your street. Martin's Moving runs state-to-state moves with one point of contact and a written price, so you are not handed off to a broker or a stranger in another state. We have moved Manatee County families and retirees out of state since 2002.",
         "We inventory, wrap, and load in Bradenton, then carry your household straight through to the destination. You get a clear delivery window, transparent pricing, and the same company answering the phone the whole way.",
       ],
       localTitle: "Interstate moves starting in Bradenton and Manatee County",
@@ -77,7 +77,7 @@ export const serviceCities = {
     },
     sarasota: {
       intro: [
-        "Moving from Sarasota to another state should not mean losing track of your belongings the second the truck hits the highway. Martin's Moving handles interstate moves out of Sarasota with one point of contact and a price in writing. We have moved Sarasota County households out of state since 2004.",
+        "Moving from Sarasota to another state should not mean losing track of your belongings the second the truck hits the highway. Martin's Moving handles interstate moves out of Sarasota with one point of contact and a price in writing. We have moved Sarasota County households out of state since 2002.",
         "We inventory and wrap at your Sarasota home, including island condos and downtown high-rises, then carry the load through to the destination with a clear delivery window and no broker hand-off.",
       ],
       localTitle: "Interstate moves starting in Sarasota and Sarasota County",
@@ -89,7 +89,7 @@ export const serviceCities = {
   "professional-packing": {
     bradenton: {
       intro: [
-        "Packing is where a move gets won or lost, and it is the part most people underestimate. Martin's Moving packs Bradenton homes with proper materials and labeled boxes so nothing arrives broken and nothing goes missing. We have packed Manatee County homes since 2004.",
+        "Packing is where a move gets won or lost, and it is the part most people underestimate. Martin's Moving packs Bradenton homes with proper materials and labeled boxes so nothing arrives broken and nothing goes missing. We have packed Manatee County homes since 2002.",
         "Full pack or just the kitchen and the fragile rooms, your call. We bring the right boxes, paper, and wrap, label by room, and can pack the day before or the morning of the move.",
       ],
       localTitle: "Packing services across Bradenton and Manatee County",
@@ -98,7 +98,7 @@ export const serviceCities = {
     },
     sarasota: {
       intro: [
-        "A packed box is only as good as the materials and the labeling, and Sarasota's island and condo moves leave no room for a box that fails on the stairs. Martin's Moving packs Sarasota homes with proper materials, labeled by room, since 2004.",
+        "A packed box is only as good as the materials and the labeling, and Sarasota's island and condo moves leave no room for a box that fails on the stairs. Martin's Moving packs Sarasota homes with proper materials, labeled by room, since 2002.",
         "We do full or partial packing, bring the right boxes and wrap, and can pack ahead of moving day so the load goes fast. Fragile coastal items like glass, art, and electronics get the materials they need.",
       ],
       localTitle: "Packing services across Sarasota and Sarasota County",
@@ -110,7 +110,7 @@ export const serviceCities = {
   "piano-movers": {
     bradenton: {
       intro: [
-        "A piano is not furniture, and it does not move like furniture. Martin's Moving has a trained crew and the right equipment for uprights and grands across Bradenton, so your instrument arrives in playable shape, not in pieces. We have moved Manatee County pianos since 2004.",
+        "A piano is not furniture, and it does not move like furniture. Martin's Moving has a trained crew and the right equipment for uprights and grands across Bradenton, so your instrument arrives in playable shape, not in pieces. We have moved Manatee County pianos since 2002.",
         "We assess the piano, the doorways, and the stairs first, then bring the dollies, straps, and padding the job needs. No prying it down a staircase and hoping.",
       ],
       localTitle: "Piano moving across Bradenton and Manatee County",
@@ -119,7 +119,7 @@ export const serviceCities = {
     },
     sarasota: {
       intro: [
-        "Moving a piano in Sarasota often means an elevator, an island, or a flight of stairs in a downtown condo, and any of those can wreck an instrument moved the wrong way. Martin's Moving brings a trained crew and proper equipment for uprights and grands. We have moved Sarasota pianos since 2004.",
+        "Moving a piano in Sarasota often means an elevator, an island, or a flight of stairs in a downtown condo, and any of those can wreck an instrument moved the wrong way. Martin's Moving brings a trained crew and proper equipment for uprights and grands. We have moved Sarasota pianos since 2002.",
         "We assess the instrument and the access first, reserve the elevator if it is a high-rise, then bring the dollies, straps, and padding the move needs.",
       ],
       localTitle: "Piano moving across Sarasota and Sarasota County",
@@ -131,7 +131,7 @@ export const serviceCities = {
   "specialty-items": {
     bradenton: {
       intro: [
-        "Some things should never go on a truck with the boxes: a gun safe, a marble table, an inherited armoire, a piece of art you cannot replace. Martin's Moving handles specialty and difficult items in Bradenton with the right crew and equipment. We have done it across Manatee County since 2004.",
+        "Some things should never go on a truck with the boxes: a gun safe, a marble table, an inherited armoire, a piece of art you cannot replace. Martin's Moving handles specialty and difficult items in Bradenton with the right crew and equipment. We have done it across Manatee County since 2002.",
         "We look at the item, the weight, and the path out of the house first, then bring the gear and the people for it. Safes, antiques, art, and the oversized awkward pieces other crews would rather not touch.",
       ],
       localTitle: "Specialty and difficult-item moves across Bradenton and Manatee County",
@@ -140,7 +140,7 @@ export const serviceCities = {
     },
     sarasota: {
       intro: [
-        "A safe, a sculpture, or a marble-top antique does not forgive a crew that improvises, and Sarasota's elevators and island access raise the stakes. Martin's Moving handles specialty and difficult items across Sarasota with the right crew and equipment, since 2004.",
+        "A safe, a sculpture, or a marble-top antique does not forgive a crew that improvises, and Sarasota's elevators and island access raise the stakes. Martin's Moving handles specialty and difficult items across Sarasota with the right crew and equipment, since 2002.",
         "We assess the item and the route, including any elevator or causeway, then bring the people and gear for it. Safes, art, antiques, and oversized awkward pieces handled with a plan, not muscle and luck.",
       ],
       localTitle: "Specialty and difficult-item moves across Sarasota and Sarasota County",
