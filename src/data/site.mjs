@@ -6,7 +6,7 @@ export const site = {
   descriptor: "Bradenton & Sarasota Moving Co.",
   positioning: "Precision Relocation Experts",
   tagline: "Bradenton and Sarasota's trusted moving company",
-  foundedYear: "2004",
+  foundedYear: "2002",
   yearsInBusiness: "20+",
   phone: "(941) 809-5777",
   phoneHref: "tel:9418095777",
