@@ -52,7 +52,7 @@ export async function POST(request: Request) {
   const payload: Record<string, unknown> = {
     from: FROM_EMAIL,
     to: [TO_EMAIL, CLIENT_EMAIL],
-    subject: `New quote request — ${name}${page ? ` (${page})` : ""}`.replace("—", "-"),
+    subject: `New quote request - ${name}${page ? ` (${page})` : ""}`,
     text:
       "New quote request from the Martin's Moving website.\n\n" +
       lines.map(([k, v]) => `${k}: ${v}`).join("\n") +
