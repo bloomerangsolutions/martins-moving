@@ -59,6 +59,39 @@ module.exports = async function handler(req, res) {
   const details = readField(body, "details");
   const page = readField(body, "page");
 
+  // Forward to the Bloometrix lead inbox. Best-effort and env-gated: unset
+  // vars mean nothing changes, and a portal outage never blocks the visitor
+  // or the email below.
+  const leadsUrl = process.env.BLOOMETRIX_LEADS_URL;
+  const leadsKey = process.env.BLOOMETRIX_API_KEY;
+  if (leadsUrl && leadsKey) {
+    try {
+      const forwarded = await fetch(leadsUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-api-key": leadsKey },
+        body: JSON.stringify({
+          form_name: "quote",
+          name,
+          phone,
+          email: email || undefined,
+          message: details || undefined,
+          fields: {
+            move_date: moveDate || undefined,
+            move_from: moveFrom || undefined,
+            move_to: moveTo || undefined,
+          },
+          source_page: page || (req.headers && req.headers.referer) || undefined,
+        }),
+        signal: AbortSignal.timeout(5000),
+      });
+      if (!forwarded.ok) {
+        console.error("quote: portal forward failed", forwarded.status);
+      }
+    } catch (e) {
+      console.error("quote: portal forward errored", e && e.message ? e.message : e);
+    }
+  }
+
   const subject = `New quote request — ${name}${page ? ` (${page})` : ""}`;
 
   const lines = [
