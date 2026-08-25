@@ -6,16 +6,43 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/residential", "destination": "/services/residential-moving", "permanent": true },
-    { "source": "/commercial", "destination": "/services/commercial-moving", "permanent": true }
+    {
+      "source": "/residential",
+      "destination": "/services/residential-moving",
+      "permanent": true
+    },
+    {
+      "source": "/commercial",
+      "destination": "/services/commercial-moving",
+      "permanent": true
+    },
+    {
+      "source": "/admin",
+      "destination": "https://admin.martinsmover.com",
+      "permanent": false
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "https://admin.martinsmover.com",
+      "permanent": false
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     }
   ]
