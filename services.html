@@ -306,6 +306,11 @@ details[open] .dd-chev{transform:rotate(180deg);}
 
 <script>
 (function(){
+  function track(n,p){if(typeof gtag==='function')gtag('event',n,p||{});}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="tel:"]');
+    if(a)track('phone_click',{link_url:a.getAttribute('href'),link_text:(a.textContent||'').trim().slice(0,100)});
+  });
   var btn=document.getElementById('menu-btn'),menu=document.getElementById('mobile-menu');
   if(btn&&menu)btn.addEventListener('click',function(){menu.classList.toggle('hidden');});
   function closeAllDropdowns(except){
@@ -340,7 +345,7 @@ details[open] .dd-chev{transform:rotate(180deg);}
       data.page=f.dataset.page||'';
       fetch('/api/quote',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
         .then(function(r){return r.json().then(function(j){return {status:r.status,body:j};});})
-        .then(function(res){if(res.status>=200&&res.status<300&&res.body&&res.body.ok){f.reset();st.textContent='Thanks. We will call you back shortly.';st.style.color='#00682f';}else{st.textContent='Something went wrong. Please call (941) 809-5777.';st.style.color='#ba1a1a';}})
+        .then(function(res){if(res.status>=200&&res.status<300&&res.body&&res.body.ok){f.reset();st.textContent='Thanks. We will call you back shortly.';st.style.color='#00682f';track('generate_lead',{form_location:data.page||location.pathname});}else{st.textContent='Something went wrong. Please call (941) 809-5777.';st.style.color='#ba1a1a';}})
         .catch(function(){st.textContent='Network error. Please call (941) 809-5777.';st.style.color='#ba1a1a';});
     });
   });
