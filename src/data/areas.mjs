@@ -232,27 +232,6 @@ export const areas = [
     },
   },
   {
-    slug: "punta-gorda", name: "Punta Gorda", county: "Charlotte County", keyword: "movers Punta Gorda FL",
-    title: "Punta Gorda FL Movers | Local Moving | Martin's Moving",
-    metaDesc: "Movers in Punta Gorda, FL for canal homes in Punta Gorda Isles, condos, and downtown. Family owned since 2002, fully insured. Call (941) 809-5777 for a quote.",
-    nearby: ["port-charlotte", "north-port", "englewood"],
-    neighborhoods: ["Punta Gorda Isles", "Burnt Store Isles", "Historic downtown Punta Gorda", "Deep Creek", "Communities along Burnt Store Road"],
-    content: {
-      intro: [
-        "Martin's Moving serves Punta Gorda as part of our Charlotte County coverage. Punta Gorda is the county seat, just across the Peace River from Port Charlotte, where we already move homes, and the same crew and written quote apply on either side of the bridge.",
-        "A lot of Punta Gorda living happens on the water. Punta Gorda Isles and Burnt Store Isles are built around canals, and many homes back onto a seawall with a dock and a boat lift. Those lots can have narrow side yards and a long carry from the street to the back rooms, so we look at the path at the estimate and size the crew to it.",
-        "Plenty of Punta Gorda owners split the year between here and a home up north. Whether you are setting up a winter place or settling in for good, tell us which rooms are moving and which are staying. The written quote covers only that, so you are not paying to move what stays behind.",
-      ],
-      localTitle: "Which parts of Punta Gorda do we cover?",
-      localNote: "Punta Gorda sits on the south bank of the Peace River where it meets Charlotte Harbor, reached from Port Charlotte over the US 41 bridges. Deed-restricted canal neighborhoods can have rules on trucks and parking, so check with your association before moving day.",
-      faqs: [
-        { q: "Do you move canal-front homes in Punta Gorda Isles?", a: "Yes. Tell us about the driveway, the side yard, and any gate at the estimate, and we bring a crew sized for the carry." },
-        { q: "Can you move us between Punta Gorda and Sarasota or Bradenton?", a: "Yes. Punta Gorda is in our extended service area, the same as Port Charlotte, so a move to or from Sarasota or Bradenton is one job with one crew." },
-        { q: "Can your crew pack for a Punta Gorda move?", a: "Yes. We can pack the whole house or only the fragile rooms, like the kitchen and the china cabinet. Ask about packing when you call (941) 809-5777." },
-      ],
-    },
-  },
-  {
     slug: "fruitville", name: "Fruitville", county: "Sarasota County", keyword: "movers Fruitville",
     title: TITLE("Fruitville"),
     metaDesc: "Fruitville movers for homes along the Fruitville Road corridor in Sarasota. Careful, insured crews and honest quotes. Call (941) 809-5777.",
@@ -463,7 +442,7 @@ export const areas = [
   {
     slug: "port-charlotte", name: "Port Charlotte", county: "Charlotte County", keyword: "movers Port Charlotte",
     title: TITLE("Port Charlotte"),
-    nearby: ["punta-gorda", "north-port", "englewood"],
+    nearby: ["north-port", "englewood", "venice"],
     metaDesc: "Port Charlotte movers for canal-front homes and retirement communities south of the area. Careful crews, flat quotes. Call (941) 809-5777.",
     content: {
       intro: [

@@ -421,7 +421,7 @@ export function indexPage({ kind }) {
       seoTitle: "Areas We Serve in Bradenton & Sarasota | Martin's Moving",
       intro: [`We move homes and businesses throughout ${R} and the surrounding communities. Find your town for local details, or call ${site.phone} to confirm your move.`],
       faqs: [
-        { q: "What areas does Martin's Moving serve?", a: `Bradenton, Sarasota, and the surrounding Manatee and Sarasota County communities, including the barrier islands, plus Port Charlotte and Punta Gorda to the south and Sun City Center to the north. Find your town on this page.` },
+        { q: "What areas does Martin's Moving serve?", a: `Bradenton, Sarasota, and the surrounding Manatee and Sarasota County communities, including the barrier islands, plus Port Charlotte to the south and Sun City Center to the north. Find your town on this page.` },
         { q: "Is there a surcharge for island or condo moves?", a: `No surcharge for the location. We size the crew to the access and coordinate elevators and loading windows. Call ${site.phone}.` },
         { q: "Are you licensed and insured?", a: `Yes. Florida Mover Registration #${site.licenses.flIm}, fully insured, family owned since ${Y}.` },
       ],
