@@ -1,5 +1,6 @@
 // Areas served. URL pattern: /areas-served/<slug>. All within Martin's service region
 // (Bradenton, Sarasota, Manatee County and nearby). Each carries full local content.
+// Optional `nearby` lists the closest sibling slugs; areaPage links those first.
 
 const TITLE = (name) => `${name} Movers | Martin's Moving`;
 
@@ -137,6 +138,7 @@ export const areas = [
   {
     slug: "parrish", name: "Parrish", county: "Manatee County", keyword: "movers Parrish FL",
     title: TITLE("Parrish"),
+    nearby: ["ellenton", "sun-city-center", "palmetto"],
     metaDesc: "Parrish movers for the fast-growing master-planned communities of north Manatee County. New-build move-ins handled with care. Call (941) 809-5777.",
     content: {
       intro: [
@@ -147,6 +149,48 @@ export const areas = [
       faqs: [
         { q: "Do you move into new-construction homes in Parrish?", a: "Yes, regularly. We protect floors and doorways in new builds and plan community access ahead." },
         { q: "Is Parrish within your service area?", a: "Yes, Parrish is in our Manatee County service area. Call (941) 809-5777 to confirm your move." },
+      ],
+    },
+  },
+  {
+    slug: "ellenton", name: "Ellenton", county: "Manatee County", keyword: "movers Ellenton FL",
+    title: "Ellenton FL Movers | Local Moving Company | Martin's Moving",
+    metaDesc: "Movers in Ellenton, FL from a Bradenton crew right next door. Homes, condos, and 55-plus communities off US 301. Family owned since 2002. Call (941) 809-5777.",
+    nearby: ["palmetto", "parrish", "bradenton"],
+    neighborhoods: ["Neighborhoods along US 301", "Homes near the Manatee River", "Communities near the Ellenton outlets", "Manufactured-home and 55-plus communities"],
+    content: {
+      intro: [
+        "Martin's Moving serves Ellenton from our Bradenton home base, a short drive across the Manatee River. Ellenton is the unincorporated community between Palmetto and Parrish, off US 301 and I-75, and it sits inside the Manatee County area we have moved since 2002.",
+        "Ellenton homes run from older houses near the river to manufactured-home and 55-plus communities to newer subdivisions on the road toward Parrish. Each one moves a little differently. A park community may want the truck in and out within set hours, while a newer subdivision can have a gate code and an HOA form to file first. We ask about both at the estimate.",
+        "Being this close to Bradenton keeps travel time low, which helps on a small move. If you only need a few rooms moved, or a couple of heavy pieces, we send a crew sized to that job.",
+      ],
+      localTitle: "Where in Ellenton do we move?",
+      localNote: "Ellenton sits on the north bank of the Manatee River between Palmetto and Parrish, near the Ellenton outlet mall and the Gamble Plantation historic site.",
+      faqs: [
+        { q: "Do you move in Ellenton's 55-plus and manufactured-home communities?", a: "Yes. Check your community's rules on move times and truck parking, then share them at the estimate so we plan the day around them." },
+        { q: "Is Ellenton close enough for a small move?", a: "Yes. Ellenton is right next to Bradenton, so short travel keeps small moves practical. Call (941) 809-5777 with what you are moving." },
+        { q: "Can you move me from Ellenton to Parrish or Lakewood Ranch?", a: "Yes. Both are in our Manatee County service area, and you get a written quote before we start." },
+      ],
+    },
+  },
+  {
+    slug: "sun-city-center", name: "Sun City Center", county: "Hillsborough County", keyword: "movers Sun City Center FL",
+    title: "Sun City Center FL Movers | Home Moving | Martin's Moving",
+    metaDesc: "Movers in Sun City Center, FL for homes, villas, and condos in the 55-plus community. Packing help and careful, insured crews since 2002. Call (941) 809-5777.",
+    nearby: ["parrish", "ellenton", "palmetto"],
+    neighborhoods: ["Kings Point", "Single-family homes", "Villas and condos", "Communities along SR 674"],
+    content: {
+      intro: [
+        "Martin's Moving handles moves in Sun City Center, the 55-plus community in south Hillsborough County off I-75 and SR 674. It sits just north of Parrish and the Manatee County line, a straight run up I-75 from our Bradenton base.",
+        "Many people come to Sun City Center from a larger house, so the hard part of the move is deciding what comes along. We can pack the rooms you choose, move only what fits the new floor plan, and set each piece where you want it in the new home.",
+        "You set the pace. The crew explains each step before it starts, labels boxes by room, and takes extra time with the pieces that carry family history.",
+      ],
+      localTitle: "Which parts of Sun City Center do we move?",
+      localNote: "Sun City Center is an age-restricted community in Hillsborough County with its own association rules. Golf carts share many of its streets, so we plan truck parking and timing with that in mind.",
+      faqs: [
+        { q: "Do you serve Sun City Center even though it is in Hillsborough County?", a: "Yes. It is a short trip north on I-75 from Bradenton. Call (941) 809-5777 with both addresses to confirm your date." },
+        { q: "Can you help me downsize into a villa or condo?", a: "Yes. Tell us the size of the new place at the estimate. We can pack and move only the pieces you are keeping and set them where you want them." },
+        { q: "Do I need to tell my association about the move?", a: "Check with your community association for any move-in rules or forms. Share them with us at the estimate and we plan the truck and timing to fit." },
       ],
     },
   },
@@ -163,6 +207,27 @@ export const areas = [
       faqs: [
         { q: "Do you help with downsizing and senior moves in Venice?", a: "Yes, often. We work at a patient pace; see our senior relocation service and guide." },
         { q: "Do you move in 55-plus communities?", a: "Yes. Tell us the community and any move-in window at the estimate." },
+      ],
+    },
+  },
+  {
+    slug: "north-port", name: "North Port", county: "Sarasota County", keyword: "moving companies North Port FL",
+    title: "North Port FL Movers | Moving Company | Martin's Moving",
+    metaDesc: "Looking for moving companies in North Port, FL? Martin's Moving moves homes from Price Boulevard to Wellen Park. Family owned since 2002. Call (941) 809-5777.",
+    nearby: ["venice", "port-charlotte", "englewood"],
+    neighborhoods: ["Wellen Park", "Warm Mineral Springs", "Heron Creek", "Bobcat Trail", "Neighborhoods off Price Boulevard"],
+    content: {
+      intro: [
+        "Martin's Moving is a licensed, family-owned moving company that serves North Port, from the older streets off Price Boulevard to the new homes in Wellen Park. We have moved homes across Sarasota County since 2002, and North Port is part of that coverage.",
+        "North Port covers a lot of ground. The city spreads across south Sarasota County on both sides of I-75, so a move from one end of town to the other can take longer than people expect. Much of it is single-family homes on wide lots, and a good share were built in the last few years. New floors and fresh paint are easy to scuff, so the crew lays runners and pads the door frames before the first piece comes out.",
+        "Many North Port moves start or finish somewhere else in the region. Families come down from Sarasota or Bradenton for a bigger house, and others move between North Port, Venice, and Port Charlotte. We put the whole trip in a written quote before moving day, so the drive time is already in the price you see.",
+      ],
+      localTitle: "Where in North Port do we move?",
+      localNote: "North Port sits between Venice and Port Charlotte along US 41 and I-75. Wellen Park and the other new communities on the west side often have HOA move-in rules, so name your community at the estimate and we plan around them.",
+      faqs: [
+        { q: "How far ahead should I book a North Port move?", a: "In the winter season, book two to three weeks out. The rest of the year, about a week is usually enough. Call (941) 809-5777 to check your date." },
+        { q: "Do you move into new-construction homes in Wellen Park?", a: "Yes. We protect floors and doorways at both ends and work within the community's move-in rules. Give us your closing date and we can plan the move around it." },
+        { q: "Can you move us from Sarasota or Bradenton to North Port?", a: "Yes. We handle moves between North Port and anywhere in Sarasota and Manatee County, with a written quote before moving day." },
       ],
     },
   },
@@ -377,6 +442,7 @@ export const areas = [
   {
     slug: "port-charlotte", name: "Port Charlotte", county: "Charlotte County", keyword: "movers Port Charlotte",
     title: TITLE("Port Charlotte"),
+    nearby: ["north-port", "englewood", "venice"],
     metaDesc: "Port Charlotte movers for canal-front homes and retirement communities south of the area. Careful crews, flat quotes. Call (941) 809-5777.",
     content: {
       intro: [

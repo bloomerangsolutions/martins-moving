@@ -1,5 +1,6 @@
 // Per-service, per-city content for the city-split service pages.
 // Each entry needs BOTH bradenton and sarasota so the cross-city link is always valid.
+// Optional per-city title, h1, and metaDesc override the generated page title, hero H1, and meta description.
 // Authored in small batches so every city page that ships has real, distinct content.
 export const serviceCities = {
   "residential-moving": {
@@ -34,6 +35,9 @@ export const serviceCities = {
       faq: { q: "Can you move our Bradenton office after hours?", a: "Yes. Most office and retail moves we do in Bradenton happen evenings or weekends so you do not lose a business day. Tell us your access and dock hours and we will build the schedule around them. Call (941) 809-5777." },
     },
     sarasota: {
+      title: "Office Movers Sarasota | Commercial Moving | Martin's Moving",
+      h1: "Office and commercial movers in Sarasota",
+      metaDesc: "Office movers in Sarasota for office suites, medical practices, and retail. After-hours and weekend moves keep downtime low. Call (941) 809-5777 for a quote.",
       intro: [
         "Sarasota businesses move on tight schedules and tighter buildings. Downtown towers, the Rosemary District, and the medical district near Sarasota Memorial all come with freight elevators, dock windows, and security sign-in. Martin's Moving has handled Sarasota commercial moves since 2002 and plans the job around your hours and your building.",
         "We move offices, medical suites, retail, and the shared equipment that has to come out last and go in first. One crew, one contact, a written quote up front, and the option to run the whole thing after hours so you open on time.",

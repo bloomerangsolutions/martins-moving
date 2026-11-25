@@ -118,10 +118,13 @@ function relatedServicesCity(slug, cityKey, n = 10) {
     return { label: s.label, href: `/services/${s.slug}${hasCity ? cities[cityKey].suffix : ""}` };
   });
 }
+// An area can list its nearest neighbors in `nearby` (slugs); those lead, then same-county, then the rest.
 function nearbyAreas(area, n = 4) {
-  const same = areas.filter((a) => a.county === area.county && a.slug !== area.slug);
-  const other = areas.filter((a) => a.county !== area.county && a.slug !== area.slug);
-  return [...same, ...other].slice(0, n).map(areaCard);
+  const picked = (area.nearby || []).map((s) => areas.find((a) => a.slug === s)).filter(Boolean);
+  const rest = (a) => a.slug !== area.slug && !picked.includes(a);
+  const same = areas.filter((a) => a.county === area.county && rest(a));
+  const other = areas.filter((a) => a.county !== area.county && rest(a));
+  return [...picked, ...same, ...other].slice(0, n).map(areaCard);
 }
 
 // ---------- GDS layout components (two-col + sticky rail, stat bars, reciprocal linking) ----------
@@ -236,13 +239,13 @@ ${faqBlock(faqs)}`;
   const rail = `${quoteForm({ title: "Get a free quote", pageName: `${svc.label} ${city.name}` })}${railGuides()}${railTrust()}${railLinks("Popular services", realServices.slice(0, 7).map(svcCard), "local_shipping")}`;
   const sub = `Professional ${svc.label.toLowerCase()} across ${city.name} and ${city.county}. Family owned, licensed, and insured since ${Y}.`;
   const proposedNote = svc.real ? "" : "<!-- PROPOSED SERVICE: confirm Martin's Moving fulfills this before publishing -->";
-  const bodyHtml = `${proposedNote}${hero({ badge: "Moving Services", h1: `${svc.label} in ${city.name}`, sub, crumbs, pageName: `${svc.label} ${city.name}`, primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "All services", href: "/services" } })}
+  const bodyHtml = `${proposedNote}${hero({ badge: "Moving Services", h1: cc.h1 || `${svc.label} in ${city.name}`, sub, crumbs, pageName: `${svc.label} ${city.name}`, primaryCta: { label: "Get a free estimate", href: "/contact" }, secondaryCta: { label: "All services", href: "/services" } })}
 ${statBar()}
 ${twoCol(main, rail)}
 ${ctaBand()}`;
-  const desc = `${svc.label} in ${city.name}, ${city.county}, from Martin's Moving. Licensed, insured, honest written quotes. Call ${site.phone} for a free estimate.`.slice(0, 158);
+  const desc = (cc.metaDesc || `${svc.label} in ${city.name}, ${city.county}, from Martin's Moving. Licensed, insured, honest written quotes. Call ${site.phone} for a free estimate.`).slice(0, 158);
   return page({
-    title: `${svc.label} in ${city.name} | Martin's Moving`,
+    title: cc.title || `${svc.label} in ${city.name} | Martin's Moving`,
     description: desc,
     canonicalPath: path,
     jsonLd: [movingCompanySchema(city.name), serviceSchema({ name: `${svc.label} in ${city.name}`, description: desc }), faqSchema(faqs), breadcrumbSchema(crumbs), speakableSchema(path)],
@@ -418,7 +421,7 @@ export function indexPage({ kind }) {
       seoTitle: "Areas We Serve in Bradenton & Sarasota | Martin's Moving",
       intro: [`We move homes and businesses throughout ${R} and the surrounding communities. Find your town for local details, or call ${site.phone} to confirm your move.`],
       faqs: [
-        { q: "What areas does Martin's Moving serve?", a: `Bradenton, Sarasota, and the surrounding Manatee and Sarasota County communities, including the barrier islands. Find your town on this page.` },
+        { q: "What areas does Martin's Moving serve?", a: `Bradenton, Sarasota, and the surrounding Manatee and Sarasota County communities, including the barrier islands, plus Port Charlotte to the south and Sun City Center to the north. Find your town on this page.` },
         { q: "Is there a surcharge for island or condo moves?", a: `No surcharge for the location. We size the crew to the access and coordinate elevators and loading windows. Call ${site.phone}.` },
         { q: "Are you licensed and insured?", a: `Yes. Florida Mover Registration #${site.licenses.flIm}, fully insured, family owned since ${Y}.` },
       ],

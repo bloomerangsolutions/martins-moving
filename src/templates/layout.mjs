@@ -61,7 +61,7 @@ function header() {
 
   const svcItems = n.services.filter((s) => !s.note); // the confirmed-real services
   const servicesPanel = dropdown("Services", "w-[540px]", `${heading("Moving services")}<div class="grid grid-cols-2 gap-1">${svcItems.map((i) => panelLink(i)).join("")}</div>${viewAll("View all services", "/services")}`);
-  const areasPanel = dropdown("Areas Served", "w-[540px]", `${heading("Areas served")}<div class="grid grid-cols-3 gap-1">${n.areas.slice(0, 12).map((i) => panelLink(i)).join("")}</div>${viewAll("View all areas", "/areas-served")}`);
+  const areasPanel = dropdown("Areas Served", "w-[540px]", `${heading("Areas served")}<div class="grid grid-cols-3 gap-1">${n.areas.slice(0, 18).map((i) => panelLink(i)).join("")}</div>${viewAll("View all areas", "/areas-served")}`);
   const guidesPanel = dropdown("Guides", "w-80", `${heading("Moving guides")}<div class="grid grid-cols-1 gap-1">${n.guides.map((i) => panelLink(i)).join("")}</div>`);
   const resourcesPanel = dropdown("Resources", "w-80", `${heading("Resources")}<div class="grid grid-cols-1 gap-1">${n.resources.map((i) => panelLink(i)).join("")}</div>`);
 
